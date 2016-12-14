@@ -1,7 +1,9 @@
 <?php /* app/Model/StudentModel.php */
 namespace Model;
 
-class StudentModel extends \W\Model\Model 
+use \W\Model\ConnectionModel;
+
+class StudentModel extends \W\Model\UsersModel 
 {
     private $firstname;
     private $lastname;
@@ -15,7 +17,7 @@ class StudentModel extends \W\Model\Model
     private $lng;
 
     public function __construct($firstname ='', $lastname = '', $password = '', $email ='',$streetNumber = 0, $address = '', $city = '', $postalCode = '', $lat = 0, $lng = 0) {
-        
+        $app = getApp();
         $this->setFirstname($firstname);
         $this->setLastname($lastname);
         $this->setPassword($password);
@@ -26,6 +28,8 @@ class StudentModel extends \W\Model\Model
         $this->setPostalCode($postalCode);
         $this->setLat($lat);
         $this->setLng($lng);
+        $this->setTable('students');
+        $this->dbh = ConnectionModel::getDbh();
 
 
     }
@@ -76,22 +80,22 @@ class StudentModel extends \W\Model\Model
     public function getEmail() {
         return $this->email; 
     }
-    public function getStreetNumber($streetNumber) {
+    public function getStreetNumber() {
         return $this->streetNumber;
     }
     public function getAddress() {
         return $this->address;   
     }
-    public function getCity($city) {
+    public function getCity() {
         return $this->city;
     }
-    public function getPostalCode($postalCode) {
+    public function getPostalCode() {
         return $this->postalCode;
     }
-    public function getLat($lat) {
+    public function getLat() {
         return $this->lat;
     }
-    public function getLng($lng) {
+    public function getLng() {
         return $this->lng;
     }
 
