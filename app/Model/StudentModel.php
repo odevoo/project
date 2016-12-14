@@ -15,6 +15,7 @@ class StudentModel extends \W\Model\UsersModel
     private $postalCode;
     private $lat;
     private $lng;
+    
 
     public function __construct($firstname ='', $lastname = '', $password = '', $email ='',$streetNumber = 0, $address = '', $city = '', $postalCode = '', $lat = 0, $lng = 0) {
         $app = getApp();
@@ -28,7 +29,7 @@ class StudentModel extends \W\Model\UsersModel
         $this->setPostalCode($postalCode);
         $this->setLat($lat);
         $this->setLng($lng);
-        $this->setTable('students');
+        $this->setTable('users');
         $this->dbh = ConnectionModel::getDbh();
 
 
