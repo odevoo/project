@@ -7,19 +7,29 @@ class StudentModel extends \W\Model\Model
     private $lastname;
     private $password;
     private $email;
+    private $streetNumber;
     private $address;
+    private $city;
+    private $postalCode;
+    private $lat;
+    private $lng;
 
-    public function __construct($firstname ='', $lastname = '', $password = '', $email ='', $address = '') {
+    public function __construct($firstname ='', $lastname = '', $password = '', $email ='',$streetNumber = 0, $address = '', $city = '', $postalCode = '', $lat = 0, $lng = 0) {
         
         $this->setFirstname($firstname);
         $this->setLastname($lastname);
         $this->setPassword($password);
         $this->setEmail($email);
+        $this->setStreetNumber($streetNumber);
         $this->setAddress($address);
+        $this->setCity($city);
+        $this->setPostalCode($postalCode);
+        $this->setLat($lat);
+        $this->setLng($lng);
 
 
     }
-
+    /* SETTEUR */
     public function setFirstname($firstname) {
         $this->firstname = $firstname;
     }
@@ -32,9 +42,27 @@ class StudentModel extends \W\Model\Model
     public function setEmail($email) {
         $this->email = $email;
     }
+    public function setStreetNumber($streetNumber) {
+        $this->streetNumber = $streetNumber;
+    }
     public function setAddress($address) {
         $this->address = $address;
     }
+    public function setCity($city) {
+        $this->city = $city;
+    }
+    public function setPostalCode($postalCode) {
+        $this->postalCode = $postalCode;
+    }
+    public function setLat($lat) {
+        $this->lat = $lat;
+    }
+    public function setLng($lng) {
+        $this->lng = $lng;
+    }
+
+
+    /* GETTEUR */
 
     public function getFirstname() {
         return $this->firstname;
@@ -48,8 +76,23 @@ class StudentModel extends \W\Model\Model
     public function getEmail() {
         return $this->email; 
     }
+    public function getStreetNumber($streetNumber) {
+        return $this->streetNumber;
+    }
     public function getAddress() {
         return $this->address;   
+    }
+    public function getCity($city) {
+        return $this->city;
+    }
+    public function getPostalCode($postalCode) {
+        return $this->postalCode;
+    }
+    public function getLat($lat) {
+        return $this->lat;
+    }
+    public function getLng($lng) {
+        return $this->lng;
     }
 
  
