@@ -1,7 +1,8 @@
 <?php
 
-	$w_routes = array(
-		['GET', '/', 'Default#home', 'default_home'],
+	$w_routes = array(        
+		/* Acceuil */
+		['GET', '/home', 'Default#home', 'default_home'],
 
         /*  Inscription */
 
@@ -17,6 +18,11 @@
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
 
         ['GET', '/settings', 'Admin#showSettingsPage', 'admin_settings'],
+
+
+				/*  Déconnexion  */
+				['GET', '/logout', 'Admin#processlogOut', 'admin_logout'],
+
 
 
 
