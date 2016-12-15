@@ -13,6 +13,5 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" name="btn" value="Connexion">
             </div>
-            <input type="hidden" name="type" value="student">
     </form>
 <?php $this->stop('main_content') ?>
