@@ -27,21 +27,25 @@
 		          	</ul>
 
 		        	<ul class="nav navbar-nav navbar-right">
+		        	<?php if (isset($_SESSION['user'])): ?>
 		        		<li class="dropdown navbar-align-right">
-		              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span>
+		              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'] ; ?> <span class="caret"></span>
 		              		</a>
 			              	<ul class="dropdown-menu" id="dropdown-member">
-				                <li><a href="#"><i class="fa fa-cog icon" aria-hidden="true"></i> Mon profil</a></li>
+				                <li><a href="<?= $this->url('admin_settings');?>"><i class="fa fa-cog icon" aria-hidden="true"></i> Paramètres </a></li>
 				                <li><a href="#"></a></li>
 				                <li><a href="#"></a></li>
 				                <li role="separator" class="divider"></li>
 				                <li class="dropdown-header">Nav header</li>
 				                <li><a href="#">Separated link</a></li>
-				                <li><a href="#"><i class="fa fa-power-off icon" aria-hidden="true"></i> Deconnexion</a></li>
+				                <li><a href="<?= $this->url('admin_logout'); ?>"><i class="fa fa-power-off icon" aria-hidden="true"></i> Deconnexion</a></li>
 			              	</ul>
 		            	</li>
-		            	<li class="navbar-align-right"><a href="#inscription"><i class="fa fa-paper-plane icon" aria-hidden="true"></i> Inscription</a></li>
-		            	<li class="navbar-align-right"><a href="#connection"><i class="fa fa-power-off icon" aria-hidden="true"></i> Connection</a></li>
+		            	<?php endif; ?>
+		            	<?php if (!isset($_SESSION['user'])): ?>
+			            	<li class="navbar-align-right"><a href="<?= $this->url('admin_register');?>"><i class="fa fa-paper-plane icon" aria-hidden="true"></i> Inscription</a></li>
+			            	<li class="navbar-align-right"><a href="<?= $this->url('admin_login');?>"><i class="fa fa-power-off icon" aria-hidden="true"></i> Connection</a></li>
+		            	<?php endif; ?>
 		        	</ul>
 		        </div>
 		    </nav>
@@ -57,7 +61,7 @@
 	          <?= $message; ?>
 	        </div>-->
 
-			<div class="alert alert-warning alert-dismissible" role="alert-<?= $type; ?>">
+			<div class="alert alert-<?= $type; ?> alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<strong><?= $message; ?></strong>
 			</div>
