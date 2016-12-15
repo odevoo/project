@@ -1,26 +1,118 @@
 html, body {
 	font-family: Consolas, monaco, monospace;
-	background-color: #272822;
-	color: #F8F8F2;
+	background-color: white;
+	color: black;
 }
 
-.container {
-	margin: 50px;
+body {
+	margin-top: 175px;
 }
 
-a {
-	text-decoration: none;
-	color: #A6E22E;
-}
-
-a:hover {
-	color: #F92672;
-}
+	/**********/
+	/* Layout */
+	/**********/
 
 h1 {
-	color: #F92672;
+	text-align: center;
+	padding-top: 2%;
 }
 
-h2 {
-	color: #66D9EF;
+/* Start Header */
+
+
+.navbar {
+	font-size: 19px;
+	padding: 0px 50px;
+	border: 1px solid skyblue;
+}
+
+
+.navbar-align-right {
+	padding-top: 3%;
+}
+/*
+.navbar-right {
+	padding-right: 0px;
+}
+*/
+.logo {
+	max-width: 120px;
+	max-height: 120px;
+}
+
+header nav {
+	background-color: white !important;
+}
+
+.icon{
+	color: #3750A3;
+}
+
+/* End Header */
+
+
+/* Start Footer */
+
+.text-footer {
+	font-size: 18px;
+}
+
+.nav-pills>li>a{
+	color: black;
+}
+
+.nav-pills>li>a:hover{
+	font-size: 18px;
+	color: #3750A3;
+	padding-bottom: 1%; 
+}
+
+.sub-footer {
+	font-size: 19px;
+	padding: 1%;
+}
+
+li {
+	list-style-type: none; 
+}
+
+.icon{
+	color: #3750A3;
+}
+
+/* End Footer */
+
+
+	/***********/
+	/* Accueil */
+	/***********/
+
+.carousel {
+	width: 1200px;
+	height: 500px;
+}
+
+.slider-title {
+	font-size: 35px;
+	padding-bottom: 3%;
+}
+
+.random-profil {
+	margin: 5% 0%;
+}
+
+@media (max-width: 768px) {
+	.navbar {
+		font-size: 19px;
+		padding: 0px 0px;
+		border: 1px solid skyblue;
+	}
+
+	.carousel {
+		display:none;
+	}
+
+	.slider-title {
+		display:none;
+	}
 }
