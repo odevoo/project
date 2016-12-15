@@ -19,8 +19,9 @@ class AdminController extends Controller
         $this->show('admin/register');
     }
     public function processRegisterForm() {
-
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $passwordhash = new AuthentificationModel;
+        $password = $passwordhash->hashPassword($_POST['password']);
+        //$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         //debug($password);
         if ($_POST['type'] === 'student') {
             $student = new StudentModel ($_POST['firstname'], $_POST['lastname'], $password, $_POST['email'], $_POST['streetNumber'], $_POST['address'], $_POST['city'], $_POST['zip'], $_POST['lat'], $_POST['lng']);
@@ -58,7 +59,6 @@ class AdminController extends Controller
     }
 
     public function processLoginForm() {
-      debug($_POST);
       $login = new AuthentificationModel;
       $user = $login->isValidLoginInfo($_POST['email'], $_POST['password']);
       debug($user);
