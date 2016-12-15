@@ -1,5 +1,8 @@
-<?php /* app/Model/StudentModel.php */
+<?php /* app/Model/TeacherModel.php */
 namespace Model;
+
+
+use \W\Model\ConnectionModel;
 
 class TeacherModel extends \W\Model\Model
 {
@@ -15,9 +18,10 @@ class TeacherModel extends \W\Model\Model
     private $lat;
     private $lng;
     private $avatar;
+    private $description;
 
 
-    public function __construct($firstname ='', $lastname = '', $password = '', $email ='', $address = '', $hourlyRate = 0.00, $streetNum = '', $city = '', $postalCode = '', $lat = 0, $lng = 0, $avatar = 'avatar.png') {
+    public function __construct($firstname ='', $lastname = '', $password = '', $email ='', $address = '', $hourlyRate = 0.00, $streetNum = '', $city = '', $postalCode = '', $lat = 0, $lng = 0, $avatar = 'avatar.png', $description = '') {
 
         $this->setFirstname($firstname);
         $this->setLastname($lastname);
@@ -31,7 +35,8 @@ class TeacherModel extends \W\Model\Model
         $this->setLat($lat);
         $this->setLng($lng);
         $this->setAvatar($avatar);
-
+        $this->setDescription($description);
+        $this->dbh = ConnectionModel::getDbh();
     }
 
     //    Set
@@ -71,6 +76,9 @@ class TeacherModel extends \W\Model\Model
     public function setAvatar($avatar) {
         $this->avatar = $avatar;
     }
+    public function setDescription($description) {
+        $this->description = $description;
+    }
 
 
     //    Get
@@ -89,27 +97,40 @@ class TeacherModel extends \W\Model\Model
     public function getHourlyRate() {
         return $this->hourlyRate;
     }
-    public function getStreetNumber($streetNum) {
+    public function getStreetNumber() {
         return $this->streetNum = $streetNum;
     }
-    public function getAddress($address) {
+    public function getAddress() {
         return $this->address = $address;
     }
-    public function getCity($city) {
+    public function getCity() {
         return $this->city = $city;
     }
-    public function getPostalCode($postalCode) {
+    public function getPostalCode() {
         return $this->postalCode = $postalCode;
     }
-    public function getLat($lat) {
+    public function getLat() {
         return $this->lat = $lat;
     }
-    public function getLng($lng) {
+    public function getLng() {
         return $this->lng = $lng;
     }
-    public function getAvatar($avatar) {
+    public function getAvatar() {
         $this->avatar = $avatar;
     }
+    public function getDescription() {
+        $this->description = $description;
+    }
 
+    public function isTeacher($id)
+    {
+        $sql = 'SELECT is_teacher FROM users
+                WHERE id = :id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $isTeacher = $stmt->fetch();
+        debug($isTeacher);
+    }
 
 }
