@@ -11,8 +11,8 @@
 
         /*Page de recherche*/
 
-		/*  Connexion  */
-		['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
+				/*  Connexion  */
+				['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
 
 

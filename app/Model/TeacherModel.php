@@ -4,7 +4,7 @@ namespace Model;
 
 use \W\Model\ConnectionModel;
 
-class TeacherModel extends \W\Model\Model
+class TeacherModel extends \W\Model\UsersModel
 {
     private $firstname;
     private $lastname;
@@ -21,7 +21,7 @@ class TeacherModel extends \W\Model\Model
     private $description;
 
 
-    public function __construct($firstname ='', $lastname = '', $password = '', $email ='', $address = '', $hourlyRate = 0.00, $streetNum = '', $city = '', $postalCode = '', $lat = 0, $lng = 0, $avatar = 'avatar.png', $description = '') {
+    public function __construct($firstname ='', $lastname = '', $password = '', $email ='', $address = '', $hourlyRate = 0.00, $streetNum = 0, $city = '', $postalCode = '', $lat = 0, $lng = 0, $description = '', $avatar = 'avatar.png') {
 
         $this->setFirstname($firstname);
         $this->setLastname($lastname);
@@ -36,6 +36,7 @@ class TeacherModel extends \W\Model\Model
         $this->setLng($lng);
         $this->setAvatar($avatar);
         $this->setDescription($description);
+        $this->setTable('users');
         $this->dbh = ConnectionModel::getDbh();
     }
 
@@ -98,28 +99,28 @@ class TeacherModel extends \W\Model\Model
         return $this->hourlyRate;
     }
     public function getStreetNumber() {
-        return $this->streetNum = $streetNum;
+        return $this->streetNum;
     }
     public function getAddress() {
-        return $this->address = $address;
+        return $this->address;
     }
     public function getCity() {
-        return $this->city = $city;
+        return $this->city;
     }
     public function getPostalCode() {
-        return $this->postalCode = $postalCode;
+        return $this->postalCode;
     }
     public function getLat() {
-        return $this->lat = $lat;
+        return $this->lat;
     }
     public function getLng() {
-        return $this->lng = $lng;
+        return $this->lng;
     }
     public function getAvatar() {
-        $this->avatar = $avatar;
+        return $this->avatar;
     }
     public function getDescription() {
-        $this->description = $description;
+        return $this->description;
     }
 
     public function isTeacher($id)
