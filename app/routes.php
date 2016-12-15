@@ -17,5 +17,8 @@
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
 
 
+				/*  Déconnexion  */
+				['GET', '/logout', 'Admin#processlogOut', 'admin_logout'],
+
 
 	);
