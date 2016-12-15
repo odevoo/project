@@ -2,7 +2,7 @@
 
 	$w_routes = array(        
 		/* Acceuil */
-		['GET', '/home', 'Default#home', 'default_home'],
+		['GET', '/', 'Default#home', 'default_home'],
 
         /*  Inscription */
 

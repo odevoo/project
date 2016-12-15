@@ -69,7 +69,6 @@
 	    	<?php endforeach; ?>
 	    	<?php unset($_SESSION['flash']); ?>
 	    <?php endif ?>
-
 	<section>
 		<?= $this->section('main_content') ?>
 	</section>

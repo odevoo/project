@@ -25,6 +25,7 @@
                 <input type="text" id="autocomplete"  onFocus="geolocate()" class="autocomplete form-control" name="" value="" placeholder="Adresse">
             </div>
             <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="btn" value="Mofifier mes informations">
             </div>
             <input type="hidden" name="type" value="student">
             <input type="hidden" name="streetNumber" id="autocomplete_street_number"  value="">
