@@ -3,6 +3,7 @@
 namespace Controller;
 
 use \W\Controller\Controller;
+use \W\Security\AuthentificationModel;
 use \Model\StudentModel;
 use \Model\TeacherModel;
 //use \W\Model\ConnectionModel;
@@ -47,9 +48,20 @@ class AdminController extends Controller
                 $this->showRegisterForm();
             }
         }
-        
-        
 
+    }
+
+    public function showLoginForm()
+    {
+      $this->show('admin/login');
+    }
+
+    public function processLoginForm() {
+      $login = new AuthentificationModel;
+      $user = $login->isValidLoginInfo($_POST['email'], $_POST['password']);
+      if ($user) {
+        # code...
+      }
     }
 
 }
