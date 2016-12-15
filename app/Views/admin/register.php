@@ -91,6 +91,6 @@
     </div>    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVvV3H3-rcwoX6X-Jq1PXMOhiF-6EyO-E&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
-    <script type="text/javascript" src="<?= $this->assetUrl('js/googleplaceteacher.js') ?>"></script>
+    <script type="text/javascript" src="<?= $this->assetUrl('js/googleplace.js') ?>"></script>
     <script type="text/javascript" src="<?= $this->assetUrl('js/scriptregister.js') ?>"></script>
 <?php $this->stop('main_content') ?>

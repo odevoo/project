@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Connection']) ?>
+<?php $this->layout('layout', ['title' => 'Settings']) ?>
 
 <?php $this->start('main_content') ?>
     <div class ="container">

@@ -18,7 +18,6 @@ var autocomplete = {};
           
           var place = autocomplete[name].getPlace();
           var form = ['street_number', 'route'];
-          console.log(place);
           GetLatlong();
           for (var component in form) {
             $('#'+name+'_'+component).val('');
@@ -29,7 +28,6 @@ var autocomplete = {};
             var addressType = place.address_components[i].types[0];
             
               var val = place.address_components[i]['long_name'];
-              console.log(place.address_components[i]['long_name']);
               $('#'+name+'_'+addressType).val(val);
             
           }
@@ -57,15 +55,22 @@ function GetLatlong()
     {
         var geocoder = new google.maps.Geocoder();
         var address = document.getElementById('autocomplete').value;
+        var addressteach = document.getElementById('autocompleteteach').value;
         geocoder.geocode({ 'address': address }, function (results, status) {
 
             if (status == google.maps.GeocoderStatus.OK) {
                 var latitude = results[0].geometry.location.lat();
                 var longitude = results[0].geometry.location.lng();
-                console.log('latitude: ' + latitude);
-                console.log('longitude: ' + longitude);
                 document.getElementById('autocomplete_lat').value = latitude;
                 document.getElementById('autocomplete_lng').value = longitude;
+
+            }
+        });
+        geocoder.geocode({ 'address': addressteach }, function (results, status) {
+
+            if (status == google.maps.GeocoderStatus.OK) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
                 document.getElementById('autocompleteteach_lat').value = latitude;
                 document.getElementById('autocompleteteach_lng').value = longitude;
 
@@ -73,3 +78,5 @@ function GetLatlong()
         });
 
         }
+
+        

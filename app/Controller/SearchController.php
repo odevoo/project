@@ -3,6 +3,8 @@
 namespace Controller;
 
 use \Model\SubjectModel;
+use \Model\TeacherModel;
+use \Model\StudentModel;
 
 class SearchController extends \W\Controller\Controller
 {
@@ -14,11 +16,34 @@ class SearchController extends \W\Controller\Controller
 	}
 
 
+
 	//Affiche la page recherche
-	public function searchPage()
+	public function searchPage($id)
 	{
 		$subjects = $this->getAllSubjects();
+		$student = new StudentModel;
+		$studentdata = $student->find($id);
+
 //		debug($subjects);
-		$this->show('search/home',['subjects' => $subjects]);
+		$this->show('search/home',['subjects' => $subjects, 'student' => $studentdata]);
 	}
+
+
+	//recherche des infos des professeurs à proximité pour Google maps
+	
+	public function getAllTeachers() {
+		$teacher = new TeacherModel;
+		$teachers['data'] = $teacher->findAllTeachers();
+		return $this->showJson($teachers);
+	}
+
+	//recherche latitude longitude du student
+	public function getLatLng($id1) {
+		$student = new StudentModel;
+		$studentdata['data'] = $student->find($id1);
+		$result = $this->showJson($studentdata);
+		return $result;
+	}
+	
+	
 }

@@ -47,6 +47,7 @@ class AdminController extends Controller
             //debug($emailExist);
             if ($emailExist === false) {
                 move_uploaded_file($_FILES["file"]["tmp_name"], "../public/assets/upload/" . $newfilename);
+
                 $teacher->insert(['firstname' => $teacher->getFirstname(), 'lastname' => $teacher->getLastname(), 'streetnumber' => $teacher->getStreetNumber(), 'address' => $teacher->getAddress(), 'city' => $teacher->getCity(), 'postcode' => $teacher->getPostalCode(), 'lng' => $teacher->getLng(), 'lat' => $teacher->getLat(), 'email' => $teacher->getEmail(), 'password' => $teacher->getPassword(), 'is_student' => 0, 'is_teacher' => 1, 'rating' => $teacher->getHourlyRate(), 'description' => $teacher->getDescription(), 'avatar' => $teacher->getAvatar()]);
 
                 $_SESSION['flash']['success'] = 'Le compte à été crée';

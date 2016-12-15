@@ -134,4 +134,12 @@ class TeacherModel extends \W\Model\UsersModel
         return $isTeacher;
     }
 
+    public function findAllTeachers() {
+        $sql = 'SELECT * FROM users WHERE is_teacher = 1';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute();
+        $teachers = $stmt->fetchAll();
+        return $teachers;
+    }
+
 }

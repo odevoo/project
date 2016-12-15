@@ -19,7 +19,7 @@
 		        		<span class="icon-bar"></span>
 		        		<span class="icon-bar"></span>
 		        		<span class="icon-bar"></span>
-		        	</button><img class="logo" src="../public/assets/img/logo02.png" />
+		        	</button><img class="logo" src="<?= $this->assetUrl('img/logo02.png') ?>" />
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		        	<ul class="nav navbar-nav">

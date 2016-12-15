@@ -8,10 +8,16 @@
 
     	['GET', '/register', 'Admin#showRegisterForm', 'admin_register'],
     	['POST', '/register', 'Admin#processRegisterForm', 'admin_process_register'],
-    	['GET', '/search', 'Search#searchPage', 'search_page'],
 
         /*
         /*Page de recherche*/
+        
+        ['GET', '/search/[:id]', 'Search#searchPage', 'search_page'],
+        ['POST', '/[:id]/getallteachers', 'Search#getAllTeachers', 'search_getallteachers'],
+        ['POST', '/getlatlng/[:id1]', 'Search#getLatLng', 'search_getlatlng'],
+        
+
+
 
 		/*  Connexion  */
 		['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
@@ -22,6 +28,11 @@
 
 		/*  Déconnexion  */
 		['GET', '/logout', 'Admin#processlogOut', 'admin_logout'],
+
+
+        /*Profile Professeur */
+
+        ['GET', '/profile/[:id]', 'Profile#showProfile', 'profile_show'],
 
 
 
