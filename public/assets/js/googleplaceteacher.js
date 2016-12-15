@@ -1,8 +1,8 @@
 var autocomplete = {};
     var autocompletesWraps = ['autocomplete', 'autocompleteteach'];
 
-    var test_form = { street_number: 'short_name', route: 'long_name', locality: 'long_name', administrative_area_level_1: 'short_name', country: 'long_name', postal_code: 'short_name' };
-    var test2_form = { street_number: 'short_name', route: 'long_name', locality: 'long_name', administrative_area_level_1: 'short_name', country: 'long_name', postal_code: 'short_name' };
+    var test_form = { street_number: 'short_name', route: 'long_name', locality: 'long_name', administrative_area_level_1: 'short_name', country: 'long_name', postal_code: 'short_name'};
+    var test2_form = { street_number: 'short_name', route: 'long_name', locality: 'long_name', administrative_area_level_1: 'short_name', country: 'long_name', postal_code: 'short_name'};
 
     function initAutocomplete() {
 
@@ -18,7 +18,8 @@ var autocomplete = {};
           
           var place = autocomplete[name].getPlace();
           var form = ['street_number', 'route'];
-
+          console.log(place);
+          GetLatlong();
           for (var component in form) {
             $('#'+name+'_'+component).val('');
             $('#'+name+'_'+component).attr('disabled', false);
@@ -36,7 +37,7 @@ var autocomplete = {};
       });
     }
 
-    function geolocate() {
+function geolocate() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var geolocation = {
@@ -51,3 +52,24 @@ var autocomplete = {};
     });
   }
 }
+
+function GetLatlong()
+    {
+        var geocoder = new google.maps.Geocoder();
+        var address = document.getElementById('autocomplete').value;
+        geocoder.geocode({ 'address': address }, function (results, status) {
+
+            if (status == google.maps.GeocoderStatus.OK) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+                console.log('latitude: ' + latitude);
+                console.log('longitude: ' + longitude);
+                document.getElementById('autocomplete_lat').value = latitude;
+                document.getElementById('autocomplete_lng').value = longitude;
+                document.getElementById('autocompleteteach_lat').value = latitude;
+                document.getElementById('autocompleteteach_lng').value = longitude;
+
+            }
+        });
+
+        }

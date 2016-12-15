@@ -9,12 +9,14 @@
     	['POST', '/register', 'Admin#processRegisterForm', 'admin_process_register'],
     	['GET', '/search', 'Search#searchPage', 'search_page'],
 
-
+        /*
         /*Page de recherche*/
 
 				/*  Connexion  */
-				['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
+		['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
+
+        ['GET', '/settings', 'Admin#showSettingsPage', 'admin_settings'],
 
 
 

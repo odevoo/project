@@ -68,5 +68,8 @@ class AdminController extends Controller
         debug($isTeacher);
       }
     }
+    public function showSettingsPage() {
+        $this->show('admin/settings');
+    }
 
 }
