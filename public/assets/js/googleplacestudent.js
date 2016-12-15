@@ -12,8 +12,11 @@ var componentForm = {
 function initAutocomplete() {
   // Create the autocomplete object, restricting the search to geographical
   // location types.
-  autocomplete = new google.maps.places.Autocomplete(
+  autocomplete[0] =  new google.maps.places.Autocomplete(
       /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      {types: ['geocode']});
+  autocomplete[1] =  new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocompleteteach')),
       {types: ['geocode']});
 
   // When the user selects an address from the dropdown, populate the address

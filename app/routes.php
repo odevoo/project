@@ -8,5 +8,5 @@
         ['GET', '/register', 'Admin#showRegisterForm', 'admin_register'],
         ['POST', '/register', 'Admin#processRegisterForm', 'admin_process_register'],
 
-
+        /*Page de recherche*/
 	);
