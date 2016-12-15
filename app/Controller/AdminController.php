@@ -61,12 +61,31 @@ class AdminController extends Controller
     public function processLoginForm() {
       $login = new AuthentificationModel;
       $user = $login->isValidLoginInfo($_POST['email'], $_POST['password']);
-      debug($user);
+      // debug($user);
       if ($user) {
         $isTeacher = new TeacherModel;
-        $isTeacher->isTeacher($user);
-        debug($isTeacher);
+        $result = $isTeacher->isTeacher($user);
+        debug($result);
+        if ($result['is_teacher'] == 1) {
+          $teacher = new TeacherModel;
+          $result = $teacher->find($user);
+          // debug($result);
+          $login->logUserIn($result);
+          // debug($_SESSION['user']);
+        }else {
+          $student = new StudentModel;
+          $result = $student->find($user);
+          // debug($result);
+          $login->logUserIn($result);
+          // debug($_SESSION['user']);
+        }
       }
+    }
+
+    public function processlogOut() {
+      $log = new AuthentificationModel;
+      $log->logUserOut();
+      debug($_SESSION);
     }
 
 }

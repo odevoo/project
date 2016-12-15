@@ -131,7 +131,7 @@ class TeacherModel extends \W\Model\UsersModel
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         $isTeacher = $stmt->fetch();
-        debug($isTeacher);
+        return $isTeacher;
     }
 
 }
