@@ -1,9 +1,6 @@
 <?php $this->layout('layout', ['title' => 'Formulaire d\'inscription']) ?>
 
 <?php $this->start('main_content') ?>
-    <?php if (isset($_SESSION['flash'])): ?>
-        <?php debug($_SESSION) ?>
-    <?php endif ?>
     <div class="row">
         <div class="col-md-6">
             <button  class="btn btn-primary" disabled id="btn-student" type="">Etudiant</button>

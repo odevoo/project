@@ -13,15 +13,15 @@
         /*
         /*Page de recherche*/
 
-				/*  Connexion  */
+		/*  Connexion  */
 		['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
 
         ['GET', '/settings', 'Admin#showSettingsPage', 'admin_settings'],
 
 
-				/*  Déconnexion  */
-				['GET', '/logout', 'Admin#processlogOut', 'admin_logout'],
+		/*  Déconnexion  */
+		['GET', '/logout', 'Admin#processlogOut', 'admin_logout'],
 
 
 
