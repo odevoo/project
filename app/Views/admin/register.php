@@ -91,6 +91,25 @@
                 
             </div>
             <div class="form-group">
+                <label for="level">Niveau maximum enseigné</label>
+                <select class="form-control" name="level" id="level">
+                    <option selected disabled value="">Selectionnez un niveau</option>
+                    <?php foreach ($levels as $level): ?>
+                        <option value="<?= $level['id'] ?>"><?= $level['level'] ?></option>}
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mobility">Mobilité</label>
+                <select id="mobility" class="form-control" name="mobility">
+                    <option selected disabled value="">Selectionnez votre mobilité</option>
+                    <option value="Domicile">Domicile</option>
+                    <option value="Chez l'étudiant">Chez l'étudiant</option>
+                    <option value="Au choix">Au choix</option>
+                    
+                </select>
+            </div>
+            <div class="form-group">
                 <input type="submit" class="btn btn-primary" name="btn" value="S'inscrire">
             </div>
             <input type="hidden" name="type" value="teacher">

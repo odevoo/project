@@ -19,9 +19,11 @@ class TeacherModel extends \W\Model\UsersModel
     private $lng;
     private $avatar;
     private $description;
+    private $idlevel;
+    private $mobility;
 
 
-    public function __construct($firstname ='', $lastname = '', $password = '', $email ='', $address = '', $hourlyRate = 0.00, $streetNum = 0, $city = '', $postalCode = '', $lat = 0, $lng = 0, $description = '', $avatar = 'avatar.png') {
+    public function __construct($firstname ='', $lastname = '', $password = '', $email ='', $address = '', $hourlyRate = 0.00, $streetNum = 0, $city = '', $postalCode = '', $lat = 0, $lng = 0, $description = '', $avatar = 'avatar.png', $idlevel = 1, $mobility = 'à domicile') {
 
         $this->setFirstname($firstname);
         $this->setLastname($lastname);
@@ -36,6 +38,8 @@ class TeacherModel extends \W\Model\UsersModel
         $this->setLng($lng);
         $this->setAvatar($avatar);
         $this->setDescription($description);
+        $this->setIdLevel($idlevel);
+        $this->setMobility($mobility);
         $this->setTable('users');
         $this->dbh = ConnectionModel::getDbh();
     }
@@ -80,6 +84,12 @@ class TeacherModel extends \W\Model\UsersModel
     public function setDescription($description) {
         $this->description = $description;
     }
+    public function setIdLevel($idlevel){
+        $this->idlevel = $idlevel;
+    }
+    public function setMobility($mobility){
+        $this->mobility = $mobility;
+    }
 
 
     //    Get
@@ -122,6 +132,13 @@ class TeacherModel extends \W\Model\UsersModel
     public function getDescription() {
         return $this->description;
     }
+    public function getIdLevel(){
+        return $this->idlevel;
+    }
+    public function getMobility() {
+        return $this->mobility;
+    }
+
 
     public function isTeacher($id)
     {

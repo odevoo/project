@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use \W\Security\AuthentificationModel;
 use \Model\StudentModel;
 use \Model\TeacherModel;
+use \Model\LevelModel;
 use \Model\ExpertiseModel;
 use \Controller\SearchController;
 use PHPMailer;
@@ -19,12 +20,14 @@ class AdminController extends Controller
      */
     public function showRegisterForm()
     {
+        $level = new LevelModel;
+        $leveldata = $level->findAll();
         $search = new SearchController;
         $subjects = $search->getAllSubjects();
-        $this->show('admin/register', ['subjects' => $subjects]);
+        $this->show('admin/register', ['subjects' => $subjects, 'levels' => $leveldata]);
     }
     public function processRegisterForm() {
-        //debug($_POST);
+        debug($_POST);
         
         $passwordhash = new AuthentificationModel;
         $password = $passwordhash->hashPassword($_POST['password']);
@@ -48,14 +51,14 @@ class AdminController extends Controller
         } else {
             $temp = explode(".", $_FILES["file"]["name"]);
             $newfilename = $_POST['lastname'] . '.' . end($temp);
-            $teacher = new TeacherModel ($_POST['firstname'], $_POST['lastname'], $password, $_POST['email'], $_POST['address'], $_POST['rating'], $_POST['streetNumber'], $_POST['city'], $_POST['zip'], $_POST['lat'], $_POST['lng'], $_POST['desc'], 'upload/'.$newfilename);
+            $teacher = new TeacherModel ($_POST['firstname'], $_POST['lastname'], $password, $_POST['email'], $_POST['address'], $_POST['rating'], $_POST['streetNumber'], $_POST['city'], $_POST['zip'], $_POST['lat'], $_POST['lng'], $_POST['desc'], 'upload/'.$newfilename, $_POST['level'], $_POST['mobility']);
             
             $emailExist = $teacher->emailExists($_POST['email']);
             
             if ($emailExist === false) {
                 move_uploaded_file($_FILES["file"]["tmp_name"], "../public/assets/upload/" . $newfilename);
 
-                $teacherdataid = $teacher->insert(['firstname' => $teacher->getFirstname(), 'lastname' => $teacher->getLastname(), 'streetnumber' => $teacher->getStreetNumber(), 'address' => $teacher->getAddress(), 'city' => $teacher->getCity(), 'postcode' => $teacher->getPostalCode(), 'lng' => $teacher->getLng(), 'lat' => $teacher->getLat(), 'email' => $teacher->getEmail(), 'password' => $teacher->getPassword(), 'is_student' => 0, 'is_teacher' => 1, 'rating' => $teacher->getHourlyRate(), 'description' => $teacher->getDescription(), 'avatar' => $teacher->getAvatar()]);
+                $teacherdataid = $teacher->insert(['firstname' => $teacher->getFirstname(), 'lastname' => $teacher->getLastname(), 'streetnumber' => $teacher->getStreetNumber(), 'address' => $teacher->getAddress(), 'city' => $teacher->getCity(), 'postcode' => $teacher->getPostalCode(), 'lng' => $teacher->getLng(), 'lat' => $teacher->getLat(), 'email' => $teacher->getEmail(), 'password' => $teacher->getPassword(), 'is_student' => 0, 'is_teacher' => 1, 'price' => $teacher->getHourlyRate(), 'description' => $teacher->getDescription(), 'avatar' => $teacher->getAvatar(), 'id_level' => $teacher->getIdLevel(), 'mobility' => $teacher->getMobility()]);
                  
                 
                 foreach ($_POST as $key => $value) {
