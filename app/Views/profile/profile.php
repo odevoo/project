@@ -21,6 +21,7 @@ $this->start('main_content');
                 <p class="text-center "><?= $teacher['description'] ?></p>
             </div>
         </div>
+
           <hr class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 profile-hr">
           <div class="row">
             <div class="col-md-12 col-xs-12">
@@ -53,7 +54,8 @@ $this->start('main_content');
             </div>
 
             <div class="col-md-3 col-md-offset-1 col-xs-12 ">
-                <form action="" method="post">
+                <form action="<?= $this->url('lessons_reservation_form') ?>" method="post">
+
                     <div class="form-group">
                         <label for="date">Jour</label>
                         <input class="form-control" type="date" id="date" name="date" value="" placeholder="">
