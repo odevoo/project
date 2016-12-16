@@ -2,16 +2,17 @@
 
 <?php $this->start('main_content') ?>
 
+	<?php //debug($profs); ?>
 	<div class="main-text">
-		<div class="col-md-12 text-center">
-			<div class="slider-title">
+		<div class="text-center">
+			<h1 class="slider-title">
 				Nos Prestations Général
-			</div>							
+			</h1>							
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="">
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -37,8 +38,8 @@
 					</div>
 					<div class="item">
 						<img src="http://placehold.it/1200x500/34495e/2c3e50" alt="Third slide">
-						<div class="carousel-caption">													
-							<p>	
+						<div class="carousel-caption">
+							<p>
 								Description Photo 3									
 							</p>
 						</div>
@@ -59,26 +60,37 @@
 		</p>
 	</div>
 
+		<?php if (isset($_SESSION['user'])): ?>
+		<?php if ($_SESSION['user']['is_student'] == 1): ?>
+		<div class="search-form text-center">
+   			<a href="<?= $this->url('search_page', ['id'=> $_SESSION['user']['id']]); ?>"><button type="submit" id="btn-search" class="btn btn-custom btn-large">
+   			<span class="fa fa-search"></span>
+   			Rechercher votre professeur</button></a>
+		</div>
+
+		<?php endif; ?>
+		<?php endif; ?>
+
 	<div class="row random-profil">
 		<div class="col-md-3 col-xs-6">
 			<img class="thumbnail img-responsive center-block avatar-home" src="../public/assets/img/avatar-standard.png">
-			<h4 class="text-center">Nom du prof</h4>
-			<p class="text-center">Description du prof<p>
+			<h4 class="text-center"><?= $profs['prof1']['firstname'].' '.$profs['prof1']['lastname']?></h4>
+			<p class="text-center"><?= $profs['prof1']['description'] ?><p>
 		</div>
 		<div class="col-md-3 col-xs-6">
-			<img class="thumbnail img-responsive center-block  avatar-home" src="../public/assets/img/avatar-standard.png">
-			<h4 class="text-center">Nom du prof</h4>
-			<p class="text-center">Description du prof<p>
+			<img class="thumbnail img-responsive center-block avatar-home" src="../public/assets/img/avatar-standard.png">
+			<h4 class="text-center"><?= $profs['prof2']['firstname'].' '.$profs['prof2']['lastname']?></h4>
+			<p class="text-center"><?= $profs['prof2']['description'] ?><p>
 		</div>
 		<div class="col-md-3 col-xs-6">
-			<img class="thumbnail img-responsive center-block  avatar-home" src="../public/assets/img/avatar-standard.png">
-			<h4 class="text-center">Nom du prof</h4>
-			<p class="text-center">Description du prof<p>
+			<img class="thumbnail img-responsive center-block avatar-home" src="../public/assets/img/avatar-standard.png">
+			<h4 class="text-center"><?= $profs['prof3']['firstname'].' '.$profs['prof3']['lastname']?></h4>
+			<p class="text-center"><?= $profs['prof3']['description'] ?><p>
 		</div>
 		<div class="col-md-3 col-xs-6">
-			<img class="thumbnail img-responsive center-block  avatar-home" src="../public/assets/img/avatar-standard.png">
-			<h4 class="text-center">Nom du prof</h4>
-			<p class="text-center">Description du prof<p>
+			<img class="thumbnail img-responsive center-block avatar-home" src="../public/assets/img/avatar-standard.png">
+			<h4 class="text-center"><?= $profs['prof4']['firstname'].' '.$profs['prof4']['lastname']?></h4>
+			<p class="text-center"><?= $profs['prof4']['description'] ?><p>
 		</div>
 	</div>
 

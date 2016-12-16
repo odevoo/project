@@ -17,8 +17,6 @@
         ['POST', '/getlatlng/[:id1]', 'Search#getLatLng', 'search_getlatlng'],
         
 
-
-
 		/*  Connexion  */
 		['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
@@ -34,7 +32,7 @@
 
         ['GET', '/profile/[:id]', 'Profile#showProfile', 'profile_show'],
 
-
-
-
+        /* Contact */
+        ['GET', '/contact/', 'Default#showContact', 'contact'],
+        ['POST', '/contact_send', 'Default#traitementContact', 'contact_form'],
 	);

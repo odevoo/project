@@ -1,24 +1,33 @@
-html, body {
-	font-family: Consolas, monaco, monospace;
-	background-color: white;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700|Roboto');
+
+font-family: 'Roboto', sans-serif;
+font-family: 'Open Sans', sans-serif;
+
+html {
 	color: black;
 }
 
 body {
 	margin-top: 175px;
+	background-color: white;
+	font-family: 'Roboto', sans-serif;
 }
 
 	/**********/
 	/* Layout */
 	/**********/
 
-h1 {
+h1,h2,h3,h4 {
+	font-family: 'Open Sans', sans-serif;
 	text-align: center;
-	padding-top: 2%;
+	padding: 4% 4%;
+}
+
+p {
+	line-height: 22px;
 }
 
 /* Start Header */
-
 
 .navbar {
 	font-size: 19px;
@@ -26,15 +35,10 @@ h1 {
 	border: 1px solid skyblue;
 }
 
-
 .navbar-align-right {
 	padding-top: 3%;
 }
-/*
-.navbar-right {
-	padding-right: 0px;
-}
-*/
+
 .logo {
 	max-width: 120px;
 	max-height: 120px;
@@ -82,7 +86,6 @@ li {
 
 /* End Footer */
 
-
 	/***********/
 	/* Accueil */
 	/***********/
@@ -90,6 +93,7 @@ li {
 .carousel {
 	width: 1200px;
 	height: 500px;
+	max-width: 100%;
 }
 
 .slider-title {
@@ -99,6 +103,24 @@ li {
 
 .random-profil {
 	margin: 5% 0%;
+}
+
+.btn-custom {
+	margin-top: 10%;
+	color: white;
+	text-transform: uppercase;
+	background-color: #2980b9;
+	padding:11px 14px;
+	font-size: 17.5px;
+	border-radius: 6px;
+}
+
+.btn-custom:hover {
+	color: #FFE100;
+	padding:11px 14px;
+	font-size: 17.5px;
+	border-radius: 6px;
+	border: 1px solid black;
 }
 
 @media (max-width: 768px) {
@@ -115,4 +137,14 @@ li {
 	.slider-title {
 		display:none;
 	}
+}
+
+
+
+	/***********/
+	/* Contact */
+	/***********/
+
+.social-link {
+	padding-top: 5%;
 }
