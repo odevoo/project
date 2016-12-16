@@ -15,6 +15,8 @@
         ['GET', '/search/[:id]', 'Search#searchPage', 'search_page'],
         ['POST', '/[:id]/getallteachers', 'Search#getAllTeachers', 'search_getallteachers'],
         ['POST', '/getlatlng/[:id1]', 'Search#getLatLng', 'search_getlatlng'],
+        ['GET', '/searchresult/[:id]', 'Search#searchResultPage', 'search_result'],
+
         
 
 
