@@ -34,7 +34,9 @@
 
         ['GET', '/profile/[:id]', 'Profile#showProfile', 'profile_show'],
 
-
+        /*lessons */
+        
+        ['POST', '/lessonsreservationform', 'Lessons#lessonsReservationForm', 'lessons_reservation_form'],
 
 
 	);

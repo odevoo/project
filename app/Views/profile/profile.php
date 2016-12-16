@@ -30,7 +30,7 @@ $this->start('main_content'); ?>
         <div class="row">
             <h2 class="text-center">Reserver un cour avec <?= $teacher['firstname']. ' '. $teacher['lastname'] ?> </h2>
             <div class="col-md-4">
-                <form action="" method="post">
+                <form action="<?= $this->url('lessons_reservation_form') ?>" method="post">
                     <div class="form-group">
                         <label for="date">Jour</label>
                         <input class="form-control" type="date" id="date" name="date" value="" placeholder="">

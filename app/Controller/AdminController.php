@@ -27,7 +27,7 @@ class AdminController extends Controller
         $this->show('admin/register', ['subjects' => $subjects, 'levels' => $leveldata]);
     }
     public function processRegisterForm() {
-        debug($_POST);
+        //debug($_POST);
         
         $passwordhash = new AuthentificationModel;
         $password = $passwordhash->hashPassword($_POST['password']);
