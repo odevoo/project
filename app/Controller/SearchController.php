@@ -11,7 +11,7 @@ class SearchController extends \W\Controller\Controller
 	public function getAllSubjects() {
 
 		$subject = new SubjectModel;
-		$subjects = $subject->findAll();
+		$subjects = $subject->findAll($orderBy = $name);
 		return $subjects;
 	}
 

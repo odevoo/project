@@ -13,6 +13,8 @@
 	<header>
 		<div class="container-fluid">
 			<nav class="navbar navbar-default navbar-fixed-top">
+					<div class="container">
+
 		        <div class="navbar-header">
 		        	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 		        		<span class="sr-only">Toggle navigation</span>
@@ -48,6 +50,7 @@
 		            	<?php endif; ?>
 		        	</ul>
 		        </div>
+					</div>
 		    </nav>
 		</div>
 	</header>
@@ -83,20 +86,22 @@
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="#">Mentions Légales</a></li>
 							</ul>
-						</div> 
+						</div>
 						<div class="col-md-3">
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#Plan du site">Plan du site</a></li>		
+								<li><a href="#Plan du site">Plan du site</a></li>
 							</ul>
 						</div>
 						<div class="col-md-3">
 							<ul class="nav nav-pills nav-stacked">
+
 								<li><a href="<?= $this->url('contact');?>">Contact</a></li>								
+
 							</ul>
 						</div>
 						<div class="col-md-3">
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#Conditions générales">Conditions générales</a></li>      
+								<li><a href="#Conditions générales">Conditions générales</a></li>
 							</ul>
 						</div>
 					</div>
@@ -105,7 +110,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<ul class="nav nav-pills nav-justified sub-footer">
-							<li>&copy Company Oh ce Cours 2016 </li>					
+							<li>&copy Company Oh ce Cours 2016 </li>
 						</ul>
 					</div>
 				</div>

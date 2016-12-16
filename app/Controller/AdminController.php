@@ -6,6 +6,10 @@ use \W\Controller\Controller;
 use \W\Security\AuthentificationModel;
 use \Model\StudentModel;
 use \Model\TeacherModel;
+use \Model\LevelModel;
+use \Model\ExpertiseModel;
+use \Controller\SearchController;
+use PHPMailer;
 //use \W\Model\ConnectionModel;
 
 class AdminController extends Controller
@@ -16,17 +20,23 @@ class AdminController extends Controller
      */
     public function showRegisterForm()
     {
-        $this->show('admin/register');
+        $level = new LevelModel;
+        $leveldata = $level->findAll();
+        $search = new SearchController;
+        $subjects = $search->getAllSubjects();
+        $this->show('admin/register', ['subjects' => $subjects, 'levels' => $leveldata]);
     }
     public function processRegisterForm() {
+        //debug($_POST);
+        
         $passwordhash = new AuthentificationModel;
         $password = $passwordhash->hashPassword($_POST['password']);
-        //$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        //debug($password);
+        
+        
         if ($_POST['type'] === 'student') {
             $student = new StudentModel ($_POST['firstname'], $_POST['lastname'], $password, $_POST['email'], $_POST['streetNumber'], $_POST['address'], $_POST['city'], $_POST['zip'], $_POST['lat'], $_POST['lng']);
             $emailExist = $student->emailExists($_POST['email']);
-            //debug($student);
+            
             if ($emailExist === false) {
                 $student->insert(['firstname' => $student->getFirstname(), 'lastname' => $student->getLastname(), 'streetnumber' => $student->getStreetNumber(), 'address' => $student->getAddress(), 'city' => $student->getCity(), 'postcode' => $student->getPostalCode(), 'lng' => $student->getLng(), 'lat' => $student->getLat(), 'email' => $student->getEmail(), 'password' => $student->getPassword(), 'is_student' => 1, 'is_teacher' => 0]);
                 
@@ -41,15 +51,23 @@ class AdminController extends Controller
         } else {
             $temp = explode(".", $_FILES["file"]["name"]);
             $newfilename = $_POST['lastname'] . '.' . end($temp);
-            $teacher = new TeacherModel ($_POST['firstname'], $_POST['lastname'], $password, $_POST['email'], $_POST['address'], $_POST['rating'], $_POST['streetNumber'], $_POST['city'], $_POST['zip'], $_POST['lat'], $_POST['lng'], $_POST['desc'], 'upload/'.$newfilename);
-            //debug($teacher);
+            $teacher = new TeacherModel ($_POST['firstname'], $_POST['lastname'], $password, $_POST['email'], $_POST['address'], $_POST['rating'], $_POST['streetNumber'], $_POST['city'], $_POST['zip'], $_POST['lat'], $_POST['lng'], $_POST['desc'], 'upload/'.$newfilename, $_POST['level'], $_POST['mobility']);
+            
             $emailExist = $teacher->emailExists($_POST['email']);
-            //debug($emailExist);
+            
             if ($emailExist === false) {
                 move_uploaded_file($_FILES["file"]["tmp_name"], "../public/assets/upload/" . $newfilename);
 
-                $teacher->insert(['firstname' => $teacher->getFirstname(), 'lastname' => $teacher->getLastname(), 'streetnumber' => $teacher->getStreetNumber(), 'address' => $teacher->getAddress(), 'city' => $teacher->getCity(), 'postcode' => $teacher->getPostalCode(), 'lng' => $teacher->getLng(), 'lat' => $teacher->getLat(), 'email' => $teacher->getEmail(), 'password' => $teacher->getPassword(), 'is_student' => 0, 'is_teacher' => 1, 'rating' => $teacher->getHourlyRate(), 'description' => $teacher->getDescription(), 'avatar' => $teacher->getAvatar()]);
+                $teacherdataid = $teacher->insert(['firstname' => $teacher->getFirstname(), 'lastname' => $teacher->getLastname(), 'streetnumber' => $teacher->getStreetNumber(), 'address' => $teacher->getAddress(), 'city' => $teacher->getCity(), 'postcode' => $teacher->getPostalCode(), 'lng' => $teacher->getLng(), 'lat' => $teacher->getLat(), 'email' => $teacher->getEmail(), 'password' => $teacher->getPassword(), 'is_student' => 0, 'is_teacher' => 1, 'price' => $teacher->getHourlyRate(), 'description' => $teacher->getDescription(), 'avatar' => $teacher->getAvatar(), 'id_level' => $teacher->getIdLevel(), 'mobility' => $teacher->getMobility()]);
+                 
+                
+                foreach ($_POST as $key => $value) {
+                    if ($value == 'on') {
+                        $subject = new ExpertiseModel;
+                        $subject->insert(['id_teacher' => $teacherdataid['id'], 'id_subject' => $key]);
 
+                    } 
+                }
                 $_SESSION['flash']['success'] = 'Le compte à été crée';
                 $this->showRegisterForm();
 
@@ -105,6 +123,10 @@ class AdminController extends Controller
       $_SESSION['flash']['success'] = 'Vous êtes déconnecté';
       $this->showLoginForm();
       //debug($_SESSION);
+    }
+
+    public function sendRegisterEmail() {
+
     }
 
 }

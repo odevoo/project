@@ -15,6 +15,8 @@
         ['GET', '/search/[:id]', 'Search#searchPage', 'search_page'],
         ['POST', '/[:id]/getallteachers', 'Search#getAllTeachers', 'search_getallteachers'],
         ['POST', '/getlatlng/[:id1]', 'Search#getLatLng', 'search_getlatlng'],
+        ['GET', '/searchresult/[:id]', 'Search#searchResultPage', 'search_result'],
+
         
 
 		/*  Connexion  */
@@ -32,7 +34,15 @@
 
         ['GET', '/profile/[:id]', 'Profile#showProfile', 'profile_show'],
 
+
         /* Contact */
         ['GET', '/contact/', 'Default#showContact', 'contact'],
         ['POST', '/contact_send', 'Default#traitementContact', 'contact_form'],
+
+        /*lessons */
+        
+        ['POST', '/lessonsreservationform', 'Lessons#lessonsReservationForm', 'lessons_reservation_form'],
+
+
+
 	);
