@@ -16,9 +16,7 @@
         ['POST', '/[:id]/getallteachers', 'Search#getAllTeachers', 'search_getallteachers'],
         ['POST', '/getlatlng/[:id1]', 'Search#getLatLng', 'search_getlatlng'],
         
-
-
-
+        
 		/*  Connexion  */
 		['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
