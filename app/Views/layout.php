@@ -21,7 +21,7 @@
 		        		<span class="icon-bar"></span>
 		        		<span class="icon-bar"></span>
 		        		<span class="icon-bar"></span>
-		        	</button><img class="logo" src="<?= $this->assetUrl('img/logo02.png') ?>" />
+		        	</button><a href="<?= $this->url('default_home');?>"><img class="logo" src="<?= $this->assetUrl('img/logo02.png') ?>" /></a>
 		        </div>
 		        <div id="navbar" class="navbar-collapse collapse">
 		        	<ul class="nav navbar-nav">
@@ -94,7 +94,9 @@
 						</div>
 						<div class="col-md-3">
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#Contact">Contact</a></li>
+
+								<li><a href="<?= $this->url('contact');?>">Contact</a></li>								
+
 							</ul>
 						</div>
 						<div class="col-md-3">

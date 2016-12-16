@@ -22,6 +22,11 @@ class ProfileController extends \W\Controller\Controller
         $this->show('profile/profile',['teacher' => $teacherdata, 'subjects' => $subjectsData, 'level' => $levelData]);
     }
 
-
-
+    
 }
+
+
+
+
+
+
