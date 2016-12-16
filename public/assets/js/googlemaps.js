@@ -45,7 +45,7 @@ $(window).ready(function(e) {
                     lng = data.data[index].lng;
                     firstname = data.data[index].firstname;
                     lastname = data.data[index].lastname;
-                    rating = data.data[index].rating;
+                    rating = data.data[index].price;
                     avatar = '../../public/assets/' + data.data[index].avatar;
                     id = data.data[index].id;
                     addMarker(i, lat, lng, firstname, lastname, rating, avatar, id);

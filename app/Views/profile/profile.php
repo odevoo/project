@@ -85,6 +85,8 @@ $this->start('main_content');
                     <div class="form-group">
                         <label for="subject-learn">Sujet de reflexion :</label>
                         <textarea class="form-control" name="subject-learn" rows="5" cols="47"></textarea>
+                        <input type="hidden" name="id_student" value="<?= $_SESSION['user']['id'] ?>">
+                        <input type="hidden" name="id_teacher" value="<?= $teacher['id'] ?>">
                     </div>
             </div>
             <div class="col-md-3 col-md-offset-0 col-xs-4 col-xs-offset-4">

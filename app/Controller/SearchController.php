@@ -11,8 +11,9 @@ class SearchController extends \W\Controller\Controller
 	public function getAllSubjects() {
 
 		$subject = new SubjectModel;
-		$subjects = $subject->findAll($orderBy = $name);
+		$subjects = $subject->findAll();
 		return $subjects;
+		// $orderBy = $name
 	}
 
 
@@ -45,5 +46,9 @@ class SearchController extends \W\Controller\Controller
 		return $result;
 	}
 	
+
+	public function searchResultPage($id) {
+		$this->show('search/result');
+	}
 	
 }

@@ -3,7 +3,7 @@ namespace Model;
 
 use \W\Model\ConnectionModel;
 
-class LessonsModel extends Model 
+class LessonsModel extends \W\Model\Model 
 {
     private $id_student;
     private $id_teacher;
@@ -16,17 +16,17 @@ class LessonsModel extends Model
     private $comment;
     private $statut;
 
-    public function __construct($id_student = 0, $id_teacher = 0, $date = '', $hstart = 0, $hend = 0, $id_discipline = '', $mobile = '', $token = '', $comment = '',  $statut = '') {
+    public function __construct($id_student = 0, $id_teacher = 0, $date = '', $hstart = 0, $hend = 0, $id_discipline = '', $mobile = '', $statut = '', $token = '', $comment = '' ) {
         $app = getApp();
         $this->setIdStudent($id_student);
-        $this->setLastname($id_teacher);
-        $this->setPassword($date);
-        $this->setEmail($hstart);
-        $this->setStreetNumber($hend);
-        $this->setAddress($id_discipline);
-        $this->setCity($mobile);
-        $this->setPostalCode($token);
-        $this->setLat($comment);
+        $this->setIdTeacher($id_teacher);
+        $this->setDate($date);
+        $this->setHstart($hstart);
+        $this->setHend($hend);
+        $this->setIdDiscipline($id_discipline);
+        $this->setMobile($mobile);
+        $this->setToken($token);
+        $this->setComment($comment);
         $this->setStatut($statut);
         $this->setTable('lessons');
         $this->dbh = ConnectionModel::getDbh();
