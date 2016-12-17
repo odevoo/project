@@ -19,6 +19,10 @@ class ComposerStaticInit42af2130ffb2d7908ae589d5c02ca8d8
         array (
             'TrueBV\\' => 7,
         ),
+        'S' => 
+        array (
+            'Stripe\\' => 7,
+        ),
         'L' => 
         array (
             'League\\Url\\' => 11,
@@ -34,6 +38,10 @@ class ComposerStaticInit42af2130ffb2d7908ae589d5c02ca8d8
         'TrueBV\\' => 
         array (
             0 => __DIR__ . '/..' . '/true/punycode/src',
+        ),
+        'Stripe\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
         'League\\Url\\' => 
         array (

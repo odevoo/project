@@ -4,6 +4,7 @@ namespace Controller;
 
 use \Model\SubjectModel;
 use \Model\LessonsModel;
+use Stripe;
 
 class LessonsController extends \W\Controller\Controller
 {
@@ -38,7 +39,18 @@ class LessonsController extends \W\Controller\Controller
             $lessons4 = $statut4->getLessonsByStatutStudent($_SESSION['user']['id'], 4);
 
 
-            $this->show('lessons/student', ['lessons1' => $lessons1, 'lessons2' => $lessons2, 'lessons3' => $lessons3, 'lessons4' => $lessons4]);
+            /* STRIPE */
+
+            $stripe = array(
+                "secret_key"      => "sk_test_pIvyLJj12FdWzjmFUFGVRO1j",
+                "publishable_key" => "pk_test_AWlxEJKmNbiDlWgE7BEVWAky"
+            );
+
+            \Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+            //Stripe::setApiKey($stripe['secret_key']);
+
+            $this->show('lessons/student', ['lessons1' => $lessons1, 'lessons2' => $lessons2, 'lessons3' => $lessons3, 'lessons4' => $lessons4, 'stripe' => $stripe]);
         } else {
             /*Staut 1*/
             $statut1 = new LessonsModel;
@@ -58,6 +70,38 @@ class LessonsController extends \W\Controller\Controller
 
             $this->show('lessons/teacher', ['lessons1' => $lessons1, 'lessons2' => $lessons2, 'lessons3' => $lessons3, 'lessons4' => $lessons4]);
         }
+     }
+
+     public function charge() {
+        $token  = $_POST['stripeToken'];
+        //debug($_POST);
+
+
+        $stripe = array(
+                "secret_key"      => "sk_test_pIvyLJj12FdWzjmFUFGVRO1j",
+                "publishable_key" => "pk_test_AWlxEJKmNbiDlWgE7BEVWAky"
+            );
+
+        \Stripe\Stripe::setApiKey($stripe['secret_key']);
+
+
+        $customer = \Stripe\Customer::create(array(
+            //'email' => 'customer@example.com',
+            'email' => $_POST['stripeEmail'],
+            'source'  => $token
+        ));
+        // $customer->keys();
+        $charge = \Stripe\Charge::create(array(
+            'customer' => $customer->id,
+            'amount'   => $_POST['amout'],
+            'currency' => 'eur'
+        ));
+
+        $_SESSION['flash']['success'] = 'Paiment accepté';
+        $this->showLessonsPage($_POST['id_student']);
+
+        
+
      }
     
 

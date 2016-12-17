@@ -3,7 +3,7 @@
 <?php $this->start('main_content') ?>
 
     <h1>Mes cours</h1>
-    <?php //debug($lessons) ?>
+    <?php //debug($lessons2) ?>
     <!-- Tableau des cours statut 1 -->
     <table class="table table-bordered table-hover table-stripped">
         <caption>Cours en attente de validation</caption>
@@ -57,7 +57,22 @@
                 <td><?= $lesson2['hend'] ?>:00</td>
                 <td><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></td>
                 <td><?= $lesson2['name'] ?></td>
-                <td><button class="btn btn-danger">Annuler</button></td>
+                <td><form action="<?= $this->url('lessons_charge') ?>" method="post">
+                        <input type="hidden" name="nb-hours" value="<?= $nbhours = $lesson2['hend']-$lesson2['hstart'] ?>">
+                        <input type="hidden" name="amout" value="<?= ($nbhours*$lesson2['price'])*100 ?>">
+                        <input type="hidden" name="id_student" value="<?= $_SESSION['user']['id'] ?>">
+                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="<?php echo $stripe['publishable_key']; ?>"
+                            data-description="Paiment de votre prochain cours"
+                            data-amount="<?= ($nbhours*$lesson2['price'])*100 ?>"
+                            data-locale="auto"
+                            data-name="Adopte un PROF!"
+                            data-image="<?php $this->assetUrl('img/pencil-case.png') ?>"
+                            data-label="Payer le cours"
+                            data-currency="eur"
+                        ></script>
+                    </form>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>

@@ -57,7 +57,7 @@
                 <td><?= $lesson2['hend'] ?>:00</td>
                 <td><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></td>
                 <td><?= $lesson2['name'] ?></td>
-                <td><button class="btn btn-danger">Annuler</button></td>
+                <td><button class="btn btn-primary">Valider</button></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -86,7 +86,7 @@
                 <td><?= $lesson3['hend'] ?>:00</td>
                 <td><?= $lesson3['firstname'] . ' ' . $lesson2['lastname']  ?></td>
                 <td><?= $lesson3['name'] ?></td>
-                <td><button class="btn btn-danger">Annuler</button></td>
+                <td></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
