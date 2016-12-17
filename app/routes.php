@@ -42,6 +42,7 @@
         /*lessons */
         
         ['POST', '/lessonsreservationform', 'Lessons#lessonsReservationForm', 'lessons_reservation_form'],
+        ['GET', '/lessons/[:id]', 'Lessons#showLessonsPage', 'lessons_page'],
 
 
 

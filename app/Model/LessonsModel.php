@@ -98,4 +98,19 @@ class LessonsModel extends \W\Model\Model
      public function getStatut() {
         return $this->statut;
     }
+
+    public function getLessonsByStatutStudent($id_student, $statut){
+        $sql = 'SELECT * FROM lessons AS l , users AS u, subjects AS s WHERE l.id_student = :id AND l.statut = :statut AND l.id_teacher = u.id AND l.id_subjects = s.id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id_student, ':statut' => $statut));
+        $lessons = $stmt->fetchAll();
+        return $lessons;
+    }
+    public function getLessonsByStatutTeacher($id_teacher, $statut){
+        $sql = 'SELECT * FROM lessons AS l , users AS u, subjects AS s WHERE l.id_teacher = :id AND l.statut = :statut AND l.id_student = u.id AND l.id_subjects = s.id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id_teacher, ':statut' => $statut));
+        $lessons = $stmt->fetchAll();
+        return $lessons;
+    }
 }
