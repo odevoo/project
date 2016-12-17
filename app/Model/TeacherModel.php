@@ -159,4 +159,16 @@ class TeacherModel extends \W\Model\UsersModel
         return $teachers;
     }
 
+    public function findAllTeachersBySubject($id) {
+        $sql = 'SELECT * FROM users AS u, expertises AS e, levels AS l 
+                WHERE u.is_teacher = 1 AND e.id_subject = :id AND e.id_teacher = u.id AND l.id = u.id_level
+                ';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id));
+        $teachers = $stmt->fetchAll();
+        return $teachers;
+    }
+
+
+
 }

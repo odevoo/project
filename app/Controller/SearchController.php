@@ -48,7 +48,9 @@ class SearchController extends \W\Controller\Controller
 	
 
 	public function searchResultPage($id) {
-		$this->show('search/result');
+		$teacher = new TeacherModel;
+		$teacherResult = $teacher->findAllTeachersBySubject($id);
+		$this->show('search/result', ['teachers' => $teacherResult]);
 	}
 	
 }
