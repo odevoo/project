@@ -21,8 +21,9 @@ class LessonsController extends \W\Controller\Controller
         $_SESSION['flash']['success'] = 'Votre cours à été reservé et est en attente de validation par le professeur';
         $this->showLessonsPage($_POST['id_student']);
      }
-     public function showLessonsPage($id) {
+     public function showLessonsPage() {
         if ($_SESSION['user']['is_student'] == 1) {
+            
             /*Staut 1*/
             $statut1 = new LessonsModel;
             $lessons1 = $statut1->getLessonsByStatutStudent($_SESSION['user']['id'], 1);
@@ -73,17 +74,16 @@ class LessonsController extends \W\Controller\Controller
      }
 
      public function charge() {
+        
+
+        /* PAIMENT STRIPE */
         $token  = $_POST['stripeToken'];
-        //debug($_POST);
-
-
         $stripe = array(
                 "secret_key"      => "sk_test_pIvyLJj12FdWzjmFUFGVRO1j",
                 "publishable_key" => "pk_test_AWlxEJKmNbiDlWgE7BEVWAky"
             );
 
         \Stripe\Stripe::setApiKey($stripe['secret_key']);
-
 
         $customer = \Stripe\Customer::create(array(
             //'email' => 'customer@example.com',
@@ -96,13 +96,44 @@ class LessonsController extends \W\Controller\Controller
             'amount'   => $_POST['amout'],
             'currency' => 'eur'
         ));
+        /* FIN PAIMENT STRIPE */
+
+        /* CREATION DU TOKEN */
+        $token = $this->str_random(6);
+
+        /* UPDATE DU STATUT ET DU TOKEN */
+
+        $lesson = new LessonsModel;
+        $lesson->update(['statut' => 3, 'token' => $token], $_POST['id_lesson']);
+
+        
+
 
         $_SESSION['flash']['success'] = 'Paiment accepté';
-        $this->showLessonsPage($_POST['id_student']);
+        $this->redirectToRoute('lessons_page');
+
 
         
 
      }
+
+     public  function str_random($length){
+            $alphabet ="0123456789AZERTYUIOPQSDFGHJKLMWXCVBN";
+            return substr(str_shuffle(str_repeat($alphabet, $length)), 0, $length);
+    }
+
+    public function cancelLesson() {
+        //debug($_POST['data']);
+        $lesson = new LessonsModel;
+        $lesson->delete($_POST['id_lesson']);
+        $_SESSION['flash']['success'] = 'Votre reservation a bien été annulée';
+        $this->redirectToRoute('lessons_page');
+
+    }
+
+    public function ratingLesson() {
+        debug($_POST);
+    }
     
 
     

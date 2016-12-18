@@ -8,13 +8,13 @@
     <table class="table table-bordered table-hover table-stripped">
         <caption>Cours en attente de validation</caption>
         <thead>
-            <tr>
+            <tr class="success">
                 <th>Date</th>
                 <th>Heure de début</th>
                 <th>Heure de fin</th>
-                <th>Professeur</th>
+                <th>Etudiant</th>
                 <th>Matière</th>
-                <th>Action<th>
+                <th>Action</th>
 
 
 
@@ -28,7 +28,7 @@
                 <td><?= $lesson1['hend'] ?>:00</td>
                 <td><?= $lesson1['firstname'] . ' ' . $lesson1['lastname']  ?></td>
                 <td><?= $lesson1['name'] ?></td>
-                <td><button class="btn btn-danger" type="">Annuler</button></td>
+                <td><button class="btn btn-primary" type="">Valider ce cour</button></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -37,13 +37,13 @@
     <table class="table table-bordered table-hover table-stripped">
         <caption>Cours validés, en attente de paiment</caption>
         <thead>
-            <tr>
+            <tr class="success">
                 <th>Date</th>
                 <th>Heure de début</th>
                 <th>Heure de fin</th>
-                <th>Professeur</th>
+                <th>Etudiant</th>
                 <th>Matière</th>
-                <th>Action<th>
+                
 
 
 
@@ -57,22 +57,22 @@
                 <td><?= $lesson2['hend'] ?>:00</td>
                 <td><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></td>
                 <td><?= $lesson2['name'] ?></td>
-                <td><button class="btn btn-primary">Valider</button></td>
+                
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
     <!-- Tableau des cours statut 3 -->
     <table class="table table-bordered table-hover table-stripped">
-        <caption>Cours payés et validés</caption>
+        <caption>Cours payés , en attente de finalisation</caption>
         <thead>
-            <tr>
+            <tr class="success">
                 <th>Date</th>
                 <th>Heure de début</th>
                 <th>Heure de fin</th>
-                <th>Professeur</th>
+                <th>Etudiant</th>
                 <th>Matière</th>
-                <th>Action<th>
+                <th>Action</th>
 
 
 
@@ -81,12 +81,12 @@
         <tbody>
             <?php foreach ($lessons3 as $key => $lesson3): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson2['date'])) ?></td>
+                <td><?= date("d-m-Y", strtotime($lesson3['date'])) ?></td>
                 <td><?= $lesson3['hstart'] ?>:00</td>
                 <td><?= $lesson3['hend'] ?>:00</td>
-                <td><?= $lesson3['firstname'] . ' ' . $lesson2['lastname']  ?></td>
+                <td><?= $lesson3['firstname'] . ' ' . $lesson3['lastname']  ?></td>
                 <td><?= $lesson3['name'] ?></td>
-                <td></td>
+                <td><button class="btn btn-primary">Finaliser ce cour</button></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -95,13 +95,13 @@
     <table class="table table-bordered table-hover table-stripped">
         <caption>Anciens cours</caption>
         <thead>
-            <tr>
+            <tr class="success">
                 <th>Date</th>
                 <th>Heure de début</th>
                 <th>Heure de fin</th>
-                <th>Professeur</th>
+                <th>Etudiant</th>
                 <th>Matière</th>
-                <th>Action<th>
+                
 
 
 
@@ -113,9 +113,9 @@
                 <td><?= date("d-m-Y", strtotime($lesson4['date'])) ?></td>
                 <td><?= $lesson4['hstart'] ?>:00</td>
                 <td><?= $lesson4['hend'] ?>:00</td>
-                <td><?= $lesson4['firstname'] . ' ' . $lesson2['lastname']  ?></td>
+                <td><?= $lesson4['firstname'] . ' ' . $lesson4['lastname']  ?></td>
                 <td><?= $lesson4['name'] ?></td>
-                <td><button class="btn btn-danger">Annuler</button></td>
+                
             </tr>
         <?php endforeach; ?>
         </tbody>

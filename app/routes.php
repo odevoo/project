@@ -42,8 +42,10 @@
         /*lessons */
         
         ['POST', '/lessonsreservationform', 'Lessons#lessonsReservationForm', 'lessons_reservation_form'],
-        ['GET', '/lessons/[:id]', 'Lessons#showLessonsPage', 'lessons_page'],
+        ['GET', '/lessons', 'Lessons#showLessonsPage', 'lessons_page'],
         ['POST', '/lessonscharge', 'Lessons#charge', 'lessons_charge'],
+        ['POST', '/cancellesson', 'Lessons#cancelLesson', 'lessons_cancel'],
+        ['POST', '/ratinglesson', 'Lessons#ratingLesson', 'lessons_rating'],
 
 
 

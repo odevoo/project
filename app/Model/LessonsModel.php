@@ -29,6 +29,7 @@ class LessonsModel extends \W\Model\Model
         $this->setComment($comment);
         $this->setStatut($statut);
         $this->setTable('lessons');
+        $this->setPrimaryKey('id_lesson');
         $this->dbh = ConnectionModel::getDbh();
 
 
