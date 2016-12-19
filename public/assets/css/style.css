@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:700|Roboto');
 
-font-family: 'Roboto', sans-serif;
-font-family: 'Open Sans', sans-serif;
+/*font-family: 'Roboto', sans-serif;
+font-family: 'Open Sans', sans-serif;*/
 
 
 
@@ -14,7 +14,7 @@ html {
 body {
 
 	font-family: 'Roboto', sans-serif;
-	padding-top: 170px;
+	padding-top: 100px;
 	background-color: rgb(194,224,244);
 
 }
@@ -38,7 +38,8 @@ p {
 
 /* Start Header */
 .navbar-color {
-	background-color: #2db9b3;
+	/*background-color: #2db9b3;*/
+	background-color: #5fcf80;
 	color: #00a49d;;
 }
 
@@ -46,19 +47,19 @@ p {
 	font-size: 19px;
 	padding: 0px 50px;
 	border: 1px solid skyblue;
-	background-color: #2db9b3;
+	background-color: #5fcf80;
 	color: #00a49d;
 }
 
 .navbar-align-right {
-	padding-top: 3%;
+	padding-top: 20%;
 }
 
 .navbar-default .navbar-nav > li > a {
 	color: white;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
-	background-color: #2db9b3;
+	background-color: #5fcf80;
 	color: #00a49d;
 
 }
@@ -69,7 +70,7 @@ p {
 }
 
 header nav {
-	background-color: #2db9b3 !important;
+	background-color: #5fcf80 !important;
 }
 
 .icon{

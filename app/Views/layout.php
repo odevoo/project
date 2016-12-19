@@ -22,7 +22,9 @@
 			        		<span class="icon-bar"></span>
 			        		<span class="icon-bar"></span>
 			        		<span class="icon-bar"></span>
-			        	</button><a href="<?= $this->url('default_home');?>"><img class="logo" src="<?= $this->assetUrl('img/education-logo.png') ?>" /></a>
+			        	</button>
+			        	<a class="navbar-brand" href="<?= $this->url('default_home');?>"><img class="logo" src="<?= $this->assetUrl('img/logo.png') ?>"></a>
+			        	<p class="navbar-text">Oh ce cours !</p>
 			        </div>
 			        <div id="navbar" class="navbar-collapse collapse">
 			        	<ul class="nav navbar-nav">
