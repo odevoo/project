@@ -5,6 +5,7 @@ namespace Controller;
 use \Model\SubjectModel;
 use \Model\TeacherModel;
 use \Model\LevelModel;
+use \Model\LessonsModel;
 
 class ProfileController extends \W\Controller\Controller
 {
@@ -19,14 +20,11 @@ class ProfileController extends \W\Controller\Controller
         $levelData = $level->findTeacherLevel($id);
         $teacher = new TeacherModel;
         $teacherdata = $teacher->find($id);
-        $this->show('profile/profile',['teacher' => $teacherdata, 'subjects' => $subjectsData, 'level' => $levelData]);
+        $lesson = new LessonsModel;
+        $lessonData = $lesson->getLessonsCommentAndRatingByTeacher($id);
+        $rating = $lesson->getAverageByTeacher($id);
+        $this->show('profile/profile',['teacher' => $teacherdata, 'subjects' => $subjectsData, 'level' => $levelData, 'lessons' => $lessonData ,'rating' => $rating]);
     }
 
-    
+
 }
-
-
-
-
-
-
