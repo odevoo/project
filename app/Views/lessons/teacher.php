@@ -9,12 +9,12 @@
         <caption>Cours en attente de validation</caption>
         <thead>
             <tr class="success">
-                <th>Date</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
-                <th>Etudiant</th>
-                <th>Matière</th>
-                <th>Action</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Heure de début</th>
+                <th class="text-center">Heure de fin</th>
+                <th class="text-center">Etudiant</th>
+                <th class="text-center">Matière</th>
+                <th class="text-center">Action</th>
 
 
 
@@ -23,12 +23,12 @@
         <tbody>
             <?php foreach ($lessons1 as $key => $lesson1): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson1['date'])) ?></td>
-                <td><?= $lesson1['hstart'] ?>:00</td>
-                <td><?= $lesson1['hend'] ?>:00</td>
-                <td><?= $lesson1['firstname'] . ' ' . $lesson1['lastname']  ?></td>
-                <td><?= $lesson1['name'] ?></td>
-                <td><button class="btn btn-primary" type="">Valider ce cour</button></td>
+                <td class="text-center"><?= date("d-m-Y", strtotime($lesson1['date'])) ?></td>
+                <td class="text-center"><?= $lesson1['hstart'] ?>:00</td>
+                <td class="text-center"><?= $lesson1['hend'] ?>:00</td>
+                <td class="text-center"><?= $lesson1['firstname'] . ' ' . $lesson1['lastname']  ?></td>
+                <td class="text-center"><?= $lesson1['name'] ?></td>
+                <td class="text-center"><button class="btn btn-primary" type="">Valider ce cour</button></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -38,11 +38,11 @@
         <caption>Cours validés, en attente de paiment</caption>
         <thead>
             <tr class="success">
-                <th>Date</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
-                <th>Etudiant</th>
-                <th>Matière</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Heure de début</th>
+                <th class="text-center">Heure de fin</th>
+                <th class="text-center">Etudiant</th>
+                <th class="text-center">Matière</th>
                 
 
 
@@ -52,11 +52,11 @@
         <tbody>
             <?php foreach ($lessons2 as $key => $lesson2): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson2['date'])) ?></td>
-                <td><?= $lesson2['hstart'] ?>:00</td>
-                <td><?= $lesson2['hend'] ?>:00</td>
-                <td><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></td>
-                <td><?= $lesson2['name'] ?></td>
+                <td class="text-center"><?= date("d-m-Y", strtotime($lesson2['date'])) ?></td>
+                <td class="text-center"><?= $lesson2['hstart'] ?>:00</td>
+                <td class="text-center"><?= $lesson2['hend'] ?>:00</td>
+                <td class="text-center"><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></td>
+                <td class="text-center"><?= $lesson2['name'] ?></td>
                 
             </tr>
         <?php endforeach; ?>
@@ -67,12 +67,12 @@
         <caption>Cours payés , en attente de finalisation</caption>
         <thead>
             <tr class="success">
-                <th>Date</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
-                <th>Etudiant</th>
-                <th>Matière</th>
-                <th>Action</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Heure de début</th>
+                <th class="text-center">Heure de fin</th>
+                <th class="text-center">Etudiant</th>
+                <th class="text-center">Matière</th>
+                <th class="text-center">Action</th>
 
 
 
@@ -81,12 +81,12 @@
         <tbody>
             <?php foreach ($lessons3 as $key => $lesson3): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson3['date'])) ?></td>
-                <td><?= $lesson3['hstart'] ?>:00</td>
-                <td><?= $lesson3['hend'] ?>:00</td>
-                <td><?= $lesson3['firstname'] . ' ' . $lesson3['lastname']  ?></td>
-                <td><?= $lesson3['name'] ?></td>
-                <td><button class="btn btn-primary">Finaliser ce cour</button></td>
+                <td class="text-center"><?= date("d-m-Y", strtotime($lesson3['date'])) ?></td>
+                <td class="text-center"><?= $lesson3['hstart'] ?>:00</td>
+                <td class="text-center"><?= $lesson3['hend'] ?>:00</td>
+                <td class="text-center"><?= $lesson3['firstname'] . ' ' . $lesson3['lastname']  ?></td>
+                <td class="text-center"><?= $lesson3['name'] ?></td>
+                <td class="text-center" class="text-center"><button class="btn btn-primary">Finaliser ce cour</button></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -96,11 +96,11 @@
         <caption>Anciens cours</caption>
         <thead>
             <tr class="success">
-                <th>Date</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
-                <th>Etudiant</th>
-                <th>Matière</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Heure de début</th>
+                <th class="text-center">Heure de fin</th>
+                <th class="text-center">Etudiant</th>
+                <th class="text-center">Matière</th>
                 
 
 
@@ -110,11 +110,11 @@
         <tbody>
             <?php foreach ($lessons4 as $key => $lesson4): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson4['date'])) ?></td>
-                <td><?= $lesson4['hstart'] ?>:00</td>
-                <td><?= $lesson4['hend'] ?>:00</td>
-                <td><?= $lesson4['firstname'] . ' ' . $lesson4['lastname']  ?></td>
-                <td><?= $lesson4['name'] ?></td>
+                <td class="text-center"><?= date("d-m-Y", strtotime($lesson4['date'])) ?></td>
+                <td class="text-center"><?= $lesson4['hstart'] ?>:00</td>
+                <td class="text-center"><?= $lesson4['hend'] ?>:00</td>
+                <td class="text-center"><?= $lesson4['firstname'] . ' ' . $lesson4['lastname']  ?></td>
+                <td class="text-center"><?= $lesson4['name'] ?></td>
                 
             </tr>
         <?php endforeach; ?>

@@ -9,12 +9,12 @@
         <caption>Cours en attente de validation</caption>
         <thead>
             <tr class="success">
-                <th>Date</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
-                <th>Professeur</th>
-                <th>Matière</th>
-                <th>Action</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Heure de début</th>
+                <th class="text-center">Heure de fin</th>
+                <th class="text-center">Professeur</th>
+                <th class="text-center">Matière</th>
+                <th class="text-center">Action</th>
 
 
 
@@ -23,12 +23,12 @@
         <tbody>
             <?php foreach ($lessons1 as $key => $lesson1): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson1['date'])) ?></td>
-                <td><?= $lesson1['hstart'] ?>:00</td>
-                <td><?= $lesson1['hend'] ?>:00</td>
-                <td><a href="<?= $this->url('profile_show', ['id'=> $lesson1['id_teacher']]); ?>" title=""><?= $lesson1['firstname'] . ' ' . $lesson1['lastname']  ?></a></td>
-                <td><?= $lesson1['name'] ?></td>
-                <td><form action="<?= $this->url('lessons_cancel') ?>" method="POST">
+                <td class="text-center" class="text-center"><?= date("d-m-Y", strtotime($lesson1['date'])) ?></td>
+                <td class="text-center" class="text-center"><?= $lesson1['hstart'] ?>:00</td>
+                <td class="text-center" class="text-center"><?= $lesson1['hend'] ?>:00</td>
+                <td class="text-center" class="text-center"><a href="<?= $this->url('profile_show', ['id'=> $lesson1['id_teacher']]); ?>" title=""><?= $lesson1['firstname'] . ' ' . $lesson1['lastname']  ?></a></td>
+                <td class="text-center" class="text-center"><?= $lesson1['name'] ?></td>
+                <td class="text-center" class="text-center"><form action="<?= $this->url('lessons_cancel') ?>" method="POST">
                     <input type="hidden" name="id_lesson" value="<?= $lesson1['id_lesson'] ?>">
                     <button  type="submit" class="btn-cancel btn btn-danger" type="">Annuler</button>
                 </form></td>
@@ -41,12 +41,12 @@
         <caption>Cours validés, en attente de paiment</caption>
         <thead>
             <tr class="success">
-                <th>Date</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
-                <th>Professeur</th>
-                <th>Matière</th>
-                <th>Action</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Heure de début</th>
+                <th class="text-center">Heure de fin</th>
+                <th class="text-center">Professeur</th>
+                <th class="text-center">Matière</th>
+                <th class="text-center">Action</th>
 
 
 
@@ -55,12 +55,12 @@
         <tbody>
             <?php foreach ($lessons2 as $key => $lesson2): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson2['date'])) ?></td>
-                <td><?= $lesson2['hstart'] ?>:00</td>
-                <td><?= $lesson2['hend'] ?>:00</td>
-                <td><a href="<?= $this->url('profile_show', ['id'=> $lesson2['id_teacher']]); ?>" title=""><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></a></td>
-                <td><?= $lesson2['name'] ?></td>
-                <td><form action="<?= $this->url('lessons_charge') ?>" method="post">
+                <td class="text-center"><?= date("d-m-Y", strtotime($lesson2['date'])) ?></td>
+                <td class="text-center"><?= $lesson2['hstart'] ?>:00</td>
+                <td class="text-center"><?= $lesson2['hend'] ?>:00</td>
+                <td class="text-center"><a href="<?= $this->url('profile_show', ['id'=> $lesson2['id_teacher']]); ?>" title=""><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></a></td>
+                <td class="text-center"><?= $lesson2['name'] ?></td>
+                <td class="text-center"><form action="<?= $this->url('lessons_charge') ?>" method="post">
                         <input type="hidden" name="nb-hours" value="<?= $nbhours = $lesson2['hend']-$lesson2['hstart'] ?>">
                         <input type="hidden" name="amout" value="<?= ($nbhours*$lesson2['price'])*100 ?>">
                         <input type="hidden" name="id_lesson" value="<?= $lesson2['id_lesson'] ?>">
@@ -86,12 +86,12 @@
         <caption>Cours payés et validés</caption>
         <thead>
             <tr class="success">
-                <th>Date</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
-                <th>Professeur</th>
-                <th>Matière</th>
-                <th>Token</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Heure de début</th>
+                <th class="text-center">Heure de fin</th>
+                <th class="text-center">Professeur</th>
+                <th class="text-center">Matière</th>
+                <th class="text-center">Token</th>
                 
 
 
@@ -101,12 +101,12 @@
         <tbody>
             <?php foreach ($lessons3 as $key => $lesson3): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson3['date'])) ?></td>
-                <td><?= $lesson3['hstart'] ?>:00</td>
-                <td><?= $lesson3['hend'] ?>:00</td>
-                <td><a href="<?= $this->url('profile_show', ['id'=> $lesson3['id_teacher']]); ?>" title=""><?= $lesson3['firstname'] . ' ' . $lesson3['lastname']  ?></a></td>
-                <td><?= $lesson3['name'] ?></td>
-                <td><?= $lesson3['token'] ?></td>
+                <td class="text-center"><?= date("d-m-Y", strtotime($lesson3['date'])) ?></td>
+                <td class="text-center"><?= $lesson3['hstart'] ?>:00</td>
+                <td class="text-center"><?= $lesson3['hend'] ?>:00</td>
+                <td class="text-center"><a href="<?= $this->url('profile_show', ['id'=> $lesson3['id_teacher']]); ?>" title=""><?= $lesson3['firstname'] . ' ' . $lesson3['lastname']  ?></a></td>
+                <td class="text-center"><?= $lesson3['name'] ?></td>
+                <td class="text-center"><?= $lesson3['token'] ?></td>
                 
             </tr>
         <?php endforeach; ?>
@@ -117,12 +117,12 @@
         <caption>Anciens cours</caption>
         <thead>
             <tr class="success">
-                <th>Date</th>
-                <th>Heure de début</th>
-                <th>Heure de fin</th>
-                <th>Professeur</th>
-                <th>Matière</th>
-                <th>Action</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Heure de début</th>
+                <th class="text-center">Heure de fin</th>
+                <th class="text-center">Professeur</th>
+                <th class="text-center">Matière</th>
+                <th class="text-center">Action / Note</th>
                 
 
 
@@ -132,22 +132,24 @@
         <tbody>
             <?php foreach ($lessons4 as $key => $lesson4): ?>
             <tr>
-                <td><?= date("d-m-Y", strtotime($lesson4['date'])) ?></td>
-                <td><?= $lesson4['hstart'] ?>:00</td>
-                <td><?= $lesson4['hend'] ?>:00</td>
-                <td><a href="<?= $this->url('profile_show', ['id'=> $lesson4['id_teacher']]); ?>" title=""><?= $lesson4['firstname'] . ' ' . $lesson4['lastname']  ?></a></td>
-                <td><?= $lesson4['name'] ?></td>
-                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test1">Noter ce cour</button></td>
-                <div class="modal fade bs-example-modal-lg" id="test1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="container modal-content">
+                <td class="text-center"><?= date("d-m-Y", strtotime($lesson4['date'])) ?></td>
+                <td class="text-center"><?= $lesson4['hstart'] ?>:00</td>
+                <td class="text-center"><?= $lesson4['hend'] ?>:00</td>
+                <td class="text-center"><a href="<?= $this->url('profile_show', ['id'=> $lesson4['id_teacher']]); ?>" title=""><?= $lesson4['firstname'] . ' ' . $lesson4['lastname']  ?></a></td>
+                <td class="text-center"><?= $lesson4['name'] ?></td>
+                <td class="text-center"><?php if ($lesson4['rating'] == 0): ?>
+                    <button type="button" class="rating btn btn-primary" data-toggle="modal" data-target="#modal<?= $lesson4['id_lesson'] ?>" data-id="<?= $lesson4['id_lesson'] ?>">Noter ce cour</button>
+                    <?php else: ?> <?= $lesson4['rating'] ?> <?php endif; ?></td>
+                    <div class="modal fade bs-example-modal-lg" id="modal<?= $lesson4['id_lesson'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="container modal-content">
                             
                             <form action="<?= $this->url('lessons_rating') ?>" method="POST">
                             <input type="hidden" name="id_lesson" value="<?= $lesson4['id_lesson'] ?>">
-                                <input type="hidden" id="ratingnote" name="rating" value="">
+                            <input type="hidden" id="ratingnote<?= $lesson4['id_lesson'] ?>" name="rating" value="">
                                 <div class="form-group">
                                     <label for="rateYo">Votre note sur le cour</label>
-                                    <div id="rateYo"></div>
+                                    <div  data-id="<?= $lesson4['id_lesson'] ?>" class="rateYo"></div>
                                 </div>    
                                 <div class="form-group">
                                     <label for="comment">Votre avis sur le cour</label>

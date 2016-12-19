@@ -133,6 +133,10 @@ class LessonsController extends \W\Controller\Controller
 
     public function ratingLesson() {
         debug($_POST);
+        $lesson = new LessonsModel;
+        $lesson->update(['rating' => $_POST['rating'], 'comment' => $_POST['comment']], $_POST['id_lesson']);
+        $this->redirectToRoute('lessons_page');
+
     }
     
 
