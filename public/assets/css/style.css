@@ -15,12 +15,17 @@ body {
 
 	font-family: 'Roboto', sans-serif;
 	padding-top: 100px;
-	background-color: rgb(194,224,244);
+	/*background-color: rgb(194,224,244);*/
+	background-color: #eee;
 
 }
 
-.container {
+.contenu {
+	padding: 1%;
 	background-color: #EFEFEF;
+	border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
 }
 	/**********/
 	/* Layout */
@@ -29,7 +34,7 @@ body {
 h1,h2,h3,h4 {
 	font-family: 'Open Sans', sans-serif;
 	text-align: center;
-	padding: 4% 4%;
+	/*padding: 4% 4%;*/
 }
 
 p {
@@ -52,7 +57,7 @@ p {
 }
 
 .navbar-align-right {
-	padding-top: 20%;
+	padding-top: 10%;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -63,10 +68,30 @@ p {
 	color: #00a49d;
 
 }
+/*#navbar {
+	box-shadow: 5px 5px 5px #999;
+    -moz-box-shadow: 5px 5px 5px #999;
+    -webkit-box-shadow: 5px 5px 5px #999;
+}
+
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+
+*/
+.logo-link {
+	min-height: 100px;
+}
+
 
 .logo {
-	max-width: 120px;
-	max-height: 120px;
+	max-width: 100px;
+	max-height: 100px;
+}
+#brand-text {
+	color: #eee;
+    font-size: 32;
+    padding-top: 8%;
 }
 
 header nav {
@@ -81,6 +106,10 @@ header nav {
 
 
 /* Start Footer */
+
+#footer {
+	background-color: #5fcf80;
+}
 
 .text-footer {
 	font-size: 18px;
@@ -110,6 +139,8 @@ li {
 	/***********/
 	/* Accueil */
 	/***********/
+
+
 
 .carousel {
 	width: 1200px;
