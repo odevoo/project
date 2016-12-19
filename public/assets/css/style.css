@@ -3,6 +3,10 @@
 font-family: 'Roboto', sans-serif;
 font-family: 'Open Sans', sans-serif;
 
+
+
+/* #EFEFEF  */
+
 html {
 	color: black;
 }
@@ -11,10 +15,13 @@ body {
 
 	font-family: 'Roboto', sans-serif;
 	padding-top: 170px;
-	background-color: #EFEFEF;
+	background-color: rgb(194,224,244);
 
 }
 
+.container {
+	background-color: #EFEFEF;
+}
 	/**********/
 	/* Layout */
 	/**********/
@@ -30,15 +37,30 @@ p {
 }
 
 /* Start Header */
+.navbar-color {
+	background-color: #2db9b3;
+	color: #00a49d;;
+}
 
 .navbar {
 	font-size: 19px;
 	padding: 0px 50px;
 	border: 1px solid skyblue;
+	background-color: #2db9b3;
+	color: #00a49d;
 }
 
 .navbar-align-right {
 	padding-top: 3%;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+	background-color: #2db9b3;
+	color: #00a49d;
+
 }
 
 .logo {
@@ -47,11 +69,11 @@ p {
 }
 
 header nav {
-	background-color: white !important;
+	background-color: #2db9b3 !important;
 }
 
 .icon{
-	color: #3750A3;
+	color: #1F487E;
 }
 
 /* End Header */
@@ -82,10 +104,6 @@ li {
 	list-style-type: none;
 }
 
-.icon{
-	color: #3750A3;
-}
-
 /* End Footer */
 
 	/***********/
@@ -111,7 +129,7 @@ li {
 	margin-top: 10%;
 	color: white;
 	text-transform: uppercase;
-	background-color: #2980b9;
+	background-color: #6290C8;
 	padding:11px 14px;
 	font-size: 17.5px;
 	border-radius: 6px;
@@ -139,9 +157,8 @@ li {
 	.slider-title {
 		display:none;
 	}
+
 }
-
-
 
 
 	/***********/
@@ -155,12 +172,13 @@ li {
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- Start Profile --*//*-- --*//*-- --*/
 
-.profile-container {
-	background-color: #FaFaFa;
+.profile-container .row{
+	background-color: #EFEFEF;
 	border: 1px solid;
 	border-color:  #59656F;
 	border-radius: 5px;
 	box-shadow: 0px 0px 15px gray;
+	padding: 10px;
 }
 
 .profile-title{
@@ -174,10 +192,104 @@ li {
 .profile-hr {
 	border-top: 1px solid #828282;
 }
-
+.search-form{
+	margin-top: 10px;
+}
 /*-- --*//*-- --*//*-- End Profile --*//*-- --*//*-- --*/
+ /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
+
+	/**********************/
+	/* Page de recherche  */
+	/**********************/
+
+
+ 	/* PAGE EN COURS */
+
+
+
+
+	/**********************/
+	/* Recherche resultat */
+	/**********************/
+
+.avatar {
+	margin-top: 15%;
+	margin-left: 10%;
+}
+
+ /*START => SURTOUT NE RIEN TOUCHER */ 
+
+.btn-search-custom {
+	background-color: #6290C8;
+	color: white;
+	text-transform: uppercase;
+	border: 2px solid black;
+	padding: 20px 20px;
+	font-size: 17.5px;
+	border-radius: 6px;
+	margin-top: 65%;
+    margin-right: 50%;
+}
+
+.btn-search-custom:hover {
+	color: white;
+	font-size: 17.5px;
+	border-radius: 6px;
+	background-color: #2ecc70;
+}
+
+
+@media (max-width: 979px)
+	   {
+	.avatar {
+		margin-top: 15%;
+		margin-left: 25%;
+	}
+
+	.btn-search-custom {
+		border: 2px solid black;
+		color: white;
+		text-transform: uppercase;
+		background-color: #6290C8;
+		padding:11px 14px;
+		margin-top: 0%;
+		margin-right: 0%;
+		font-size: 17.5px;
+		border-radius: 6px;
+	}
+
+	.btn-search-custom:hover {
+		color: #FFE100;
+		margin-top: 78%;
+   		margin-right: 50%;
+		font-size: 17.5px;
+		border-radius: 6px;
+		color: white;
+		background-color: #2ecc70;
+	}
+}
+ /*END => SURTOUT NE RIEN TOUCHER */ 
+
+/*-- --*//*-- --*//*-- End Recherche resultat --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
 
+
+
+	/**********************/
+	/* menu responsive */
+	/**********************/
+
+.navbar-toggle {   
+    border: 1.5px solid transparent;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #0c0c0c;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #000;
+}
 
 
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
@@ -197,6 +309,7 @@ li {
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
 
 
+
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- Start Lessons --*//*-- --*//*-- --*/
 
@@ -211,3 +324,4 @@ li {
 
 /*-- --*//*-- --*//*-- End Lesson --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
+

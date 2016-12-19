@@ -2,35 +2,42 @@
 
 <?php $this->start('main_content') ?>
 
+	<h1>Resultat de votre recherche :</h1>
 
-	<h1>Page recherche</h1>
-
-	
 <?php 
-	debug($teachers);
+	//debug($teachers);
 	foreach ($teachers as $teacher):?>
 
-	<div class="container-fluid profile-container">
+	<div class="profile-container">
 		<div class="row">
-			<div class="col-md-2">
-				<img class="img-responsive" src="<?= $this->assetUrl($teacher['avatar']); ?>">
+			<div class="col-xs-12 col-md-2">
+				<img class="img-responsive avatar center-block" src="<?= $this->assetUrl($teacher['avatar']); ?>">
 			</div>
-
-			<div class="col-md-8 container-fluid" >
-				<div class="row">
-					<h3 class="col-md-12"><?= $teacher['firstname'].' '.$teacher['lastname']; ?> </h3>
-					<table class ="table">
-						<td class="col-md-4"><?= $teacher['postcode']; ?> <?= $teacher['city']; ?></td>
-						<th class="col-md-4"><?= $teacher['level']; ?> </th>
-						<th class="col-md-4"><?= $teacher['price']; ?> €/H</th>
-					</table>
-				</div>
+			<div class="col-md-8" >
+				<h3 class=""><?= $teacher['firstname'].' '.$teacher['lastname']; ?> </h3>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="col-md-4">Localisation : </th>
+							<th class="col-md-4">Niveau d'étude :</th>
+							<th class="col-md-4">Tarifs :</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>					
+							<td class="col-md-4"><?= $teacher['postcode']; ?> <?= $teacher['city']; ?></td>
+							<td class="col-md-4"><?= $teacher['level']; ?> </td>
+							<td class="col-md-4"><?= $teacher['price']; ?> €/heure</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<div class="container-fluid col-md-2 search-form text-center">
-	   			<a href="<?= $this->url('profile_show', ['id'=> $teacher['id_teacher']]); ?>"><button type="submit" id="btn-search" class="btn btn-custom btn-large">
+			<div class="col-md-2 search-form text-center">
+	   			<a href="<?= $this->url('profile_show', ['id'=> $teacher['id_teacher']]); ?>"><button type="submit" id="btn-search" class="btn btn-search-custom">
 	   			Voir profil</button></a>
 			</div>
-		</div>
+			</div>
+		
 	</div>
 <?php
     endforeach;
