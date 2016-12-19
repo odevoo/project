@@ -22,6 +22,11 @@
 		/*  Connexion  */
 		['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
+        ['GET', '/admin', 'Admin#showSubjectForm', 'admin_subject'],
+        ['POST', '/admininsert', 'Admin#insertSubjectForm', 'admin_insert_subject'],
+        ['POST', '/admindelete', 'Admin#deleteSubjectForm', 'admin_delete_subject'],
+        ['POST', '/adminupdate', 'Admin#updateSubjectForm', 'admin_update_subject'],
+
 
         ['GET', '/settings', 'Admin#showSettingsPage', 'admin_settings'],
 

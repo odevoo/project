@@ -178,3 +178,16 @@ li {
 /*-- --*//*-- --*//*-- End Profile --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
 
+
+	/***********/
+	/* Subject */
+	/***********/
+
+.subj-container {
+	margin-top: 50px;
+	background-color: #EFECEC;
+}
+
+.id-search {
+	 font-style: italic;
+}
