@@ -1,7 +1,7 @@
 html, body {
 	font-family: Consolas, monaco, monospace;
 	background-color: white;
-	color: black;
+	color: black;	
 }
 
 body {
@@ -30,6 +30,7 @@ h1 {
 .navbar-align-right {
 	padding-top: 3%;
 }
+
 /*
 .navbar-right {
 	padding-right: 0px;

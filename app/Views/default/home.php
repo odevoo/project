@@ -2,6 +2,12 @@
 
 <?php $this->start('main_content') ?>
 
+<!-- -->
+
+<?php debug () randomprof ?>
+
+<!-- -->
+	
 	<div class="main-text">
 		<div class="col-md-12 text-center">
 			<div class="slider-title">
