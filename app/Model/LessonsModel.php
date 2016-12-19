@@ -3,7 +3,7 @@ namespace Model;
 
 use \W\Model\ConnectionModel;
 
-class LessonsModel extends \W\Model\Model 
+class LessonsModel extends \W\Model\Model
 {
     private $id_student;
     private $id_teacher;
@@ -73,19 +73,19 @@ class LessonsModel extends \W\Model\Model
         return $this->id_student;
     }
     public function getIdTeacher() {
-        return $this->id_teacher;    
+        return $this->id_teacher;
     }
     public function getDate() {
-        return $this->date;    
+        return $this->date;
     }
     public function getHstart() {
-        return $this->hstart; 
+        return $this->hstart;
     }
     public function getHend() {
         return $this->hend;
     }
     public function getIdDiscipline() {
-        return $this->id_discipline;   
+        return $this->id_discipline;
     }
     public function getMobile() {
         return $this->mobile;
@@ -113,5 +113,22 @@ class LessonsModel extends \W\Model\Model
         $stmt->execute(array(':id' => $id_teacher, ':statut' => $statut));
         $lessons = $stmt->fetchAll();
         return $lessons;
+    }
+
+    public function getLessonsCommentAndRatingByTeacher($id_teacher){
+        $sql = 'SELECT * FROM lessons AS l , users AS u, subjects AS s WHERE l.id_teacher = :id AND l.statut = 4 AND l.id_student = u.id AND l.id_subjects = s.id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id_teacher));
+        $lessons = $stmt->fetchAll();
+        return $lessons;
+
+    }
+    public function getAverageByTeacher($id_teacher){
+        $sql = 'SELECT AVG(rating) FROM lessons  WHERE id_teacher = :id AND rating > 0 ';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id_teacher));
+        $ratings = $stmt->fetch();
+        return $ratings;
+
     }
 }

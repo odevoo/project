@@ -1,16 +1,14 @@
 <?php $this->layout('layout', ['title' => 'Formulaire d\'inscription']) ?>
 
 <?php $this->start('main_content') ?>
-    <div class="row">
-        <div class="col-md-6">
-            <button  class="btn btn-primary" disabled id="btn-student" type="">Etudiant</button>
-        </div>
-        <div class="col-md-6">
-            <button  class="btn btn-primary" id="btn-teacher" type="">Professeur</button>
-        </div>
-    </div>
-    <div id="form-student">
-        <form class="" method="post" action="<?= $this->url('admin_process_register') ?>">
+    <ul class="nav nav-tabs nav-justified">
+      <li id="btn-student" role="presentation" class="active"><a href="#form-student" type="">Etudiant</a></li>
+      <li id="btn-teacher" role="presentation"><a href="#form-teacher"   type="">Professeur</a></li>
+    </ul>
+
+  <div class="register-container tab-content">
+    <div id="form-student" role="tabpanel" class="tab-pane active">
+        <form  method="post" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
                 <label for="firstname">Prénom</label>
                 <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
@@ -43,7 +41,7 @@
             <input type="hidden" name="lng" id="autocomplete_lng"  value="">
         </form>
     </div>
-    <div id="form-teacher" class="hidden">
+    <div id="form-teacher" role="tabpanel" class="tab-pane">
         <form  method="post" enctype="multipart/form-data" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
                 <label for="firstname">Prénom</label>
@@ -85,10 +83,10 @@
                             <div class="col-md-2">
                                 <input name="<?= $subject['id'] ?>" type="checkbox"><?= $subject['name'] ?>
                             </div>
-                        <?php endforeach; ?>                    
+                        <?php endforeach; ?>
                     </div>
-                <?php endforeach; ?>    
-                
+                <?php endforeach; ?>
+
             </div>
             <div class="form-group">
                 <label for="level">Niveau maximum enseigné</label>
@@ -106,7 +104,7 @@
                     <option value="Domicile">Domicile</option>
                     <option value="Chez l'étudiant">Chez l'étudiant</option>
                     <option value="Au choix">Au choix</option>
-                    
+
                 </select>
             </div>
             <div class="form-group">
@@ -121,10 +119,12 @@
             <input type="hidden" name="lng" id="autocompleteteach_lng"  value="">
             <input type="hidden" name="nbSubjects" value="<?= count($subjects) ?>">
         </form>
-    </div>    
+
+    </div>
     <script type="text/javascript" src="<?= $this->assetUrl('js/googleplace.js') ?>"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVvV3H3-rcwoX6X-Jq1PXMOhiF-6EyO-E&signed_in=true&libraries=places&callback=initAutocomplete"
         async defer></script>
-    
+
+
     <script type="text/javascript" src="<?= $this->assetUrl('js/scriptregister.js') ?>"></script>
 <?php $this->stop('main_content') ?>

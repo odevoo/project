@@ -6,9 +6,9 @@ use \Model\SubjectModel;
 use \Model\LessonsModel;
 use Stripe;
 
-class LessonsController extends \W\Controller\Controller
+class LessonsController extends \Controller\DefaultController
 {
-  
+
 
     //Gestion du formulaire de reservation de cours
     public function lessonsReservationForm() {
@@ -18,19 +18,27 @@ class LessonsController extends \W\Controller\Controller
         $hend = intval(substr($_POST['hend'], -5, 2));
         $lesson = new LessonsModel($_POST['id_student'], $_POST['id_teacher'], $_POST['date'], $hstart, $hend, $_POST['subject'], 'aux choix', 1);
         $lesson->insert(['id_student' =>  $lesson->getIdStudent(), 'id_teacher' => $lesson->getIdTeacher(), 'date' => $lesson->getDate(), 'hstart' => $lesson->getHstart(), 'hend' => $lesson->getHend(), 'id_subjects' => $lesson->getIdDiscipline(), 'mobile' => $lesson->getMobile(), 'statut' => $lesson->getStatut()]);
+        // envoi du mail
+        $subject = 'Oh Ce Cours une réservation de cours a été faite.';
+        $recipient = $_POST['teacher-email'];
+        $title = 'Réservation le '.$_POST['date'].' pour un cour de '.$_POST['subject'];
+        $content = '<h2>De '.$_POST['hstart'].' à '.$_POST['hend'].'</h2>
+        <p>'.$_POST['subject-learn'].'</p>';
+        $this->sendMail($recipient, $subject,$title,$content);
+        // redirection
         $_SESSION['flash']['success'] = 'Votre cours à été reservé et est en attente de validation par le professeur';
         $this->redirectToRoute('lessons_page');
      }
      public function showLessonsPage() {
         if ($_SESSION['user']['is_student'] == 1) {
-            
+
             /*Staut 1*/
             $statut1 = new LessonsModel;
             $lessons1 = $statut1->getLessonsByStatutStudent($_SESSION['user']['id'], 1);
             /* Statut 2 */
             $statut2 = new LessonsModel;
             $lessons2 = $statut2->getLessonsByStatutStudent($_SESSION['user']['id'], 2);
-            
+
             /* Statut 3 */
             $statut3 = new LessonsModel;
             $lessons3 = $statut3->getLessonsByStatutStudent($_SESSION['user']['id'], 3);
@@ -59,7 +67,7 @@ class LessonsController extends \W\Controller\Controller
             /* Statut 2 */
             $statut2 = new LessonsModel;
             $lessons2 = $statut2->getLessonsByStatutTeacher($_SESSION['user']['id'], 2);
-            
+
             /* Statut 3 */
             $statut3 = new LessonsModel;
             $lessons3 = $statut3->getLessonsByStatutTeacher($_SESSION['user']['id'], 3);
@@ -74,7 +82,7 @@ class LessonsController extends \W\Controller\Controller
      }
 
      public function charge() {
-        
+
 
         /* PAIMENT STRIPE */
         $token  = $_POST['stripeToken'];
@@ -106,14 +114,14 @@ class LessonsController extends \W\Controller\Controller
         $lesson = new LessonsModel;
         $lesson->update(['statut' => 3, 'token' => $token], $_POST['id_lesson']);
 
-        
+
 
 
         $_SESSION['flash']['success'] = 'Paiment accepté';
         $this->redirectToRoute('lessons_page');
 
 
-        
+
 
      }
 
@@ -145,7 +153,8 @@ class LessonsController extends \W\Controller\Controller
         $_SESSION['flash']['success'] = 'Votre validation a bien été prise en compte';
         $this->redirectToRoute('lessons_page');
     }
-    
+
+
     public function finalizeLesson() {
         //debug($_POST);
         $lesson = new LessonsModel;
@@ -161,5 +170,7 @@ class LessonsController extends \W\Controller\Controller
         }
     }
 
-    
+
+
+
 }
