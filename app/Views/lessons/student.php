@@ -72,7 +72,7 @@
                             data-description="Paiment de votre prochain cours"
                             data-amount="<?= ($nbhours*$lesson2['price'])*100 ?>"
                             data-locale="auto"
-                            data-name="Adopte un PROF!"
+                            data-name="OH ce cours!"
                             data-image="<?php $this->assetUrl('img/pencil-case.png') ?>"
                             data-label="Payer le cours"
                             data-currency="eur"
@@ -142,8 +142,8 @@
                 <td class="text-center"><?php if ($lesson4['rating'] == 0): ?>
                     <button type="button" class="rating btn btn-primary" data-toggle="modal" data-target="#modal<?= $lesson4['id_lesson'] ?>" data-id="<?= $lesson4['id_lesson'] ?>">Noter ce cour</button>
                     <?php else: ?> <?= $lesson4['rating'] ?> <?php endif; ?></td>
-                    <div class="modal fade bs-example-modal-lg" id="modal<?= $lesson4['id_lesson'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                        <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal fadebs-example-modal-lg" id="modal<?= $lesson4['id_lesson'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div id="modal-rating" class="modal-dialog modal-lg" role="document">
                             <div class="container modal-content">
                             
                             <form action="<?= $this->url('lessons_rating') ?>" method="POST">

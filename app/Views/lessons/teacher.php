@@ -94,7 +94,7 @@
                 <td class="text-center" class="text-center">
                     <button type="button" class="finalize btn btn-primary" data-toggle="modal" data-target="#modal<?= $lesson3['id_lesson'] ?>" data-id="<?= $lesson3['id_lesson'] ?>" >Finaliser ce cour</button>
                     <div class="modal fade bs-example-modal-lg" id="modal<?= $lesson3['id_lesson'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                        <div class="modal-dialog modal-lg" role="document">
+                        <div id="modal-finalize" class="modal-dialog modal-lg" role="document">
                             <div class="container modal-content">
                             
                             <form action="<?= $this->url('lessons_finalize') ?>" method="POST">
