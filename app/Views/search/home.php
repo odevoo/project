@@ -19,27 +19,25 @@ foreach($subjects as $subject) : ?>
     $img = $subject['img'];
 //    echo $id.'=>'.$name.'=>'.$img.'<br/>';
  ?>
-
 		<div class="col-md-2">
-		<a href="<?= $this->url('search_result',["id" => $id]); ?>">
-		<img src="<?php echo $this->assetUrl($img); ?>" class="img-responsive img-rounded" alt="logo" />
-		<h4 class="text-center"><?php echo $name ?></h4>
-		</a>
-	</div>
+			<a href="<?= $this->url('search_result',["id" => $id]); ?>">
+			<img src="<?php echo $this->assetUrl($img); ?>" class="img-responsive img-rounded " alt="logo" />
+			<h4 class="text-center"><?php echo $name ?></h4>
+			</a>
+		</div>
+
+
 	 <?php endforeach; ?>
 	</div>
-		 <?php endforeach; ?>
+	 <?php endforeach; ?>
 </div>
-
-
-
 
 
 
 
 <input type="hidden" name="" id="id-student" value="<?= $student['id'] ?>">
 <input type="hidden" id="img-maps" name="" value="<?= $this->assetUrl('img/pencil-case.png'); ?>">
-<div style="height:900px;width:100%;" id="js-map-container" class="map"></div>
+<div style="height:600px;width:100%;" id="js-map-container" class="map"></div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVvV3H3-rcwoX6X-Jq1PXMOhiF-6EyO-E"></script>
 <script type="text/javascript" src="<?= $this->assetUrl('js/googlemaps.js') ?>"></script>
 <?php

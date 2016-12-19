@@ -15,9 +15,6 @@
                 <th class="text-center">Professeur</th>
                 <th class="text-center">Matière</th>
                 <th class="text-center">Action</th>
-
-
-
             </tr>
         </thead>
         <tbody>
