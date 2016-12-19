@@ -6,7 +6,8 @@ $this->layout('layout', ['title' => 'Profil de '. $teacher['firstname']. ' '. $t
 <?php
 // début du bloc main_content
 $this->start('main_content');
-// debug($level);
+ debug($rating);
+
 ?>
 
     <div class="container profile-container">
@@ -45,22 +46,28 @@ $this->start('main_content');
             <div class="row">
               <div class="col-md-12 col-xs-12">
                 <h2 class="text-center profile-title">Avis des éleves</h2>
+                <h3 class="profile-title">Notes Gén. : <?= round($rating['AVG(rating)'],2); ?>/5</h3>
               </div>
-                <table>
+
+              <div class="container">
+
+
+
+                <table class="table">
                   <thead>
                     <tr>
-                      <th>Elèves</th>
-                      <th>Matières</th>
-                      <th>Date</th>
-                      <th>Note</th>
-                      <th>Commentaire</th>
+                      <th class="col-md-2">Elèves</th>
+                      <th class="col-md-1">Matières</th>
+                      <th class="col-md-1">Date</th>
+                      <th class="col-md-1">Note</th>
+                      <th class="col-md-7">Commentaire</th>
                     </tr>
                   </thead>
                   <tbody>
                 <?php foreach ($lessons as $lesson): ?>
                   <tr>
                     <td><?= $lesson['firstname']; ?> <?= $lesson['lastname']; ?></td>
-                    <td><?= $lesson['subject']; ?></td>
+                    <td><?= $lesson['name']; ?></td>
                     <td><?= $lesson['date']; ?></td>
                     <td><?= $lesson['rating']; ?></td>
                     <td><?= $lesson['comment']; ?></td>
@@ -68,6 +75,7 @@ $this->start('main_content');
                 <?php endforeach; ?>
                   </tbody>
                 </table>
+            </div>
               </div>
             <hr class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 profile-hr">
           <div class="row">

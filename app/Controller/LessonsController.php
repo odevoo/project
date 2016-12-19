@@ -23,7 +23,7 @@ class LessonsController extends \Controller\DefaultController
         $recipient = $_POST['teacher-email'];
         $title = 'Réservation le '.$_POST['date'].' pour un cour de '.$_POST['subject'];
         $content = '<h2>De '.$_POST['hstart'].' à '.$_POST['hend'].'</h2>
-        <p>'.$_POST['message'].'</p>';
+        <p>'.$_POST['subject-learn'].'</p>';
         $this->sendMail($recipient, $subject,$title,$content);
         // redirection
         $_SESSION['flash']['success'] = 'Votre cours à été reservé et est en attente de validation par le professeur';

@@ -22,7 +22,8 @@ class ProfileController extends \W\Controller\Controller
         $teacherdata = $teacher->find($id);
         $lesson = new LessonsModel;
         $lessonData = $lesson->getLessonsCommentAndRatingByTeacher($id);
-        $this->show('profile/profile',['teacher' => $teacherdata, 'subjects' => $subjectsData, 'level' => $levelData, 'lessons' => $lessonData]);
+        $rating = $lesson->getAverageByTeacher($id);
+        $this->show('profile/profile',['teacher' => $teacherdata, 'subjects' => $subjectsData, 'level' => $levelData, 'lessons' => $lessonData ,'rating' => $rating]);
     }
 
 

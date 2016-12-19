@@ -122,4 +122,13 @@ class LessonsModel extends \W\Model\Model
         $lessons = $stmt->fetchAll();
         return $lessons;
 
+    }
+    public function getAverageByTeacher($id_teacher){
+        $sql = 'SELECT AVG(rating) FROM lessons  WHERE id_teacher = :id AND rating > 0 ';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id_teacher));
+        $ratings = $stmt->fetch();
+        return $ratings;
+
+    }
 }
