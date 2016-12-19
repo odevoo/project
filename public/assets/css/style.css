@@ -316,9 +316,11 @@ li {
 
 #modal-rating {
 	width: auto;
+	padding: 5% 0;
 }
 
 #modal-finalize {
+	padding: 5% 0;
 	width: auto;
 }
 
