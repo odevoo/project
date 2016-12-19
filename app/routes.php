@@ -46,6 +46,8 @@
         ['POST', '/lessonscharge', 'Lessons#charge', 'lessons_charge'],
         ['POST', '/cancellesson', 'Lessons#cancelLesson', 'lessons_cancel'],
         ['POST', '/ratinglesson', 'Lessons#ratingLesson', 'lessons_rating'],
+        ['POST', '/validlesson', 'Lessons#validLesson', 'lessons_valid'],
+         ['POST', '/finalizelesson', 'Lessons#finalizeLesson', 'lessons_finalize'],
 
 
 

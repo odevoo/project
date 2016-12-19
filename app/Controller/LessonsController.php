@@ -27,7 +27,7 @@ class LessonsController extends \Controller\DefaultController
         $this->sendMail($recipient, $subject,$title,$content);
         // redirection
         $_SESSION['flash']['success'] = 'Votre cours à été reservé et est en attente de validation par le professeur';
-        $this->showLessonsPage($_POST['id_student']);
+        $this->redirectToRoute('lessons_page');
      }
      public function showLessonsPage() {
         if ($_SESSION['user']['is_student'] == 1) {
@@ -141,7 +141,35 @@ class LessonsController extends \Controller\DefaultController
 
     public function ratingLesson() {
         debug($_POST);
+        $lesson = new LessonsModel;
+        $lesson->update(['rating' => $_POST['rating'], 'comment' => $_POST['comment']], $_POST['id_lesson']);
+        $this->redirectToRoute('lessons_page');
+
     }
+
+    public function validLesson (){
+        $lesson = new LessonsModel;
+        $lesson->update(['statut' => 2],$_POST['id_lesson']);
+        $_SESSION['flash']['success'] = 'Votre validation a bien été prise en compte';
+        $this->redirectToRoute('lessons_page');
+    }
+
+
+    public function finalizeLesson() {
+        //debug($_POST);
+        $lesson = new LessonsModel;
+        $lessonresult = $lesson->find($_POST['id_lesson']);
+
+        if ($lessonresult['token'] == $_POST['token']) {
+            $lesson->update(['statut' => 4], $_POST['id_lesson']);
+            $_SESSION['flash']['success'] = 'Votre finalisation a bien été prise en compte';
+            $this->redirectToRoute('lessons_page');
+        } else {
+            $_SESSION['flash']['danger'] = 'Le token fournit n\'est pas valide';
+            $this->redirectToRoute('lessons_page');
+        }
+    }
+
 
 
 
