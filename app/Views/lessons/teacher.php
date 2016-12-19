@@ -28,7 +28,12 @@
                 <td class="text-center"><?= $lesson1['hend'] ?>:00</td>
                 <td class="text-center"><?= $lesson1['firstname'] . ' ' . $lesson1['lastname']  ?></td>
                 <td class="text-center"><?= $lesson1['name'] ?></td>
-                <td class="text-center"><button class="btn btn-primary" type="">Valider ce cour</button></td>
+                <td class="text-center">
+                    <form action="<?= $this->url('lessons_valid') ?>" method="POST">
+                        <input type="hidden" name="id_lesson" value="<?= $lesson1['id_lesson'] ?>">
+                        <button class="btn btn-primary" type="">Valider ce cour</button>
+                    </form>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -86,7 +91,29 @@
                 <td class="text-center"><?= $lesson3['hend'] ?>:00</td>
                 <td class="text-center"><?= $lesson3['firstname'] . ' ' . $lesson3['lastname']  ?></td>
                 <td class="text-center"><?= $lesson3['name'] ?></td>
-                <td class="text-center" class="text-center"><button class="btn btn-primary">Finaliser ce cour</button></td>
+                <td class="text-center" class="text-center">
+                    <button type="button" class="finalize btn btn-primary" data-toggle="modal" data-target="#modal<?= $lesson3['id_lesson'] ?>" data-id="<?= $lesson3['id_lesson'] ?>" >Finaliser ce cour</button>
+                    <div class="modal fade bs-example-modal-lg" id="modal<?= $lesson3['id_lesson'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="container modal-content">
+                            
+                            <form action="<?= $this->url('lessons_finalize') ?>" method="POST">
+                                <input type="hidden" name="id_lesson" value="<?= $lesson3['id_lesson'] ?>">
+                            
+                                <div class="form-group">
+                                    <label for="token">Saisissez le token de validation</label>
+                                    <input type="text" id="token" class="form-control" name="token" value="" placeholder="">
+                                </div>    
+                                <div class="form-group">
+                                    <input class="form-control btn btn-primary" type="submit" name="" class="btn btn-primary" value="Finaliser le cour">
+                                </div>
+                                
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>

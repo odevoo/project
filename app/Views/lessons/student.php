@@ -28,10 +28,12 @@
                 <td class="text-center" class="text-center"><?= $lesson1['hend'] ?>:00</td>
                 <td class="text-center" class="text-center"><a href="<?= $this->url('profile_show', ['id'=> $lesson1['id_teacher']]); ?>" title=""><?= $lesson1['firstname'] . ' ' . $lesson1['lastname']  ?></a></td>
                 <td class="text-center" class="text-center"><?= $lesson1['name'] ?></td>
-                <td class="text-center" class="text-center"><form action="<?= $this->url('lessons_cancel') ?>" method="POST">
-                    <input type="hidden" name="id_lesson" value="<?= $lesson1['id_lesson'] ?>">
-                    <button  type="submit" class="btn-cancel btn btn-danger" type="">Annuler</button>
-                </form></td>
+                <td class="text-center" class="text-center">
+                    <form action="<?= $this->url('lessons_cancel') ?>" method="POST">
+                        <input type="hidden" name="id_lesson" value="<?= $lesson1['id_lesson'] ?>">
+                        <button  type="submit" class="btn-cancel btn btn-danger" type="">Annuler</button>
+                    </form>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
