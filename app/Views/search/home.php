@@ -7,7 +7,6 @@ $this->layout('layout', ['title' => 'Page de recherche'])
 $this->start('main_content'); ?>
 
 
-<div class="container">
  <?php foreach (array_chunk($subjects, 6 , true) as $subjects) : ?>
 	<div class="row">
 
@@ -30,7 +29,7 @@ foreach($subjects as $subject) : ?>
 	 <?php endforeach; ?>
 	</div>
 	 <?php endforeach; ?>
-</div>
+
 
 
 
