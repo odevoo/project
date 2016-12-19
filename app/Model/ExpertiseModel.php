@@ -16,5 +16,14 @@ class ExpertiseModel extends \W\Model\Model
 
 
     }
+
+    public function findSubjects($id) {
+    	$sql = 'SELECT count(*) FROM expertises
+                WHERE id_subject = :id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id));
+        $subject = $stmt->fetch();
+        return $subject;
+    }
  
 }

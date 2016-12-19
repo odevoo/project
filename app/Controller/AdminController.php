@@ -8,7 +8,9 @@ use \Model\StudentModel;
 use \Model\TeacherModel;
 use \Model\LevelModel;
 use \Model\ExpertiseModel;
+use \Model\SubjectModel;
 use \Controller\SearchController;
+use \Controller\AdminController;
 use PHPMailer;
 //use \W\Model\ConnectionModel;
 
@@ -129,4 +131,37 @@ class AdminController extends Controller
 
     }
 
+    public function showSubjectForm() {
+        $subject = new SubjectModel;
+        $subjectdata = $subject->findAll();
+        $this->show('admin/subjects', ['subjects' => $subjectdata]);
+    }
+
+    public function insertSubjectForm() {
+        $subject = new SubjectModel($_POST['name'], $_FILES['photoSubjects']['name']);
+        $subject->insert(['name' => $subject->getName(), 'img' => 'img/'.$subject->getImg()]);
+
+        if(isset($_FILES['photoSubjects'])) {
+          $repertoire = '../public/assets/img/'; // le répertoire ou copier l'image
+          $fichier = $_FILES['photoSubjects']['name']; //le nom de l'image
+          $tmpName = $_FILES['photoSubjects']['tmp_name']; //le fichier temporaire
+          move_uploaded_file($tmpName, $repertoire.$fichier); 
+        $_SESSION['flash']['success']='Matière insérée avec succès !';
+        $this->redirectToRoute('admin_subject');
+        } 
+    }  
+
+    public function deleteSubjectForm() {
+      $subject = new SubjectModel();
+      $expertise = new ExpertiseModel();
+      $result = $expertise->findSubjects($_POST['id']);
+      if ($result['count(*)'] == 0) {
+        $subject->delete($_POST['id']);
+        $_SESSION['flash']['success']='Matière supprimée avec succès !';
+        $this->redirectToRoute('admin_subject');
+      } else {
+        $_SESSION['flash']['danger']='Cette matière ne peut pas être supprimée car utilisée par des professeurs !';
+        $this->redirectToRoute('admin_subject');
+      }
+    }
 }

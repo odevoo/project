@@ -6,11 +6,13 @@ use \W\Model\ConnectionModel;
 class SubjectModel extends \W\Model\Model
 {
     private $name;
+    private $img;
 
 
-    public function __construct($name ='') {
+    public function __construct($name ='', $img ='') {
         $app = getApp();
         $this->setName($name);
+        $this->setImg($img);
         $this->setTable('subjects');
         $this->dbh = ConnectionModel::getDbh();
 
@@ -20,11 +22,21 @@ class SubjectModel extends \W\Model\Model
     public function setName($name) {
         $this->name = $name;
     }
+
+    public function setImg($img) {
+        $this->img = $img;
+    }
+
     /* GETTEUR */
 
     public function getName() {
         return $this->name;
     }
+
+    public function getImg() {
+        return $this->img;
+    }
+
 
     public function findTeacherSubjects($id) {
       $sql = 'SELECT s.id , name
