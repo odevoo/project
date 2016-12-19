@@ -6,7 +6,7 @@
 	<div class="main-text">
 		<div class="text-center">
 			<h1 class="slider-title">
-				Nos Prestations Général
+				Nos Prestations Générales
 			</h1>							
 		</div>
 	</div>
