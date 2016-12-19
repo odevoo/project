@@ -46,7 +46,29 @@ $this->start('main_content');
               <div class="col-md-12 col-xs-12">
                 <h2 class="text-center profile-title">Avis des éleves</h2>
               </div>
-            </div>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Elèves</th>
+                      <th>Matières</th>
+                      <th>Date</th>
+                      <th>Note</th>
+                      <th>Commentaire</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                <?php foreach ($lessons as $lesson): ?>
+                  <tr>
+                    <td><?= $lesson['firstname']; ?> <?= $lesson['lastname']; ?></td>
+                    <td><?= $lesson['subject']; ?></td>
+                    <td><?= $lesson['date']; ?></td>
+                    <td><?= $lesson['rating']; ?></td>
+                    <td><?= $lesson['comment']; ?></td>
+                  </tr>
+                <?php endforeach; ?>
+                  </tbody>
+                </table>
+              </div>
             <hr class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 profile-hr">
           <div class="row">
             <div class="col-md-12 col-xs-12">
@@ -55,7 +77,7 @@ $this->start('main_content');
 
             <div class="col-md-3 col-md-offset-1 col-xs-12 ">
                 <form action="<?= $this->url('lessons_reservation_form') ?>" method="post">
-
+                  <input type="hidden" name="teacher-email" value="<?= $teacher['email'] ?> ">
                     <div class="form-group">
                         <label for="date">Jour</label>
                         <input class="form-control" type="date" id="date" name="date" value="" placeholder="">
@@ -93,6 +115,7 @@ $this->start('main_content');
                 <div class="form-group">
                     <label for="subject">Validation</label>
                     <input type="submit" name="btn" class="btn btn-primary form-control" value="Reservez ce cours" placeholder="">
+                  </form>
                 </div>
             </div>
           </div>

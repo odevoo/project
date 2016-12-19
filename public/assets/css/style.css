@@ -178,3 +178,20 @@ li {
 /*-- --*//*-- --*//*-- End Profile --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
 
+
+
+/*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
+/*-- --*//*-- --*//*-- Start Register --*//*-- --*//*-- --*/
+
+
+.register-container {
+	background-color: #fff !important;
+	border: 1px solid;
+	border-color:  lightgray;
+	border-radius: 0px;
+	box-shadow: 0px 0px 15px gray;
+	padding: 25px;
+}
+
+/*-- --*//*-- --*//*-- End Register --*//*-- --*//*-- --*/
+/*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
