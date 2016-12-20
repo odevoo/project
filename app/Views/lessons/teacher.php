@@ -3,7 +3,7 @@
 <?php $this->start('main_content') ?>
 
     <h1>Mes cours</h1>
-    <?php //debug($lessons) ?>
+    <?php // debug($_SESSION) ?>
     <!-- Tableau des cours statut 1 -->
     <table class="table table-bordered table-hover table-stripped">
         <caption>Cours en attente de validation</caption>
@@ -29,7 +29,9 @@
                 <td class="text-center"><?= $lesson1['firstname'] . ' ' . $lesson1['lastname']  ?></td>
                 <td class="text-center"><?= $lesson1['name'] ?></td>
                 <td class="text-center">
-                    <form action="<?= $this->url('lessons_valid') ?>" method="POST">
+                  <form action="<?= $this->url('lessons_valid') ?>" method="POST">
+                        <input type="hidden" name="date" value="<?= date("d-m-Y", strtotime($lesson1['date'])) ?>">
+                        <input type="hidden" name="hstart" value="<?= $lesson1['hstart'] ?>:00 H">
                         <input type="hidden" name="id_lesson" value="<?= $lesson1['id_lesson'] ?>">
                         <button class="btn btn-primary" type="">Valider ce cour</button>
                     </form>
@@ -48,7 +50,7 @@
                 <th class="text-center">Heure de fin</th>
                 <th class="text-center">Etudiant</th>
                 <th class="text-center">Matière</th>
-                
+
 
 
 
@@ -62,7 +64,7 @@
                 <td class="text-center"><?= $lesson2['hend'] ?>:00</td>
                 <td class="text-center"><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></td>
                 <td class="text-center"><?= $lesson2['name'] ?></td>
-                
+
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -96,20 +98,20 @@
                     <div class="modal fade bs-example-modal-lg" id="modal<?= $lesson3['id_lesson'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                         <div id="modal-finalize" class="modal-dialog modal-lg" role="document">
                             <div class="container modal-content">
-                            
+
                             <form action="<?= $this->url('lessons_finalize') ?>" method="POST">
                                 <input type="hidden" name="id_lesson" value="<?= $lesson3['id_lesson'] ?>">
-                            
+
                                 <div class="form-group">
                                     <label for="token">Saisissez le token de validation</label>
                                     <input type="text" id="token" class="form-control" name="token" value="" placeholder="">
-                                </div>    
+                                </div>
                                 <div class="form-group">
                                     <input class="form-control btn btn-primary" type="submit" name="" class="btn btn-primary" value="Finaliser le cour">
                                 </div>
-                                
+
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -128,7 +130,7 @@
                 <th class="text-center">Heure de fin</th>
                 <th class="text-center">Etudiant</th>
                 <th class="text-center">Matière</th>
-                
+
 
 
 
@@ -142,11 +144,11 @@
                 <td class="text-center"><?= $lesson4['hend'] ?>:00</td>
                 <td class="text-center"><?= $lesson4['firstname'] . ' ' . $lesson4['lastname']  ?></td>
                 <td class="text-center"><?= $lesson4['name'] ?></td>
-                
+
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
-      
+
 
 <?php $this->stop('main_content') ?>

@@ -19,9 +19,12 @@ class LessonsController extends \Controller\DefaultController
         $lesson = new LessonsModel($_POST['id_student'], $_POST['id_teacher'], $_POST['date'], $hstart, $hend, $_POST['subject'], 'aux choix', 1);
         $lesson->insert(['id_student' =>  $lesson->getIdStudent(), 'id_teacher' => $lesson->getIdTeacher(), 'date' => $lesson->getDate(), 'hstart' => $lesson->getHstart(), 'hend' => $lesson->getHend(), 'id_subjects' => $lesson->getIdDiscipline(), 'mobile' => $lesson->getMobile(), 'statut' => $lesson->getStatut()]);
         // envoi du mail
+        $date =  date("d-m-Y", strtotime($_POST['date'])) ;
+        $matiere = new SubjectModel;
+        $dataMatiere = $matiere->find($_POST['subject']);
         $subject = 'Oh Ce Cours une réservation de cours a été faite.';
         $recipient = $_POST['teacher-email'];
-        $title = 'Réservation le '.$_POST['date'].' pour un cour de '.$_POST['subject'];
+        $title = 'Réservation le '.$date.' pour un cour de '.$dataMatiere['name'];
         $content = '<h2>De '.$_POST['hstart'].' à '.$_POST['hend'].'</h2>
         <p>'.$_POST['subject-learn'].'</p>';
         $this->sendMail($recipient, $subject,$title,$content);
@@ -29,6 +32,7 @@ class LessonsController extends \Controller\DefaultController
         $_SESSION['flash']['success'] = 'Votre cours à été reservé et est en attente de validation par le professeur';
         $this->redirectToRoute('lessons_page');
      }
+
      public function showLessonsPage() {
         if ($_SESSION['user']['is_student'] == 1) {
 
@@ -115,6 +119,21 @@ class LessonsController extends \Controller\DefaultController
         $lesson->update(['statut' => 3, 'token' => $token], $_POST['id_lesson']);
 
 
+        // envoie du mail éleve
+        $subject = 'Votre paiement';
+        $recipient = $_SESSION['user']['email'];
+        $title = 'Valicode:';
+        $content = '<p>Votre code de validation de votre cours : '.$token.' </p>';
+        $this->sendMail($recipient, $subject,$title,$content);
+        // envoie du mail professeur
+        $subject = 'Votre cour est payer.';
+        $recipient = $_POST['teacher-email'];
+        $title = 'Votre cours n\'attend plus que vous';
+        $content = '<p>Le cours a été validé et ne manque plus que l\'on vous remaite le code de payement.</p>';
+        $this->sendMail($recipient, $subject,$title,$content);
+        // redirection
+
+
 
 
         $_SESSION['flash']['success'] = 'Paiment accepté';
@@ -147,9 +166,17 @@ class LessonsController extends \Controller\DefaultController
 
     }
 
-    public function validLesson (){
+    public function validLesson(){
         $lesson = new LessonsModel;
         $lesson->update(['statut' => 2],$_POST['id_lesson']);
+        // envoie du mail
+        $subject = 'Oh Ce Cours une réservation de cours a été faite.';
+        $recipient = $_SESSION['user']['email'];
+        $title = 'C\'est valider';
+        $content = '<h2>Le'.$_POST['date'].' à '.$_POST['hstart'].' </h2>
+                    <p>Votre cours a bien étez valider par '.$_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'].'. Il ne vous restez plus qu\'a finaliser le payement. </p>';
+        $this->sendMail($recipient, $subject,$title,$content);
+        // redirection
         $_SESSION['flash']['success'] = 'Votre validation a bien été prise en compte';
         $this->redirectToRoute('lessons_page');
     }

@@ -3,7 +3,7 @@
 <?php $this->start('main_content') ?>
 
     <h1>Mes cours</h1>
-    <?php //debug($lessons1) ?>
+    <?php //debug($lessons2) ?>
     <!-- Tableau des cours statut 1 -->
     <table class="table table-bordered table-hover table-stripped">
         <caption>Cours en attente de validation</caption>
@@ -27,6 +27,7 @@
                 <td class="text-center" class="text-center"><?= $lesson1['name'] ?></td>
                 <td class="text-center" class="text-center">
                     <form action="<?= $this->url('lessons_cancel') ?>" method="POST">
+
                         <input type="hidden" name="id_lesson" value="<?= $lesson1['id_lesson'] ?>">
                         <button  type="submit" class="btn-cancel btn btn-danger" type="">Annuler</button>
                     </form>
@@ -60,6 +61,7 @@
                 <td class="text-center"><a href="<?= $this->url('profile_show', ['id'=> $lesson2['id_teacher']]); ?>" title=""><?= $lesson2['firstname'] . ' ' . $lesson2['lastname']  ?></a></td>
                 <td class="text-center"><?= $lesson2['name'] ?></td>
                 <td class="text-center"><form action="<?= $this->url('lessons_charge') ?>" method="post">
+                        <input type="hidden" name="teacher-email" value="<?= $lesson2['email'] ?>">
                         <input type="hidden" name="nb-hours" value="<?= $nbhours = $lesson2['hend']-$lesson2['hstart'] ?>">
                         <input type="hidden" name="amout" value="<?= ($nbhours*$lesson2['price'])*100 ?>">
                         <input type="hidden" name="id_lesson" value="<?= $lesson2['id_lesson'] ?>">
@@ -91,7 +93,7 @@
                 <th class="text-center">Professeur</th>
                 <th class="text-center">Matière</th>
                 <th class="text-center">Token</th>
-                
+
 
 
 
@@ -106,7 +108,7 @@
                 <td class="text-center"><a href="<?= $this->url('profile_show', ['id'=> $lesson3['id_teacher']]); ?>" title=""><?= $lesson3['firstname'] . ' ' . $lesson3['lastname']  ?></a></td>
                 <td class="text-center"><?= $lesson3['name'] ?></td>
                 <td class="text-center"><?= $lesson3['token'] ?></td>
-                
+
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -122,7 +124,7 @@
                 <th class="text-center">Professeur</th>
                 <th class="text-center">Matière</th>
                 <th class="text-center">Action / Note</th>
-                
+
 
 
 
@@ -142,14 +144,14 @@
                     <div class="modal fadebs-example-modal-lg" id="modal<?= $lesson4['id_lesson'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                         <div id="modal-rating" class="modal-dialog modal-lg" role="document">
                             <div class="container modal-content">
-                            
+
                             <form action="<?= $this->url('lessons_rating') ?>" method="POST">
                             <input type="hidden" name="id_lesson" value="<?= $lesson4['id_lesson'] ?>">
                             <input type="hidden" id="ratingnote<?= $lesson4['id_lesson'] ?>" name="rating" value="">
                                 <div class="form-group">
                                     <label for="rateYo">Votre note sur le cour</label>
                                     <div  data-id="<?= $lesson4['id_lesson'] ?>" class="rateYo"></div>
-                                </div>    
+                                </div>
                                 <div class="form-group">
                                     <label for="comment">Votre avis sur le cour</label>
                                     <textarea  class="form-control" rows="10" name="comment"></textarea>
@@ -157,9 +159,9 @@
                                 <div class="form-group">
                                     <input class="form-control btn btn-primary" type="submit" name="" class="btn btn-primary" value="Envoyer">
                                 </div>
-                                
+
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -169,6 +171,6 @@
     </table>
 
      <script type="text/javascript" src="<?= $this->assetUrl('js/studentlessons.js') ?>"></script>
-      
+
 
 <?php $this->stop('main_content') ?>

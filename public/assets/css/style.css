@@ -204,7 +204,7 @@ li {
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- Start Profile --*//*-- --*//*-- --*/
 
-.profile-container .row{
+.profile-container{
 	background-color: #EFEFEF;
 	border: 1px solid;
 	border-color:  #59656F;
@@ -249,7 +249,7 @@ li {
 	margin-left: 10%;
 }
 
- /*START => SURTOUT NE RIEN TOUCHER */ 
+ /*START => SURTOUT NE RIEN TOUCHER */
 
 .btn-search-custom {
 	background-color: #6290C8;
@@ -300,7 +300,7 @@ li {
 		background-color: #2ecc70;
 	}
 }
- /*END => SURTOUT NE RIEN TOUCHER */ 
+ /*END => SURTOUT NE RIEN TOUCHER */
 
 /*-- --*//*-- --*//*-- End Recherche resultat --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
@@ -311,7 +311,7 @@ li {
 	/* menu responsive */
 	/**********************/
 
-.navbar-toggle {   
+.navbar-toggle {
     border: 1.5px solid transparent;
 }
 

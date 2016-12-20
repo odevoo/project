@@ -10,7 +10,7 @@ $this->start('main_content');
 
 ?>
 
-    <div class="container profile-container">
+    <div class="profile-container">
         <div class="row">
             <div class="col-md-12 col-xs-12 ">
               <h1 class="text-align profile-title">Profil de <?= $teacher['firstname']. ' '. $teacher['lastname'] ?></h1>
