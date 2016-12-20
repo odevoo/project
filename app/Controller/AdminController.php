@@ -112,6 +112,9 @@ class AdminController extends Controller
           $this->redirectToRoute('default_home');
           // debug($_SESSION['user']);
         }
+      } else{
+        $_SESSION['flash']['danger'] = ' Votre login / mot de passe sont invalide';
+        $this->redirectToRoute('default_home');
       }
     }
     public function showSettingsPage() {
@@ -137,6 +140,9 @@ class AdminController extends Controller
             $password = $passwordhash->hashPassword($_POST['password']);
             $teacher = new TeacherModel;
             $teacher->update(['password'=> $password], $_SESSION['user']['id']);
+          } else {
+            $_SESSION['flash']['danger'] = 'Les mots de passe ne correspondent pas';
+            $this->redirectToRoute('admin_settings');
           }
         }
         if (!empty($_FILES['file']['name'])){
