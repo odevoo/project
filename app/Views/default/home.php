@@ -3,14 +3,13 @@
 <?php $this->start('main_content') ?>
 
 	<?php //debug($profs); ?>
-	<div class="main-text">
+	<!--<div class="main-text">
 		<div class="text-center">
 			<h1 class="slider-title">
 				Nos Prestations Générales
 			</h1>							
 		</div>
-	</div>
-
+	</div>-->
 	<div class="row">
 		<div class="">
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

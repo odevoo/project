@@ -14,7 +14,7 @@
 <body>
 	<header>
 		<div class="container-fluid">
-			<nav class="navbar navbar-default navbar-fixed-top">
+			<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
 				<div class="container navbar-color">
 			        <div class="navbar-header">
 			        	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -22,7 +22,9 @@
 			        		<span class="icon-bar"></span>
 			        		<span class="icon-bar"></span>
 			        		<span class="icon-bar"></span>
-			        	</button><a href="<?= $this->url('default_home');?>"><img class="logo" src="<?= $this->assetUrl('img/education-logo.png') ?>" /></a>
+			        	</button>
+			        	<a class="navbar-brand logo-link" href="<?= $this->url('default_home');?>"><img class="logo" src="<?= $this->assetUrl('img/logo.png') ?>"></a>
+			        	<p class="navbar-text" id="brand-text">Oh ce cours !</p>
 			        </div>
 			        <div id="navbar" class="navbar-collapse collapse">
 			        	<ul class="nav navbar-nav">
@@ -53,7 +55,7 @@
 		</div>
 	</header>
 
-	<div class="container">
+	<div class="container contenu">
 
 		<?php if (isset($_SESSION['flash'])): ?>
 	    	<?php foreach ($_SESSION['flash'] as $type => $message): ?>
@@ -74,7 +76,7 @@
 		<?= $this->section('main_content') ?>
 	</section>
 	</div>
-	<footer>
+	<footer id="footer">
 		<div class="row">
 			<div class="container text-center">
 				<hr />
