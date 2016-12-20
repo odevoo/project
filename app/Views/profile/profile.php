@@ -6,7 +6,6 @@ $this->layout('layout', ['title' => 'Profil de '. $teacher['firstname']. ' '. $t
 <?php
 // début du bloc main_content
 $this->start('main_content');
- debug($rating);
 
 ?>
 
@@ -15,47 +14,82 @@ $this->start('main_content');
             <div class="col-md-12 col-xs-12 ">
               <h1 class="text-align profile-title">Profil de <?= $teacher['firstname']. ' '. $teacher['lastname'] ?></h1>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-4 col-xs-12">
                 <img class="center-block profile-img" src="<?= $this->assetUrl($teacher['avatar']) ?>" alt="">
             </div>
             <div class="col-md-8 col-xs-12 profile-info">
-                <p class="text-center "><?= $teacher['description'] ?></p>
+                <div class="panel panel-default panel-info">
+                    <div class="panel-heading">Biographie</div>
+                        <div class="panel-body">
+                        <p class="text-center "><?= $teacher['description'] ?></p>
+                        </div>
+                </div>
             </div>
         </div>
+
 
           <hr class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 profile-hr">
           <div class="row">
             <div class="col-md-12 col-xs-12">
                 <h2 class="text-center profile-title">Informations et Matières enseignées</h2>
             </div>
-            <div class="container">
+           </div> 
+        
               <div class="row">
-                <ul class="col-md-5 col-md-offset-1">
-                  <?php foreach ($subjects as $subject): ?>
-                    <li class="text-center"><?= $subject['name']; ?></li>
-                  <?php endforeach; ?>
-                </ul>
-                <ul class="col-md-5">
-                  <li>Tarif : <?= $teacher['price']; ?> €/H</li>
-                  <li>Mobilité : <?= $teacher['mobility']; ?></li>
-                  <li>Niveau d'enseignemant : <?= $level['level']; ?></li>
-                </ul>
+                <div class="col-md-offset-1 col-md-5">
+                    <table class="table table-bordered table-hover table-stripped">
+                        <thead>
+                            <tr class="info">
+                                <th class="text-center">Matières</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($subjects as $subject): ?>
+                        <tr class="">
+                            <td class="text-center"><?= $subject['name']; ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-5">
+                    <table class="table table-bordered table-hover table-stripped">
+                        <thead>
+                            <tr class="info">
+                                <th class="text-center">Mobilité</th>
+                                <th class="text-center">Niveau d'enseignement</th>
+                                <th class="text-center">Tarif</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="">
+                                <td class="text-center"><?= $teacher['mobility']; ?></td>
+                                <td class="text-center"><?= $level['level']; ?></td>
+                                <td class="text-center"><?= $teacher['price']; ?> €/H</td>
+                            </tr>
+                        </tbody>
+                    </table>
               </div>
             </div>
             <hr class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 profile-hr">
             <div class="row">
-              <div class="col-md-12 col-xs-12">
+              
+                <div class="col-md-6">
                 <h2 class="text-center profile-title">Avis des éleves</h2>
-                <h3 class="profile-title">Notes Gén. : <?= round($rating['AVG(rating)'],2); ?>/5</h3>
-              </div>
+                </div>
+                <div class="col-md-6">
+                <h3 class="profile-title">Notes Moyenne : <?= round($rating['AVG(rating)'],2); ?>/5</h3>
+                </div>
+              
+            </div>
 
-              <div class="container">
-
-
-
-                <table class="table">
+            
+                <table class="table table-bordered table-hover table-stripped">
                   <thead>
-                    <tr>
+                    <tr class="info">
                       <th class="col-md-2">Elèves</th>
                       <th class="col-md-1">Matières</th>
                       <th class="col-md-1">Date</th>
@@ -75,8 +109,7 @@ $this->start('main_content');
                 <?php endforeach; ?>
                   </tbody>
                 </table>
-            </div>
-              </div>
+            
             <hr class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 profile-hr">
           <div class="row">
             <div class="col-md-12 col-xs-12">
