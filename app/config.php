@@ -16,7 +16,7 @@ $w_config = [
 	'security_password_property' => 'password',		//nom de la colonne pour le "mot de passe"
 	'security_role_property' => 'role',				//nom de la colonne pour le "role"
 
-	'security_login_route_name' => 'admin_login',			//nom de la route affichant le formulaire de connexion
+	'security_login_route_name' => 'default_home',			//nom de la route affichant le formulaire de connexion
 
 	// configuration globale
 	'site_name'	=> 'project', 								// contiendra le nom du site

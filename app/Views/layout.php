@@ -46,7 +46,8 @@
 			            	<?php endif; ?>
 			            	<?php if (!isset($_SESSION['user'])): ?>
 				            	<li class="navbar-align-right"><a href="<?= $this->url('admin_register');?>"><i class="fa fa-paper-plane icon" aria-hidden="true"></i> Inscription</a></li>
-				            	<li class="navbar-align-right"><a href="<?= $this->url('admin_login');?>"><i class="fa fa-power-off icon" aria-hidden="true"></i> Connection</a></li>
+				            	<li class="navbar-align-right"><a data-placement="bottom" data-toggle="popover" title="Connexion" 
+		data-content=""><i class="fa fa-power-off icon" aria-hidden="true"></i> Connexion</a></li>
 			            	<?php endif; ?>
 			        	</ul>
 			        </div>
@@ -56,6 +57,24 @@
 	</header>
 
 	<div class="container contenu">
+		
+		<div  id="popover_content_wrapper" style="display: none">
+			
+		
+			<form class="" method="post" action="<?= $this->url('admin_process_login') ?>">
+            	<div class="form-group">
+                	<label for="email">Email</label>
+                	<input class="form-control" type="email" name="email" id="email" placeholder="">
+            	</div>
+            	<div class="form-group">
+                	<label for="password">Password</label>
+                	<input class="form-control" type="password" name="password" id="password" placeholder="">
+            	</div>
+            	<div class="form-group">
+                	<input type="submit" class="btn btn-success form-control" name="btn" value="Connexion">
+            	</div>
+    		</form>
+    	</div>
 
 		<?php if (isset($_SESSION['flash'])): ?>
 	    	<?php foreach ($_SESSION['flash'] as $type => $message): ?>
@@ -117,6 +136,7 @@
 			</div>
 		</div>
 	</footer>
+	<script type="text/javascript" src="<?= $this->assetUrl('js/login.js') ?>"></script>
 
 </body>
 </html>

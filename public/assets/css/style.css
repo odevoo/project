@@ -79,6 +79,11 @@ p {
     border-radius: 3px;
 
 */
+.popover-content {
+	    min-width: 200px;
+}
+
+
 .logo-link {
 	min-height: 100px;
 }
