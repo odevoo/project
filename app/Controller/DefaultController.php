@@ -102,8 +102,8 @@ class DefaultController extends Controller
 		$mail->SMTPAuth = true; // on va donner des infos au serveur (login/mdp)
 		$mail->SMTPSecure = 'ssl'; //certificat SSL
 		$mail->Username = "bioforce3@gmail.com"; // utilisateur pour le SMTP
-		$mail->Password= "Azerty1234"; // mot de passe pour le SMTP
-		$mail->setFrom('bioforce3@gmail.com', 'BioForce 3'); // l'expediteur
+		$mail->Password= "547896321"; // mot de passe pour le SMTP
+		$mail->setFrom('bioforce3@gmail.com', 'Oh Ce Cours'); // l'expediteur
 		$mail->addAddress($recipient); // le destinataire
 
 		$mail->Subject = $subject; // le sujet du mail
@@ -610,11 +610,9 @@ class DefaultController extends Controller
 
 		if(!$mail->send()) // si l'envoi délire...
 		{
-			$_SESSION['flash']['danger'] = 'Il y a eu une erreur lors de l\'envoie';
-			$this->show('default/contact');
+			$_SESSION['flash']['danger'] = $mail->ErrorInfo;
 		}else{
 			$_SESSION['flash']['success'] = 'Votre message à bien été envoyé';
-			$this->show('default/contact');
 		}
 	}
 
