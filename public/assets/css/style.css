@@ -48,13 +48,18 @@ h1,h2,h3,h4 {
 	border-color: transparent;
 }
 
-.navbar-align-right {
+.dropdowncustom {
 	padding-top: 18%;
+}
+
+.logincustom {
+	padding-top: 10%;
 }
 
 .navbar-default .navbar-nav > li > a {
 	color: white;
 }
+
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
 	background-color: #e74c3c;
 
@@ -71,9 +76,8 @@ h1,h2,h3,h4 {
 
 */
 .popover-content {
-	    min-width: 200px;
+	    min-width: 250px;
 }
-
 
 .logo-link {
 	min-height: 100px;

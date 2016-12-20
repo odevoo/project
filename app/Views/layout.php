@@ -29,11 +29,9 @@
 		        	<ul class="nav navbar-nav">
 		            	<li><a href="#"></a></li>
 		          	</ul>
-
-
 			        	<ul class="nav navbar-nav navbar-right">
 			        	<?php if (isset($_SESSION['user'])): ?>
-			        		<li class="dropdown navbar-align-right">
+			        		<li class="dropdown navbar-align-right dropdowncustom">
 			              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'] ; ?> <span class="caret"></span>
 			              		</a>
 				              	<ul class="dropdown-menu" id="dropdown-member">
@@ -45,9 +43,8 @@
 			            	</li>
 			            	<?php endif; ?>
 			            	<?php if (!isset($_SESSION['user'])): ?>
-				            	<li class="navbar-align-right"><a href="<?= $this->url('admin_register');?>"><i class="fa fa-paper-plane icon" aria-hidden="true"></i> Inscription</a></li>
-				            	<li class="navbar-align-right"><a data-placement="bottom" data-toggle="popover" title="Connexion" 
-		data-content=""><i class="fa fa-power-off icon" aria-hidden="true"></i> Connexion</a></li>
+				            	<li class="navbar-align-right logincustom"><a href="<?= $this->url('admin_register');?>"><i class="fa fa-paper-plane icon" aria-hidden="true"></i> Inscription</a></li>
+				            	<li class="navbar-align-right logincustom"><a data-placement="bottom" data-toggle="popover" title="Connexion" data-content=""><i class="fa fa-power-off icon" aria-hidden="true"></i> Connexion</a></li>
 			            	<?php endif; ?>
 			        	</ul>
 			        </div>
@@ -131,10 +128,6 @@
 				</div>
 			</div>
 	</footer>
-<<<<<<< HEAD
-=======
 	<script type="text/javascript" src="<?= $this->assetUrl('js/login.js') ?>"></script>
-
->>>>>>> aabc980e5cae8c10dc02fdf40b5a3da8c8eb98bb
 </body>
 </html>

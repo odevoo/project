@@ -10,12 +10,12 @@
     <div id="form-student" role="tabpanel" class="tab-pane active">
         <form  method="post" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
-                <label for="firstname">Prénom</label>
-                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
-            </div>
-            <div class="form-group">
                 <label for="lastname">Nom</label>
                 <input class="form-control" type="text" name="lastname" id="lastname" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="firstname">Prénom</label>
+                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -44,12 +44,12 @@
     <div id="form-teacher" role="tabpanel" class="tab-pane">
         <form  method="post" enctype="multipart/form-data" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
-                <label for="firstname">Prénom</label>
-                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
-            </div>
-            <div class="form-group">
                 <label for="lastname">Nom</label>
                 <input class="form-control" type="text" name="lastname" id="lastname" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="firstname">Prénom</label>
+                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -103,7 +103,6 @@
                     <option value="Domicile">Domicile</option>
                     <option value="Chez l'étudiant">Chez l'étudiant</option>
                     <option value="Au choix">Au choix</option>
-
                 </select>
             </div>
             <div class="form-group">
