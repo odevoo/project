@@ -30,30 +30,53 @@
 		            	<li><a href="#"></a></li>
 		          	</ul>
 
-		        	<ul class="nav navbar-nav navbar-right">
-		        	<?php if (isset($_SESSION['user'])): ?>
-		        		<li class="dropdown navbar-align-right">
-		              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'] ; ?> <span class="caret"></span>
-		              		</a>
-			              	<ul class="dropdown-menu" id="dropdown-member">
-				                <li><a href="<?= $this->url('lessons_page'); ?>"><i class="fa fa-book icon" aria-hidden="true"></i> Mes cours</a></li>
-				                <li><a href="<?= $this->url('admin_settings');?>"><i class="fa fa-cog icon" aria-hidden="true"></i> Paramètres </a></li>
-				                <li role="separator" class="divider"></li>
-				                <li><a href="<?= $this->url('admin_logout'); ?>"><i class="fa fa-power-off icon" aria-hidden="true"></i> Deconnexion</a></li>
-			              	</ul>
-		            	</li>
-		            	<?php endif; ?>
-		            	<?php if (!isset($_SESSION['user'])): ?>
-			            	<li class="navbar-align-right"><a href="<?= $this->url('admin_register');?>"><i class="fa fa-paper-plane icon" aria-hidden="true"></i> Inscription</a></li>
-			            	<li class="navbar-align-right"><a href="<?= $this->url('admin_login');?>"><i class="fa fa-power-off icon" aria-hidden="true"></i> Connection</a></li>
-		            	<?php endif; ?>
-		        	</ul>
-		        </div>
-			</div>
-	    </nav>
+
+			        	<ul class="nav navbar-nav navbar-right">
+			        	<?php if (isset($_SESSION['user'])): ?>
+			        		<li class="dropdown navbar-align-right">
+			              		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['user']['firstname'].' '.$_SESSION['user']['lastname'] ; ?> <span class="caret"></span>
+			              		</a>
+				              	<ul class="dropdown-menu" id="dropdown-member">
+					                <li><a href="<?= $this->url('lessons_page'); ?>"><i class="fa fa-book icon" aria-hidden="true"></i> Mes cours</a></li>
+					                <li><a href="<?= $this->url('admin_settings');?>"><i class="fa fa-cog icon" aria-hidden="true"></i> Paramètres </a></li>
+					                <li role="separator" class="divider"></li>
+					                <li><a href="<?= $this->url('admin_logout'); ?>"><i class="fa fa-power-off icon" aria-hidden="true"></i> Deconnexion</a></li>
+				              	</ul>
+			            	</li>
+			            	<?php endif; ?>
+			            	<?php if (!isset($_SESSION['user'])): ?>
+				            	<li class="navbar-align-right"><a href="<?= $this->url('admin_register');?>"><i class="fa fa-paper-plane icon" aria-hidden="true"></i> Inscription</a></li>
+				            	<li class="navbar-align-right"><a data-placement="bottom" data-toggle="popover" title="Connexion" 
+		data-content=""><i class="fa fa-power-off icon" aria-hidden="true"></i> Connexion</a></li>
+			            	<?php endif; ?>
+			        	</ul>
+			        </div>
+				</div>
+		    </nav>
+		</div>
 	</header>
 
 	<div class="container contenu">
+		
+		<div  id="popover_content_wrapper" style="display: none">
+			
+		
+			<form class="" method="post" action="<?= $this->url('admin_process_login') ?>">
+            	<div class="form-group">
+                	<label for="email">Email</label>
+                	<input class="form-control" type="email" name="email" id="email" placeholder="">
+            	</div>
+            	<div class="form-group">
+                	<label for="password">Password</label>
+                	<input class="form-control" type="password" name="password" id="password" placeholder="">
+            	</div>
+            	<div class="form-group">
+                	<input type="submit" class="btn btn-success form-control" name="btn" value="Connexion">
+            	</div>
+    		</form>
+    	</div>
+
+
 		<?php if (isset($_SESSION['flash'])): ?>
 	    	<?php foreach ($_SESSION['flash'] as $type => $message): ?>
 
@@ -108,5 +131,10 @@
 				</div>
 			</div>
 	</footer>
+<<<<<<< HEAD
+=======
+	<script type="text/javascript" src="<?= $this->assetUrl('js/login.js') ?>"></script>
+
+>>>>>>> aabc980e5cae8c10dc02fdf40b5a3da8c8eb98bb
 </body>
 </html>

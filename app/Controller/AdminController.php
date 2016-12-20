@@ -101,7 +101,7 @@ class AdminController extends Controller
           $login->logUserIn($result);
           // debug($_SESSION['user']);
           $_SESSION['flash']['success'] = 'Vous êtes connecté';
-          $this->showLoginForm();
+          $this->redirectToRoute('default_home');
         }else {
           $student = new StudentModel;
           $result = $student->find($user);
@@ -109,7 +109,7 @@ class AdminController extends Controller
           $login->logUserIn($result);
 
           $_SESSION['flash']['success'] = 'Vous êtes connecté';
-          $this->showLoginForm();
+          $this->redirectToRoute('default_home');
           // debug($_SESSION['user']);
         }
       }
@@ -123,7 +123,7 @@ class AdminController extends Controller
       $log->logUserOut();
 
       $_SESSION['flash']['success'] = 'Vous êtes déconnecté';
-      $this->showLoginForm();
+      $this->redirectToRoute('default_home');
       //debug($_SESSION);
     }
 
