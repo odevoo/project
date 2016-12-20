@@ -17,7 +17,7 @@
 				<h3 class=""><?= $teacher['firstname'].' '.$teacher['lastname']; ?> </h3>
 				<table class="table table-bordered">
 					<thead>
-						<tr>
+						<tr class="info">
 							<th class="col-md-4">Localisation : </th>
 							<th class="col-md-4">Niveau d'étude :</th>
 							<th class="col-md-4">Tarifs :</th>

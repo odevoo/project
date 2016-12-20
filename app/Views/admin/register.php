@@ -86,7 +86,6 @@
                         <?php endforeach; ?>
                     </div>
                 <?php endforeach; ?>
-
             </div>
             <div class="form-group">
                 <label for="level">Niveau maximum enseigné</label>
@@ -119,7 +118,6 @@
             <input type="hidden" name="lng" id="autocompleteteach_lng"  value="">
             <input type="hidden" name="nbSubjects" value="<?= count($subjects) ?>">
         </form>
-
     </div>
     <script type="text/javascript" src="<?= $this->assetUrl('js/googleplace.js') ?>"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVvV3H3-rcwoX6X-Jq1PXMOhiF-6EyO-E&signed_in=true&libraries=places&callback=initAutocomplete"

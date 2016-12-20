@@ -1,8 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Settings']) ?>
 
 <?php $this->start('main_content') ?>
-    <div class ="container">
-        <h1>Modifier mes informations</h1>
+        <h2>Modifier votre profil</h2>
         <form class="" method="post" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
                 <label for="firstname">Prénom</label>
@@ -17,6 +16,10 @@
                 <input class="form-control" type="password" name="password" id="password" placeholder="">
             </div>
             <div class="form-group">
+                <label for="password">Verification password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="">
+            </div>
+            <div class="form-group">
                 <label for="email">Email</label>
                 <input class="form-control" type="email" name="email" id="email" placeholder="">
             </div>
@@ -25,7 +28,11 @@
                 <input type="text" id="autocomplete"  onFocus="geolocate()" class="autocomplete form-control" name="" value="" placeholder="Adresse">
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-primary" name="btn" value="Mofifier mes informations">
+                <label for="avatar">Modifier votre avatar</label>
+                <input class="form-control" type="file" name="file" id="file" placeholder="">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="btn" value="Modifier mes informations">
             </div>
             <input type="hidden" name="type" value="student">
             <input type="hidden" name="streetNumber" id="autocomplete_street_number"  value="">
@@ -37,5 +44,5 @@
         </form>
     </div>
 
-
+    
 <?php $this->stop('main_content') ?>
