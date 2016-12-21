@@ -101,7 +101,7 @@ class AdminController extends Controller
           $login->logUserIn($result);
           // debug($_SESSION['user']);
           $_SESSION['flash']['success'] = 'Vous êtes connecté';
-          $this->showLoginForm();
+          $this->redirectToRoute('default_home');
         }else {
           $student = new StudentModel;
           $result = $student->find($user);
@@ -109,13 +109,66 @@ class AdminController extends Controller
           $login->logUserIn($result);
 
           $_SESSION['flash']['success'] = 'Vous êtes connecté';
-          $this->showLoginForm();
+          $this->redirectToRoute('default_home');
           // debug($_SESSION['user']);
         }
+      } else{
+        $_SESSION['flash']['danger'] = ' Votre login / mot de passe sont invalide';
+        $this->redirectToRoute('default_home');
       }
     }
     public function showSettingsPage() {
-        $this->show('admin/settings');
+        $level = new LevelModel;
+        $leveldata = $level->findAll();
+        $search = new SearchController;
+        $subjects = $search->getAllSubjects();
+        $this->show('admin/settings', ['subjects' => $subjects, 'levels' => $leveldata]);
+    }
+
+    public function updateSettings() {
+      echo getType($_POST['password']);
+      debug($_FILES);
+      debug($_POST);
+      debug(strlen($_POST['password']));
+      if ($_POST['type'] == 'teacher') {
+      $teacherglobal = new TeacherModel;
+      $teacherglobal->update(['lastname'=> $_POST['lastname'], 'firstname'=> $_POST['firstname'], 'email'=> $_POST['email'],'price'=> $_POST['price'], 'description'=> $_POST['desc']],$_SESSION['user']['id']);
+
+        if (strlen($_POST['password']) != 0 && strlen($_POST['password-confirm']) != 0) {
+          if ($_POST['password'] === $_POST['password-confirm']){
+            $passwordhash = new AuthentificationModel;
+            $password = $passwordhash->hashPassword($_POST['password']);
+            $teacher = new TeacherModel;
+            $teacher->update(['password'=> $password], $_SESSION['user']['id']);
+          } else {
+            $_SESSION['flash']['danger'] = 'Les mots de passe ne correspondent pas';
+            $this->redirectToRoute('admin_settings');
+          }
+        }
+        if (!empty($_FILES['file']['name'])){
+          $temp = explode(".", $_FILES["file"]["name"]);
+          $newfilename = $_POST['lastname'] . '.' . end($temp);
+          move_uploaded_file($_FILES["file"]["tmp_name"], "../public/assets/upload/" . $newfilename);
+          $teacher = new TeacherModel;
+          $teacher->update(['avatar'=> 'upload/'.$newfilename], $_SESSION['user']['id']);
+        }
+      }else{
+      $studentglobal = new StudentModel;
+      $studentglobal->update(['lastname'=> $_POST['lastname'], 'firstname'=> $_POST['firstname'], 'email'=> $_POST['email']],$_SESSION['user']['id']);
+
+        if (strlen($_POST['password']) != 0 && strlen($_POST['password-confirm']) != 0) {
+          if ($_POST['password'] === $_POST['password-confirm']){
+            $passwordhash = new AuthentificationModel;
+            $password = $passwordhash->hashPassword($_POST['password']);
+            $student = new StudentModel;
+            $student->update(['password'=> $password], $_SESSION['user']['id']);
+          }
+        }
+      }
+      $refresh = new AuthentificationModel;
+      $refresh->refreshUser();
+      $_SESSION['flash']['success'] = 'Modifications effectuées avec succès';
+      $this->redirectToRoute('default_home');
     }
 
     public function processlogOut() {
@@ -123,7 +176,7 @@ class AdminController extends Controller
       $log->logUserOut();
 
       $_SESSION['flash']['success'] = 'Vous êtes déconnecté';
-      $this->showLoginForm();
+      $this->redirectToRoute('default_home');
       //debug($_SESSION);
     }
 

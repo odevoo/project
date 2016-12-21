@@ -10,12 +10,12 @@
     <div id="form-student" role="tabpanel" class="tab-pane active">
         <form  method="post" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
-                <label for="firstname">Prénom</label>
-                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
-            </div>
-            <div class="form-group">
                 <label for="lastname">Nom</label>
                 <input class="form-control" type="text" name="lastname" id="lastname" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="firstname">Prénom</label>
+                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -44,12 +44,12 @@
     <div id="form-teacher" role="tabpanel" class="tab-pane">
         <form  method="post" enctype="multipart/form-data" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
-                <label for="firstname">Prénom</label>
-                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
-            </div>
-            <div class="form-group">
                 <label for="lastname">Nom</label>
                 <input class="form-control" type="text" name="lastname" id="lastname" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="firstname">Prénom</label>
+                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
@@ -86,7 +86,6 @@
                         <?php endforeach; ?>
                     </div>
                 <?php endforeach; ?>
-
             </div>
             <div class="form-group">
                 <label for="level">Niveau maximum enseigné</label>
@@ -104,7 +103,6 @@
                     <option value="Domicile">Domicile</option>
                     <option value="Chez l'étudiant">Chez l'étudiant</option>
                     <option value="Au choix">Au choix</option>
-
                 </select>
             </div>
             <div class="form-group">
@@ -119,7 +117,6 @@
             <input type="hidden" name="lng" id="autocompleteteach_lng"  value="">
             <input type="hidden" name="nbSubjects" value="<?= count($subjects) ?>">
         </form>
-
     </div>
     <script type="text/javascript" src="<?= $this->assetUrl('js/googleplace.js') ?>"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVvV3H3-rcwoX6X-Jq1PXMOhiF-6EyO-E&signed_in=true&libraries=places&callback=initAutocomplete"

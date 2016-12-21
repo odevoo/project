@@ -29,7 +29,7 @@
 
 
         ['GET', '/settings', 'Admin#showSettingsPage', 'admin_settings'],
-
+        ['POST', '/updatessettings', 'Admin#updateSettings', 'admin_update'],
 
 		/*  Déconnexion  */
 		['GET', '/logout', 'Admin#processlogOut', 'admin_logout'],
@@ -53,8 +53,6 @@
         ['POST', '/ratinglesson', 'Lessons#ratingLesson', 'lessons_rating'],
         ['POST', '/validlesson', 'Lessons#validLesson', 'lessons_valid'],
          ['POST', '/finalizelesson', 'Lessons#finalizeLesson', 'lessons_finalize'],
-
-
 
 
 	);
