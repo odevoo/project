@@ -392,3 +392,17 @@ li {
 .id-search {
 	 font-style: italic;
 }
+
+
+.img-miniature {
+	width: 30px;	
+}
+
+#subject-table td {
+    vertical-align: middle;
+}
+
+.table-subject-header {
+	margin: 18px -15px;
+}
+
