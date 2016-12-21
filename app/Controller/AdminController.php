@@ -151,6 +151,33 @@ class AdminController extends Controller
         } 
     }  
 
+
+    public function updateSubjectForm() {
+    debug($_POST);
+    debug($_FILES);
+//      debug($_POST['id']);
+//      debug($_POST['name']);
+    $subject = new SubjectModel($_POST['name']);
+    $toto = $subject->getName();
+    debug($toto);
+    $subject->update(['name' => $subject->getName()], $_POST['id']);
+    if (!empty($_FILES['photoSubjects']['name'])) {
+      $subject = new SubjectModel($_POST['name'], $_FILES['photoSubjects']['name']);
+      $subject->update(['img' => 'img/'.$subject->getImg()], $_POST['id']); 
+      $repertoire = '../public/assets/img/'; // le répertoire ou copier l'image
+      $fichier = $_FILES['photoSubjects']['name']; //le nom de l'image
+      $tmpName = $_FILES['photoSubjects']['tmp_name']; //le fichier temporaire
+      debug($fichier);
+      debug($tmpName);
+      move_uploaded_file($tmpName, $repertoire.$fichier); 
+   }
+      $_SESSION['flash']['success']='Matière modifiée avec succès !';
+      $this->redirectToRoute('admin_subject');
+    }
+
+
+
+
     public function deleteSubjectForm() {
       $subject = new SubjectModel();
       $expertise = new ExpertiseModel();
@@ -164,4 +191,6 @@ class AdminController extends Controller
         $this->redirectToRoute('admin_subject');
       }
     }
+
+
 }
