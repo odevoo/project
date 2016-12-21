@@ -14,10 +14,10 @@ $this->layout('layout', ['title' => 'Admin Matières']);
 			<tr>
 				<th class="col-md-1 id-search">Code</th>
 				<th class="col-md-1">Img</th>
-				<th class="col-md-3">Intitullé</th>
-				<th class="col-md-2 text-center"></th>
-				<th class="col-md-5">Fichier image</th>
-				<th class="col-md-2 text-center"></th>
+				<th class="col-md-2">Intitullé</th>
+				<th class="col-md-3">Fichier image</th>
+				<th class="col-md-1 text-center"></th>
+				<th class="col-md-1 text-center"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -36,8 +36,8 @@ $this->layout('layout', ['title' => 'Admin Matières']);
 				<form method="post" enctype="multipart/form-data" action="<?= $this->url('admin_update_subject') ?>">
 					<input type="hidden" name="id" value="<?=$id; ?>">
 					<td><input type="text" name="name" value="<?php echo $name; ?>"></td>
-					<td><input id="update-subject" type="submit" name="btnUpdate" value="Modifier" class="btn btn-xs btn-success " /></td>
 					<td><input class="img-subject" type="file" name="photoSubjects" id="photo" value="<?php echo $img; ?>" class="form-control" accept="image/*"  /></td>
+					<td><input id="update-subject" type="submit" name="btnUpdate" value="Modifier" class="btn btn-xs btn-success " /></td>
 				</form>
 				<td>
 					<form method="post" action="<?= $this->url('admin_delete_subject') ?>">
@@ -53,8 +53,8 @@ $this->layout('layout', ['title' => 'Admin Matières']);
 					<td class="id-search">...</td>
 					<td><img src="<?= $this->assetUrl('img/pointint.svg') ?>" class="img-miniature img-responsive"></td>
 					<td><input type="text" name="name"></td>
-					<td></td>
 					<td><input class="img-subject" type="file" name="photoSubjects" id="photo"  class="form-control" accept="image/*" required /></td>
+					<td></td>
 					<td><input type="submit" name="btnSub" value="Ajouter" class="btn btn-xs btn-success center-block" /></td>
 				</form>
 			</tr>

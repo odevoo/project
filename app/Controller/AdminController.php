@@ -133,7 +133,7 @@ class AdminController extends Controller
 
     public function showSubjectForm() {
         $subject = new SubjectModel;
-        $subjectdata = $subject->findAll();
+        $subjectdata = $subject->findAll($orderBy = 'name');
         $this->show('admin/subjects', ['subjects' => $subjectdata]);
     }
 
