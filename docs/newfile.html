@@ -1,99 +1,118 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        
-        
-        <style>
+<div id="invoiceholder">
 
-body {
-    margin:     0;
-    padding:    0;
-    width:      21cm;
-    height:     29.7cm;
-}
-
-/* Printable area */
-#print-area {
-    position:   relative;
-    top:        1cm;
-    left:       1cm;
-    width:      19cm;
-    height:     27.6cm;
-
-}
+  <div id="headerimage"></div>
+  <div id="invoice" class="effect2">
+    
+    <div id="invoice-top">
+      <div class="logo"></div>
+      <div class="info">
+        <h2>Michael Truong</h2>
+        <p> hello@michaeltruong.ca </br>
+            289-335-6503
+        </p>
+      </div><!--End Info-->
+      <div class="title">
+        <h1>Invoice #1069</h1>
+        <p>Issued: May 27, 2015</br>
+           Payment Due: June 27, 2015
+        </p>
+      </div><!--End Title-->
+    </div><!--End InvoiceTop-->
 
 
-        </style>
-        
+    
+    <div id="invoice-mid">
       
-    </head>
-     <!-- 
-    <body>
-        <div id="print-area" class="invoice-content-2">
-  <div class="row invoice-head">
-    <div class="col-md-7 col-xs-6">
-      <div class="invoice-logo">
-        
+      <div class="clientlogo"></div>
+      <div class="info">
+        <h2>Client Name</h2>
+        <p>JohnDoe@gmail.com</br>
+           555-555-5555</br>
       </div>
-    </div>
-    <div class="col-md-5 col-xs-6">
-      <div class="company-address">
-        <b>INVOICE #ATL-002</b><br />
-        <span class="fa fa-globe"></span> devgrounds.co.za<br>
-        <span class="fa fa-envelope"></span> johan@devgrounds.co.za<br>
-        <span class="fa fa-phone"></span> 076 568 9376
-      </div>
-    </div>
-  </div>
-  <div class="row invoice-cust-add">
-    <div class="col-xs-3">
-      <h2 class="invoice-title uppercase">Customer</h2>
-      <p class="">Atlantic Trailers</p>
-    </div>
-    <div class="col-xs-6">
-      <h2 class="invoice-title uppercase">Address</h2>
-      <p class="invoice-desc inv-address">C/o Doreen & Hendrik Potgieter Road, Ruimsig, Roodepoort</p>
-    </div>
-    <div class="col-xs-3 text-right">
-      <h2 class="invoice-title uppercase">Date</h2>
-      <p class="">2016/08/10</p>
-    </div>
-  </div>
-  <div class="row invoice-body">
-    <div class="col-xs-12 table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th class="invoice-title uppercase">Description</th>
-            <th class="invoice-title uppercase text-right">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <h3>Monthly Maintenance and Operational Cost</h3>
-              <ul>
-                <li>Business Grade Server</li>
-                <li>Daily backup of data</li>
-                <li>Software Maintenance</li>
-              </ul>
-            </td>
-            <td class="text-right sbold">R500.00</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="row invoice-subtotal">
-    <div class="col-xs-6">
-      <h2 class="invoice-title uppercase">Banking Details</h2>-->
-    <body>
-     <div id="print-area">
-      
-        FNBBank
-        Account
-        Branch
-        </div>
 
-    </body>
-</html>
+      <div id="project">
+        <h2>Project Description</h2>
+        <p>Proin cursus, dui non tincidunt elementum, tortor ex feugiat enim, at elementum enim quam vel purus. Curabitur semper malesuada urna ut suscipit.</p>
+      </div>   
+
+    </div><!--End Invoice Mid-->
+    
+    <div id="invoice-bot">
+      
+      <div id="table">
+        <table>
+          <tr class="tabletitle">
+            <td class="item"><h2>Item Description</h2></td>
+            <td class="Hours"><h2>Hours</h2></td>
+            <td class="Rate"><h2>Rate</h2></td>
+            <td class="subtotal"><h2>Sub-total</h2></td>
+          </tr>
+          
+          <tr class="service">
+            <td class="tableitem"><p class="itemtext">Communication</p></td>
+            <td class="tableitem"><p class="itemtext">5</p></td>
+            <td class="tableitem"><p class="itemtext">$75</p></td>
+            <td class="tableitem"><p class="itemtext">$375.00</p></td>
+          </tr>
+          
+          <tr class="service">
+            <td class="tableitem"><p class="itemtext">Asset Gathering</p></td>
+            <td class="tableitem"><p class="itemtext">3</p></td>
+            <td class="tableitem"><p class="itemtext">$75</p></td>
+            <td class="tableitem"><p class="itemtext">$225.00</p></td>
+          </tr>
+          
+          <tr class="service">
+            <td class="tableitem"><p class="itemtext">Design Development</p></td>
+            <td class="tableitem"><p class="itemtext">5</p></td>
+            <td class="tableitem"><p class="itemtext">$75</p></td>
+            <td class="tableitem"><p class="itemtext">$375.00</p></td>
+          </tr>
+          
+          <tr class="service">
+            <td class="tableitem"><p class="itemtext">Animation</p></td>
+            <td class="tableitem"><p class="itemtext">20</p></td>
+            <td class="tableitem"><p class="itemtext">$75</p></td>
+            <td class="tableitem"><p class="itemtext">$1,500.00</p></td>
+          </tr>
+          
+          <tr class="service">
+            <td class="tableitem"><p class="itemtext">Animation Revisions</p></td>
+            <td class="tableitem"><p class="itemtext">10</p></td>
+            <td class="tableitem"><p class="itemtext">$75</p></td>
+            <td class="tableitem"><p class="itemtext">$750.00</p></td>
+          </tr>
+          
+          <tr class="service">
+            <td class="tableitem"><p class="itemtext"></p></td>
+            <td class="tableitem"><p class="itemtext">HST</p></td>
+            <td class="tableitem"><p class="itemtext">13%</p></td>
+            <td class="tableitem"><p class="itemtext">$419.25</p></td>
+          </tr>
+          
+            
+          <tr class="tabletitle">
+            <td></td>
+            <td></td>
+            <td class="Rate"><h2>Total</h2></td>
+            <td class="payment"><h2>$3,644.25</h2></td>
+          </tr>
+          
+        </table>
+      </div><!--End Table-->
+      
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+      <input type="hidden" name="cmd" value="_s-xclick">
+      <input type="hidden" name="hosted_button_id" value="QRZ7QTM9XRPJ6">
+      <input type="image" src="http://michaeltruong.ca/images/paypal.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    </form>
+
+      
+      <div id="legalcopy">
+        <p class="legal"><strong>Thank you for your business!</strong>  Payment is expected within 31 days; please process this invoice within that time. There will be a 5% interest charge per month on late invoices. 
+        </p>
+      </div>
+      
+    </div><!--End InvoiceBot-->
+  </div><!--End Invoice-->
+</div><!-- End Invoice Holder-->
