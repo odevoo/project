@@ -25,5 +25,12 @@ class ExpertiseModel extends \W\Model\Model
         $subject = $stmt->fetch();
         return $subject;
     }
+    public function deleteTeacherSubjects($id) {
+      $sql = 'DELETE FROM expertises WHERE id_teacher = :id';
+      $stmt = $this->dbh->prepare($sql);
+      $stmt->execute(array(':id' => $id));
+      //$teachers = $stmt->fetchAll();
+      return true;
+    }
  
 }

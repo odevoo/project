@@ -118,11 +118,26 @@ class AdminController extends Controller
       }
     }
     public function showSettingsPage() {
+        $subjects = new SubjectModel;
+        $subjectsData = $subjects->findTeacherSubjectsId($_SESSION['user']['id']);
+        //debug($subjectsData);
+        $array = [];
+        foreach ($subjectsData as $subject1) {
+        
+        foreach ($subject1 as $subject) {
+            # code...
+         
+          array_push($array, $subject);
+          
+        }
+        
+        }
+        //debug($array);
         $level = new LevelModel;
         $leveldata = $level->findAll();
         $search = new SearchController;
         $subjects = $search->getAllSubjects();
-        $this->show('admin/settings', ['subjects' => $subjects, 'levels' => $leveldata]);
+        $this->show('admin/settings', ['subjects' => $subjects, 'levels' => $leveldata, 'expertise' => $array]);
     }
 
     public function updateSettings() {
@@ -130,10 +145,20 @@ class AdminController extends Controller
       debug($_FILES);
       debug($_POST);
       debug(strlen($_POST['password']));
+
       if ($_POST['type'] == 'teacher') {
       $teacherglobal = new TeacherModel;
       $teacherglobal->update(['lastname'=> $_POST['lastname'], 'firstname'=> $_POST['firstname'], 'email'=> $_POST['email'],'price'=> $_POST['price'], 'description'=> $_POST['desc']],$_SESSION['user']['id']);
+        $subject = new ExpertiseModel;
+        $subject->deleteTeacherSubjects($_SESSION['user']['id']);
 
+        foreach ($_POST as $key => $value) {
+          if ($value == 'on') {
+              $subject = new ExpertiseModel;
+              $subject->insert(['id_teacher' => $_SESSION['user']['id'], 'id_subject' => $key]);
+
+              } 
+          }
         if (strlen($_POST['password']) != 0 && strlen($_POST['password-confirm']) != 0) {
           if ($_POST['password'] === $_POST['password-confirm']){
             $passwordhash = new AuthentificationModel;
@@ -152,6 +177,7 @@ class AdminController extends Controller
           $teacher = new TeacherModel;
           $teacher->update(['avatar'=> 'upload/'.$newfilename], $_SESSION['user']['id']);
         }
+
       }else{
       $studentglobal = new StudentModel;
       $studentglobal->update(['lastname'=> $_POST['lastname'], 'firstname'=> $_POST['firstname'], 'email'=> $_POST['email']],$_SESSION['user']['id']);
