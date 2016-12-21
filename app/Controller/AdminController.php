@@ -12,6 +12,7 @@ use \Model\SubjectModel;
 use \Controller\SearchController;
 use \Controller\AdminController;
 use PHPMailer;
+use mikehaertl\wkhtmlto\Pdf;
 //use \W\Model\ConnectionModel;
 
 class AdminController extends Controller
@@ -216,5 +217,58 @@ class AdminController extends Controller
         $_SESSION['flash']['danger']='Cette matière ne peut pas être supprimée car utilisée par des professeurs !';
         $this->redirectToRoute('admin_subject');
       }
+    }
+
+    public function generatePdf() {
+      debug($_POST);
+      //$pdf = new Pdf('../../docs/index.html');
+      $newcontent = file_get_contents('C:\xampp\htdocs\project\docs\test.html');
+
+      if (!file_exists('C:\xampp\htdocs\project\docs\newfile.html')) { 
+        $handle = fopen('C:\xampp\htdocs\project\docs\newfile.html','w+'); 
+        fwrite($handle,$newcontent); 
+        fclose($handle); }
+
+      $pdf = new Pdf(array(
+        'no-outline',         // Make Chrome not complain
+        'margin-top'    => 0,
+        'margin-right'  => 0,
+        'margin-bottom' => 0,
+        'margin-left'   => 0,
+
+        // Default page options
+        'disable-smart-shrinking',
+        //'user-style-sheet' => 'C:\xampp\htdocs\project\docs\test.css',
+      ));
+      $pdf->binary = 'C:\wkhtmltopdf\bin\wkhtmltopdf.exe';
+      $pdf->addPage('C:\xampp\htdocs\project\docs\newfile.html');
+      //$pdf->addPage('https://www.google.fr');
+      if (!$pdf->send('report.pdf')) {
+        echo $pdf->getError();
+        }
+    }
+
+    public function uploadRib() {
+      //debug($_FILES);
+      //debug($_SESSION);
+      $temp = explode(".", $_FILES["files"]["name"][1]);
+      $newfilename = $_SESSION['user']['lastname'] . '.' . end($temp);
+      move_uploaded_file($_FILES["files"]["tmp_name"][1], "../public/assets/upload/rib/" . $newfilename);
+      $teacher = new TeacherModel;
+      $teacher->update(['rib' => 'upload/rib/'.$newfilename], $_SESSION['user']['id']);
+      $refresh = new AuthentificationModel;
+      $refresh->refreshUser();
+      $_SESSION['flash']['success'] = 'Votre RIB a été enregistré avec succès';
+      $data = 'ok';
+      $this->showJson($data);
+
+    }
+    public function deleteRib() {
+      $teacher = new TeacherModel;
+      $teacher->update(['rib' => '' ], $_SESSION['user']['id']);
+      $refresh = new AuthentificationModel;
+      $refresh->refreshUser();
+      $_SESSION['flash']['success'] = "votre rib a été supprimé avec succès";
+      $this->redirectToRoute('admin_settings');
     }
 }
