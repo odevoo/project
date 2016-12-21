@@ -9,12 +9,12 @@ use \Model\TeacherModel;
 use \Model\LevelModel;
 use \Model\ExpertiseModel;
 use \Model\SubjectModel;
+
 use \Controller\SearchController;
-use \Controller\AdminController;
-use PHPMailer;
+
 //use \W\Model\ConnectionModel;
 
-class AdminController extends Controller
+class AdminController extends DefaultController
 {
 
     /**
@@ -117,6 +117,61 @@ class AdminController extends Controller
         $this->redirectToRoute('default_home');
       }
     }
+
+    public function lostPasswordForm() {
+//    debug($_SESSION);
+
+    $this->show('admin/lost');
+    }
+
+
+     public function resetPasswordForm() {
+//      debug($_POST);
+      $user = new StudentModel();
+      $isemail = $user->emailExists($_POST['email']);
+      if($isemail) {
+      $infoUser = $user->getUserByUsernameOrEmail($_POST['email']);
+      $email = $_POST['email'];
+//      debug($infoUser);
+      $token = md5($email.date('dmY'));
+//      debug($token);
+      $user->update(['token_psw'=> $token], $infoUser['id']);
+      $link = "http://".$_SERVER['SERVER_NAME'].
+        "/project/public/reinitpwd/".$infoUser['id']."/".$token;
+//      debug($link);
+      $subject = 'Oh Ce Cours !! - Réinitialisation de votre mot de passe';
+        $recipient = $_POST['email'];
+        $title = 'Votre lien.';
+        $content = '<p>Url: <a href="'.$link.'">'.$link.'</a></p>';
+        $this->sendMail($recipient, $subject,$title,$content);
+
+        // redirection
+        $_SESSION['flash']['success'] = 'Un mail a été envoyé sur votre messagerie, merci de cliquer sur le lien qu\'il contient';
+        $this->redirectToRoute('default_home');
+     }
+  }
+    
+
+    public function reinitPasswordForm($id, $token) {
+      $user = new StudentModel;
+      $result = $user->find($id);
+      if ($result['token_psw']==$token) {
+        $this->show('admin/reinitpwd',['id' => $id]);
+      } else {
+        $_SESSION['flash']['danger'] = 'Désolé, votre identifiant n\'est pas reconnu !';
+      }
+    }
+
+    public function majPassword() {
+      $user = new StudentModel;
+      $auth = new AuthentificationModel;
+      $passhash = $auth->hashPassword($_POST['password']);
+      $user->update(['password'=> $passhash, 'token_psw' => ''], $_POST['id']);
+      $_SESSION['flash']['success'] = 'Votre nouveau mot de passe a bien été pris en compte!';
+      $this->redirectToRoute('default_home');
+    }
+
+
     public function showSettingsPage() {
         $level = new LevelModel;
         $leveldata = $level->findAll();
