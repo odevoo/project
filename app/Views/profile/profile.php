@@ -55,7 +55,7 @@ $this->start('main_content');
                     </table>
                 </div>
 
-                <div class="col-md-5">
+                <div class="col-md-5" >
                     <table class="table table-bordered table-hover table-stripped">
                         <thead>
                             <tr class="info">
@@ -72,7 +72,25 @@ $this->start('main_content');
                             </tr>
                         </tbody>
                     </table>
+                    <div class="col-md-12 table-city">
+                       <table class="table table-bordered table-hover table-stripped">
+                        <thead>
+                            <tr class="info">
+                                <th class="text-center">Ville</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="">
+                                <td class="text-center"><?= $teacher['city']; ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
               </div>
+              
+
+
             </div>
             <hr class="col-md-8 col-md-offset-2 col-xs-8 col-xs-offset-2 profile-hr">
             <div class="row">

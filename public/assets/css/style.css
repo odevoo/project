@@ -248,8 +248,12 @@ li {
 	border-top: 1px solid #828282;
 }
 
-.search-form{
+.search-form {
 	margin-top: 10px;
+}
+
+.table-city {
+margin-top: 16px;
 }
 
 /*-- --*//*-- --*//*-- End Profile --*//*-- --*//*-- --*/
