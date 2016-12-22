@@ -120,7 +120,7 @@
                 <h3 class="panel-title">Revenu depuis votre inscription</h3>
             </div>
             <div class="panel-body">
-                <h1>Total: </h1>
+                <h1><?= $total ?> € </h1>
             </div>
         </div>
 

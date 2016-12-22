@@ -24,6 +24,8 @@ class AdminController extends Controller
      */
     public function showRegisterForm()
     {
+
+    
         $level = new LevelModel;
         $leveldata = $level->findAll();
         $search = new SearchController;
@@ -120,11 +122,22 @@ class AdminController extends Controller
       }
     }
     public function showSettingsPage() {
+        $lesson = new LessonsModel;
+        $lessons = $lesson->getLessonsByStatutTeacherInfo($_SESSION['user']['id'], 4);
+
+        $total = 0;
+        foreach ($lessons as $lesson) {
+          $price = ($lesson['hend'] - $lesson['hstart']) * $lesson['price'];
+          $totallesson = $price - ( $price * (5/100));
+          $total += $totallesson; 
+        }
+
+
         $level = new LevelModel;
         $leveldata = $level->findAll();
         $search = new SearchController;
         $subjects = $search->getAllSubjects();
-        $this->show('admin/settings', ['subjects' => $subjects, 'levels' => $leveldata]);
+        $this->show('admin/settings', ['subjects' => $subjects, 'levels' => $leveldata, 'total' => $total]);
     }
 
     public function updateSettings() {
