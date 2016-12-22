@@ -14,8 +14,8 @@
 				<img class="img-responsive avatar center-block" src="<?= $this->assetUrl($teacher['avatar']); ?>">
 			</div>
 			<div class="col-md-8" >
-				<h3 class=""><?= $teacher['firstname'].' '.$teacher['lastname']; ?> </h3>
-				<table class="table table-bordered">
+				<h3 class="teacherblock"><?= $teacher['firstname'].' '.$teacher['lastname']; ?> </h3>
+				<table class="table table-bordered ">
 					<thead>
 						<tr class="info">
 							<th class="col-md-4">Localisation : </th>

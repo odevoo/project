@@ -11,23 +11,23 @@
         <form  method="post" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
                 <label for="lastname">Nom</label>
-                <input class="form-control" type="text" name="lastname" id="lastname" placeholder="">
+                <input class="form-control" type="text" name="lastname" id="lastname" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="firstname">Prénom</label>
-                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
+                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input class="form-control" type="password" name="password" id="password" placeholder="">
+                <input class="form-control" type="password" name="password" id="password" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input class="form-control" type="email" name="email" id="email" placeholder="">
+                <input class="form-control" type="email" name="email" id="email" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="address">Adresse</label>
-                <input type="text" id="autocomplete"  onFocus="geolocate()" class="autocomplete form-control" name="" value="" placeholder="Adresse">
+                <input type="text" id="autocomplete"  onFocus="geolocate()" class="autocomplete form-control" name="" value="" placeholder="Adresse" required>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" name="btn" value="S'inscrire">
@@ -45,27 +45,27 @@
         <form  method="post" enctype="multipart/form-data" action="<?= $this->url('admin_process_register') ?>">
             <div class="form-group">
                 <label for="lastname">Nom</label>
-                <input class="form-control" type="text" name="lastname" id="lastname" placeholder="">
+                <input class="form-control" type="text" name="lastname" id="lastname" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="firstname">Prénom</label>
-                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="">
+                <input class="form-control"  type="text" name="firstname" id="firstname" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input class="form-control" type="password" name="password" id="password" placeholder="">
+                <input class="form-control" type="password" name="password" id="password" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input class="form-control" type="email" name="email" id="email" placeholder="">
+                <input class="form-control" type="email" name="email" id="email" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="address">Adresse</label>
-                <input type="text" id="autocompleteteach"  onFocus="geolocate()" class="autocomplete form-control" name="" value="" placeholder="Adresse">
+                <input type="text" id="autocompleteteach"  onFocus="geolocate()" class="autocomplete form-control" name="" value="" placeholder="Adresse" required>
             </div>
             <div class="form-group">
                 <label for="rating">Tarif horaire</label>
-                <input class="form-control" type="number" name="rating" id="rating" placeholder="">
+                <input class="form-control" type="number" name="rating" id="rating" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="desc">Description</label>

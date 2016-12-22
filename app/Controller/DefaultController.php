@@ -20,10 +20,10 @@ class DefaultController extends Controller
 
 	public function searchRandomTeacher()
 	{
-		$int1 = rand(0, 8);
-		$int2 = rand(0, 8);
-		$int3 = rand(0, 8);
-		$int4 = rand(0, 8);
+		$int1 = rand(0, 29);
+		$int2 = rand(0, 29);
+		$int3 = rand(0, 29);
+		$int4 = rand(0, 29);
 
 		$prof = new TeacherModel;
 
