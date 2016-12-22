@@ -10,13 +10,15 @@ use \Model\LevelModel;
 use \Model\LessonsModel;
 use \Model\ExpertiseModel;
 use \Model\SubjectModel;
+
 use \Controller\SearchController;
 use \Controller\AdminController;
 use PHPMailer;
 use mikehaertl\wkhtmlto\Pdf;
+
 //use \W\Model\ConnectionModel;
 
-class AdminController extends Controller
+class AdminController extends DefaultController
 {
 
     /**
@@ -121,7 +123,63 @@ class AdminController extends Controller
         $this->redirectToRoute('default_home');
       }
     }
+
+    public function lostPasswordForm() {
+//    debug($_SESSION);
+
+    $this->show('admin/lost');
+    }
+
+
+     public function resetPasswordForm() {
+//      debug($_POST);
+      $user = new StudentModel();
+      $isemail = $user->emailExists($_POST['email']);
+      if($isemail) {
+      $infoUser = $user->getUserByUsernameOrEmail($_POST['email']);
+      $email = $_POST['email'];
+//      debug($infoUser);
+      $token = md5($email.date('dmY'));
+//      debug($token);
+      $user->update(['token_psw'=> $token], $infoUser['id']);
+      $link = "http://".$_SERVER['SERVER_NAME'].
+        "/project/public/reinitpwd/".$infoUser['id']."/".$token;
+//      debug($link);
+      $subject = 'Oh Ce Cours !! - Réinitialisation de votre mot de passe';
+        $recipient = $_POST['email'];
+        $title = 'Votre lien.';
+        $content = '<p>Url: <a href="'.$link.'">'.$link.'</a></p>';
+        $this->sendMail($recipient, $subject,$title,$content);
+
+        // redirection
+        $_SESSION['flash']['success'] = 'Un mail a été envoyé sur votre messagerie, merci de cliquer sur le lien qu\'il contient';
+        $this->redirectToRoute('default_home');
+     }
+  }
+    
+
+    public function reinitPasswordForm($id, $token) {
+      $user = new StudentModel;
+      $result = $user->find($id);
+      if ($result['token_psw']==$token) {
+        $this->show('admin/reinitpwd',['id' => $id]);
+      } else {
+        $_SESSION['flash']['danger'] = 'Désolé, votre identifiant n\'est pas reconnu !';
+      }
+    }
+
+    public function majPassword() {
+      $user = new StudentModel;
+      $auth = new AuthentificationModel;
+      $passhash = $auth->hashPassword($_POST['password']);
+      $user->update(['password'=> $passhash, 'token_psw' => ''], $_POST['id']);
+      $_SESSION['flash']['success'] = 'Votre nouveau mot de passe a bien été pris en compte!';
+      $this->redirectToRoute('default_home');
+    }
+
+
     public function showSettingsPage() {
+
         $lesson = new LessonsModel;
         $lessons = $lesson->getLessonsByStatutTeacherInfo($_SESSION['user']['id'], 4);
 
@@ -132,12 +190,28 @@ class AdminController extends Controller
           $total += $totallesson; 
         }
 
+        $subjects = new SubjectModel;
+        $subjectsData = $subjects->findTeacherSubjectsId($_SESSION['user']['id']);
+        //debug($subjectsData);
+        $array = [];
+        foreach ($subjectsData as $subject1) {
+        
+        foreach ($subject1 as $subject) {
+            # code...
+         
+          array_push($array, $subject);
+          
+        }
+        
+        }
+        //debug($array);
 
         $level = new LevelModel;
         $leveldata = $level->findAll();
         $search = new SearchController;
         $subjects = $search->getAllSubjects();
-        $this->show('admin/settings', ['subjects' => $subjects, 'levels' => $leveldata, 'total' => $total]);
+        $this->show('admin/settings', ['subjects' => $subjects, 'levels' => $leveldata, 'total' => $total, 'expertise' => $array]);
+
     }
 
     public function updateSettings() {
@@ -145,10 +219,20 @@ class AdminController extends Controller
       debug($_FILES);
       debug($_POST);
       debug(strlen($_POST['password']));
+
       if ($_POST['type'] == 'teacher') {
       $teacherglobal = new TeacherModel;
       $teacherglobal->update(['lastname'=> $_POST['lastname'], 'firstname'=> $_POST['firstname'], 'email'=> $_POST['email'],'price'=> $_POST['price'], 'description'=> $_POST['desc']],$_SESSION['user']['id']);
+        $subject = new ExpertiseModel;
+        $subject->deleteTeacherSubjects($_SESSION['user']['id']);
 
+        foreach ($_POST as $key => $value) {
+          if ($value == 'on') {
+              $subject = new ExpertiseModel;
+              $subject->insert(['id_teacher' => $_SESSION['user']['id'], 'id_subject' => $key]);
+
+              } 
+          }
         if (strlen($_POST['password']) != 0 && strlen($_POST['password-confirm']) != 0) {
           if ($_POST['password'] === $_POST['password-confirm']){
             $passwordhash = new AuthentificationModel;
@@ -167,6 +251,7 @@ class AdminController extends Controller
           $teacher = new TeacherModel;
           $teacher->update(['avatar'=> 'upload/'.$newfilename], $_SESSION['user']['id']);
         }
+
       }else{
       $studentglobal = new StudentModel;
       $studentglobal->update(['lastname'=> $_POST['lastname'], 'firstname'=> $_POST['firstname'], 'email'=> $_POST['email']],$_SESSION['user']['id']);
@@ -201,7 +286,7 @@ class AdminController extends Controller
 
     public function showSubjectForm() {
         $subject = new SubjectModel;
-        $subjectdata = $subject->findAll();
+        $subjectdata = $subject->findAll($orderBy = 'name');
         $this->show('admin/subjects', ['subjects' => $subjectdata]);
     }
 
@@ -219,6 +304,33 @@ class AdminController extends Controller
         } 
     }  
 
+
+    public function updateSubjectForm() {
+    debug($_POST);
+    debug($_FILES);
+//      debug($_POST['id']);
+//      debug($_POST['name']);
+    $subject = new SubjectModel($_POST['name']);
+    $toto = $subject->getName();
+    debug($toto);
+    $subject->update(['name' => $subject->getName()], $_POST['id']);
+    if (!empty($_FILES['photoSubjects']['name'])) {
+      $subject = new SubjectModel($_POST['name'], $_FILES['photoSubjects']['name']);
+      $subject->update(['img' => 'img/'.$subject->getImg()], $_POST['id']); 
+      $repertoire = '../public/assets/img/'; // le répertoire ou copier l'image
+      $fichier = $_FILES['photoSubjects']['name']; //le nom de l'image
+      $tmpName = $_FILES['photoSubjects']['tmp_name']; //le fichier temporaire
+      debug($fichier);
+      debug($tmpName);
+      move_uploaded_file($tmpName, $repertoire.$fichier); 
+   }
+      $_SESSION['flash']['success']='Matière modifiée avec succès !';
+      $this->redirectToRoute('admin_subject');
+    }
+
+
+
+
     public function deleteSubjectForm() {
       $subject = new SubjectModel();
       $expertise = new ExpertiseModel();
@@ -232,6 +344,7 @@ class AdminController extends Controller
         $this->redirectToRoute('admin_subject');
       }
     }
+
 
     public function generatePdf() {
       debug($_POST);
@@ -587,4 +700,5 @@ form{
       $_SESSION['flash']['success'] = "votre rib a été supprimé avec succès";
       $this->redirectToRoute('admin_settings');
     }
+
 }

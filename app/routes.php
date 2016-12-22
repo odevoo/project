@@ -26,6 +26,10 @@
         ['POST', '/admininsert', 'Admin#insertSubjectForm', 'admin_insert_subject'],
         ['POST', '/admindelete', 'Admin#deleteSubjectForm', 'admin_delete_subject'],
         ['POST', '/adminupdate', 'Admin#updateSubjectForm', 'admin_update_subject'],
+        ['GET', '/adminlost', 'Admin#lostPasswordForm', 'admin_lost_password'],
+        ['POST', '/adminreset', 'Admin#resetPasswordForm', 'admin_reset_password'],
+        ['GET', '/reinitpwd/[:id]/[:token]', 'Admin#reinitPasswordForm', 'admin_reinit_password'],
+        ['POST', '/reinitpwd/[:id]/[:token]', 'Admin#majPassword', 'admin_maj_password'],
 
 
         ['GET', '/settings', 'Admin#showSettingsPage', 'admin_settings'],
@@ -57,7 +61,5 @@
         ['POST', '/cancellesson', 'Lessons#cancelLesson', 'lessons_cancel'],
         ['POST', '/ratinglesson', 'Lessons#ratingLesson', 'lessons_rating'],
         ['POST', '/validlesson', 'Lessons#validLesson', 'lessons_valid'],
-         ['POST', '/finalizelesson', 'Lessons#finalizeLesson', 'lessons_finalize'],
-
-
+        ['POST', '/finalizelesson', 'Lessons#finalizeLesson', 'lessons_finalize'],
 	);

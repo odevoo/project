@@ -67,6 +67,7 @@
             	<div class="form-group">
                 	<label for="password">Password</label>
                 	<input class="form-control" type="password" name="password" id="password" placeholder="">
+					<a href="<?= $this->url('admin_lost_password');?>">Mot de passe perdu ?</a>
             	</div>
             	<div class="form-group">
                 	<input type="submit" class="btn btn-success form-control" name="btn" value="Connexion">

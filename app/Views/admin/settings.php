@@ -1,5 +1,6 @@
 <?php $this->layout('layout', ['title' => 'Settings']) ?>
 <?php $this->start('main_content') ?>
+
 <?php if ($_SESSION['user']['is_student'] == 1): ?>
 <h2>Modifier votre profil</h2>
 <form class="" method="post" action="<?= $this->url('admin_update') ?>">
@@ -82,7 +83,7 @@
         <div class="row">
             <?php foreach ($subjectschunk as $subject): ?>
             <div class="col-md-2">
-                <input name="<?= $subject['id'] ?>" type="checkbox"><?= $subject['name'] ?>
+                <input name="<?= $subject['id'] ?>" type="checkbox" <?php if (in_array($subject['id'], $expertise)){ echo 'checked'; } ?>  ><?= $subject['name'] ?>
             </div>
             <?php endforeach; ?>
         </div>
@@ -152,6 +153,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Vous devez nous fournir un RIB avant de pourvoir effectuer un virement</h3>
+
             </div>
             <div class="panel-body">
                 <form action="<?= $this->url('admin_pdf') ?>" method="POST" >
@@ -202,6 +204,7 @@
             <div class="box__uploading">Uploading&hellip;</div>
             <div class="box__success">Done!</div>
             <div class="box__error">Error! <span></span>.</div>
+
         </form>
         </div>
     

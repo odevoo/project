@@ -52,4 +52,19 @@ class SubjectModel extends \W\Model\Model
       $teachers = $stmt->fetchAll();
       return $teachers;
     }
+      public function findTeacherSubjectsId($id) {
+      $sql = 'SELECT s.id
+              FROM subjects s
+              INNER JOIN expertises e
+              ON s.id = e.id_subject
+              INNER JOIN users u
+              ON e.id_teacher = u.id
+              WHERE
+              u.id = :id';
+      $stmt = $this->dbh->prepare($sql);
+      $stmt->execute(array(':id' => $id));
+      $teachers = $stmt->fetchAll();
+      return $teachers;
+    }
+    
 }

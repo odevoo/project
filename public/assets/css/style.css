@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:700|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:500|Roboto');
 
 /*font-family: 'Roboto', sans-serif;
 font-family: 'Open Sans', sans-serif;*/
@@ -20,7 +20,6 @@ body {
 h1,h2,h3,h4 {
 	font-family: 'Open Sans', sans-serif;
 	text-align: center;
-	/*padding: 4% 4%;*/
 }
 
 .contenu {
@@ -144,17 +143,23 @@ li {
 	/***********/
 
 .title-about {
-	margin-bottom: 3%;
+	margin: 4% 4%;
+	font-size: 40px;
 }
 
+.home-subtitle {
+	padding:2%;
+}
 .description-carrousel {
-	line-height: 22px;
+	line-height: 60px;
+	font-size: 30px;
+	color: white;
+	background: rgba(0,0,0,0.6);
+	position: absolute;
+	width: 100%;
 }
 
 .carousel {
-	/*width: 1200px;
-	height: 500px;
-	max-width: 100%;*/
 }
 
 .slider-title {
@@ -167,21 +172,22 @@ li {
 }
 
 .btn-custom {
-	margin-top: 10%;
+	margin-top: 5%;
+	margin-bottom: 1%;
 	color: white;
 	text-transform: uppercase;
-	background-color: #6290C8;
+	background-color: #1090C8;
 	padding:11px 14px;
 	font-size: 17.5px;
 	border-radius: 6px;
 }
 
 .btn-custom:hover {
-	color: #FFE100;
+	background-color: #2980b9; /*a9cef4*/
+	color: white;
 	padding:11px 14px;
 	font-size: 17.5px;
 	border-radius: 6px;
-	border: 1px solid black;
 }
 
 @media (max-width: 768px) {
@@ -343,10 +349,8 @@ li {
     background-color: #000;
 }
 
-
 /*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*//*-- --*/
 /*-- --*//*-- --*//*-- Start Register --*//*-- --*//*-- --*/
-
 
 .register-container {
 	background-color: #fff !important;
@@ -392,6 +396,7 @@ li {
 .id-search {
 	 font-style: italic;
 }
+
 
 
 /* RIB */
@@ -556,3 +561,17 @@ li {
 
 
 /* FIN RIB*/
+
+.img-miniature {
+	width: 30px;	
+}
+
+#subject-table td {
+    vertical-align: middle;
+}
+
+.table-subject-header {
+	margin: 18px -15px;
+}
+
+
