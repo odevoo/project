@@ -100,26 +100,27 @@
 
 		<?php endif; ?>
 		<?php endif; ?>
-
+		
+	<h2 class="home-subtitle">Un large choix de professeurs</h2>
 	<div class="row random-profil">
 		<div class="col-md-3 col-xs-6">
-			<img class="thumbnail img-responsive center-block avatar-home" src="<?= $this->assetUrl($profs['prof1']['avatar'])?>">
-			<h4 class="text-center"><?= $profs['prof1']['firstname'].' '.$profs['prof1']['lastname']?></h4>
+			<a href="<?= $this->url('profile_show', ['id'=> $profs['prof1']['id']]); ?>"><img class="thumbnail img-responsive center-block avatar-home" src="<?= $this->assetUrl($profs['prof1']['avatar'])?>"></a>
+			<h4 class="text-center"><strong><?= $profs['prof1']['firstname'].' '.$profs['prof1']['lastname']?></strong></h4>
 			<p class="text-center"><?= substr($profs['prof1']['description'], 0, 300) ?><p>
 		</div>
 		<div class="col-md-3 col-xs-6">
-			<img class="thumbnail img-responsive center-block avatar-home" src="<?= $this->assetUrl($profs['prof2']['avatar'])?>">
-			<h4 class="text-center"><?= $profs['prof2']['firstname'].' '.$profs['prof2']['lastname']?></h4>
+			<a href="<?= $this->url('profile_show', ['id'=> $profs['prof2']['id']]); ?>"><img class="thumbnail img-responsive center-block avatar-home" src="<?= $this->assetUrl($profs['prof2']['avatar'])?>"></a>
+			<h4 class="text-center"><strong><?= $profs['prof2']['firstname'].' '.$profs['prof2']['lastname']?></strong></h4>
 			<p class="text-center"><?= substr($profs['prof2']['description'], 0, 300) ?><p>
 		</div>
 		<div class="col-md-3 col-xs-6">
-			<img class="thumbnail img-responsive center-block avatar-home" src="<?= $this->assetUrl($profs['prof3']['avatar'])?>">
-			<h4 class="text-center"><?= $profs['prof3']['firstname'].' '.$profs['prof3']['lastname']?></h4>
+			<a href="<?= $this->url('profile_show', ['id'=> $profs['prof3']['id']]); ?>"><img class="thumbnail img-responsive center-block avatar-home" src="<?= $this->assetUrl($profs['prof3']['avatar'])?>"></a>
+			<h4 class="text-center"><strong><?= $profs['prof3']['firstname'].' '.$profs['prof3']['lastname']?></strong></h4>
 			<p class="text-center"><?= substr($profs['prof3']['description'], 0, 300) ?><p>
 		</div>
 		<div class="col-md-3 col-xs-6">
-			<img class="thumbnail img-responsive center-block avatar-home" src="<?= $this->assetUrl($profs['prof4']['avatar'])?>">
-			<h4 class="text-center"><?= $profs['prof4']['firstname'].' '.$profs['prof4']['lastname']?></h4>
+			<a href="<?= $this->url('profile_show', ['id'=> $profs['prof4']['id']]); ?>"><img class="thumbnail img-responsive center-block avatar-home" src="<?= $this->assetUrl($profs['prof4']['avatar'])?>"></a>
+			<h4 class="text-center"><strong><?= $profs['prof4']['firstname'].' '.$profs['prof4']['lastname']?></strong></h4>
 			<p class="text-center"><?= substr($profs['prof4']['description'], 0, 300) ?><p>
 		</div>
 	</div>
