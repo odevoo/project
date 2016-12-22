@@ -76,7 +76,7 @@ h1,h2,h3,h4 {
 
 */
 .popover-content {
-	    min-width: 250px;
+	min-width: 250px;
 }
 
 .logo-link {
@@ -107,6 +107,7 @@ header nav {
 	.dropdowncustom {
 		padding-top: 0%;
 	}
+}
 
 /* End Header */
 
