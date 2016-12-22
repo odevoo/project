@@ -61,6 +61,7 @@ h1,h2,h3,h4 {
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
 	background-color: #e74c3c;
+	color:white;
 
 }
 /*#navbar {
@@ -101,6 +102,11 @@ header nav {
 .icon{
 	color: #1F487E;
 }
+
+@media (max-width: 768px) {
+	.dropdowncustom {
+		padding-top: 0%;
+	}
 
 /* End Header */
 
@@ -270,6 +276,10 @@ li {
 	/* Recherche resultat */
 	/**********************/
 
+.teacherblock {
+	margin-bottom: 5%;
+}
+
 .avatar {
 	margin-top: 15%;
 	margin-left: 10%;
@@ -285,7 +295,7 @@ li {
 	padding: 20px 20px;
 	font-size: 17.5px;
 	border-radius: 6px;
-	margin-top: 65%;
+	margin-top: 48%;
     margin-right: 50%;
 }
 
@@ -301,7 +311,8 @@ li {
 	   {
 	.avatar {
 		margin-top: 15%;
-		margin-left: 25%;
+		margin-bottom: 2%;
+		margin-left: 23%;
 	}
 
 	.btn-search-custom {

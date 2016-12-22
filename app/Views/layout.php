@@ -100,7 +100,7 @@
 					<div class="col-md-12">
 						<div class="col-md-3">
 							<ul class="nav nav-pills nav-stacked">
-								<li class="footer-button"><a href="#">Mentions Légales</a></li>
+								<li class="footer-button"><a href="#Mentions Legales">Mentions Légales</a></li>
 							</ul>
 						</div>
 						<div class="col-md-3">
