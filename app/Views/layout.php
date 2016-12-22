@@ -37,6 +37,10 @@
 				              	<ul class="dropdown-menu" id="dropdown-member">
 					                <li><a href="<?= $this->url('lessons_page'); ?>"><i class="fa fa-book icon" aria-hidden="true"></i> Mes cours</a></li>
 					                <li><a href="<?= $this->url('admin_settings');?>"><i class="fa fa-cog icon" aria-hidden="true"></i> Paramètres </a></li>
+					                <?php if ($_SESSION['user']['is_teacher'] == 1 && $_SESSION['user']['is_student'] == 1 ): ?>
+	 									<li role="separator" class="divider"></li>
+						          		<li><a href="<?= $this->url('admin_subject');?>"><i class="fa fa-user-plus" aria-hidden="true"></i> Admin </a></li>
+									<?php endif; ?>
 					                <li role="separator" class="divider"></li>
 					                <li><a href="<?= $this->url('admin_logout'); ?>"><i class="fa fa-power-off icon" aria-hidden="true"></i> Deconnexion</a></li>
 				              	</ul>
