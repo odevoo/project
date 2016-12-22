@@ -554,7 +554,7 @@ form{
       
       <!--<div class="clientlogo"></div>-->
       <div class="info">
-        <h2>'.$array[1]["firstname"].' '.$array[1]["lastname"].'1111</h2>
+        <h2>'.$array[1]["firstname"].' '.$array[1]["lastname"].'</h2>
         <p>'.$array[1]["email"].'</br>
         </div>
 
