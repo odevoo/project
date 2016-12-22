@@ -418,5 +418,5 @@ li {
 .rotate
 {
   -webkit-transform: rotate(360deg);
-  -webkit-transition: -webkit-transform 1s;
+  -webkit-transition: -webkit-transform 1.5s;
 }
