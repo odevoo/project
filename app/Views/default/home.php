@@ -20,15 +20,15 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img src="../public/assets/img/photo-slider-1.jpg " class="img-responsive" alt="First slide">
-						<div class="carousel-caption">									
+					<img src="../public/assets/img/teacher.jpg" class="img-responsive" alt="First slide">
+						<div class="carousel-caption">		
 							<p class="description-carrousel">
-								Trouver des proffesseurs près de chez vous.
+								Trouver des professeurs près de chez vous.
 							</p>
 						</div>
 					</div>
 					<div class="item">
-						<img src="http://placehold.it/1200x500/9b59b6/8e44ad" alt="Second slide">
+						<img src="../public/assets/img/matiere.png" class="img-responsive item-slider" alt="Second slide">
 						<div class="carousel-caption">											
 							<p class="description-carrousel">
 								Un large choix de matières.
@@ -36,10 +36,10 @@
 						</div>
 					</div>
 					<div class="item">
-						<img src="http://placehold.it/1200x500/34495e/2c3e50" alt="Third slide">
+						<img src="../public/assets/img/stripe.png" class="img-responsive item-slider" alt="Third slide">
 						<div class="carousel-caption">
 							<p class="description-carrousel">
-								Un paiment sécurisé.									
+								Un paiement sécurisé.									
 							</p>
 						</div>
 					</div>
@@ -54,9 +54,40 @@
 
 	<div class="presentation">
 		<h1 class="title-about">A propos de nous</h1>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque iusto, beatae ratione mollitia molestias doloremque at tempore laboriosam omnis esse qui, fuga nihil dignissimos, dolore eius animi, impedit asperiores cumque?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus aliquid, illo provident iure perspiciatis excepturi officia quasi! Necessitatibus delectus, quasi animi, quibusdam numquam vero earum odio. Rem repellat iusto pariatur.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ipsam laudantium, voluptatibus eveniet numquam ex voluptates harum quis temporibus. Iste esse optio, velit quidem quos alias perspiciatis magni assumenda perferendis.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam dolores dolorum blanditiis maxime iusto, hic, voluptatum corporis harum nostrum, minus nulla incidunt culpa! Dolor provident distinctio debitis maxime pariatur odit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas consequatur dignissimos, laboriosam fugit magni, enim, voluptatem voluptate voluptatibus minus nulla ullam, odit a quos ipsam sit. Esse, ipsa. Velit, eveniet!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sapiente itaque delectus commodi omnis, esse ut ea et deserunt dolorum quisquam officiis nisi voluptate autem a sed totam repellat. In.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, et ipsa blanditiis tenetur voluptas odio, odit, nisi voluptate aperiam quod incidunt illo praesentium alias tempora fuga temporibus modi est laudantium!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae animi sunt asperiores rerum, perspiciatis, est omnis voluptatum cum eius consectetur recusandae a totam cupiditate mollitia voluptas quia! Doloremque, aut magnam.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio reprehenderit porro quaerat harum quia quod perferendis ipsam, impedit quo nihil rerum non officia eos accusamus ab ad nisi omnis nostrum!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus unde tempora, vero quae id dignissimos aliquam? Pariatur dolor quas veritatis quae voluptatibus voluptatem reprehenderit blanditiis recusandae inventore maiores.
-		</p>
+		
+			<h2 class="home-subtitle">Nos cours particuliers à domicile, la puissance du sur-mesure</h2>
+
+			<p>
+			À chaque élève, un enseignant qui lui est entièrement dédié et qui l’accompagne dans sa progression. 
+			Voilà résumée dans cette formule toute l’efficacité de nos cours particuliers.
+
+			Chez <strong>Oh ce cours</strong>, l’enseignant ne se contente pas de transmettre un savoir ou d’inculquer une méthode de travail.
+			Il s’attache à créer un climat de confiance qui va inciter l’élève à donner le meilleur de lui-même.
+
+			Il l’accompagne dans sa progression et adapte le travail effectué en cours en prenant en compte ses atouts comme ses points faibles.
+			Il l’encourage à chaque progrès réalisé et l’empêche de baisser les bras en cas de contre-performance.
+			Il varie les exercices et le rythme des séances, afin d’éviter à la routine de s’installer.
+			Pour toutes ces raisons, les cours particuliers d'<strong>Oh ce cours</strong> ne ressemblent à aucun autre. Ils sont uniques. Comme chacun de nos élèves.
+
+			<h2 class="home-subtitle">Pourquoi des étudiants ?</h2>
+			
+			<p>
+			Nous avons pu voir auprès de nos nombreux élèves, qu'il était plus simple d'être accompagné par un étudiant prof, pourquoi ? Tout simplement sur le constat suivant :
+
+			Qui de mieux qu'un ancien lycéen pour aider un lycéen ? 
+
+			Les étudiants ont été confrontés aux mêmes problématiques que les élèves, ils auront une pédagogie adaptée pour aider à pallier les lacunes.
+
+			De plus nous avons une réelle volonté d'offrir aux étudiants une alternative aux "jobs étudiants" traditionnels en leur proposant un réel job valorisant. De nombreux étudiants ont la volonté de transmettre leur savoir, nous leur offrons la possibilité d'être rémunérés en proposant ce savoir. Nous espérons réveiller des vocations d'enseignants parmi nos étudiants profs ! 
+
+			Le cours particulier présente de nombreux avantages pour les étudiants, la rémunération est très attractive en comparaison aux autres "jobs étudiants". Cette activité permet aux étudiants de gérer en autonomie leur planning et leur disponibilité et ainsi pas de problématiques pour les études en parallèle !
+			</p>
+
+			<h2 class="home-subtitle">Côté pratique…</h2>
+
+			Organisme agréé de services à la personne, <strong>Oh ce cours</strong> vous accompagne en mode mandataire ou en mode prestataire pour vous faire bénéficier d'un service de qualité à prix attractif.
+			</p>
+
 	</div>
 
 		<?php if (isset($_SESSION['user'])): ?>
@@ -92,5 +123,4 @@
 			<p class="text-center"><?= $profs['prof4']['description'] ?><p>
 		</div>
 	</div>
-
 <?php $this->stop('main_content') ?>

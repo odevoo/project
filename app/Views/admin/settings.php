@@ -1,6 +1,7 @@
 <?php $this->layout('layout', ['title' => 'Settings']) ?>
 
 <?php $this->start('main_content') ?>
+        
         <?php if ($_SESSION['user']['is_student'] == 1): ?>
         <h2>Modifier votre profil</h2>
         <form class="" method="post" action="<?= $this->url('admin_update') ?>">
@@ -68,9 +69,11 @@
                 <?php foreach (array_chunk($subjects, 6 , true) as $subjectschunk): ?>
                     <div class="row">
                         <?php foreach ($subjectschunk as $subject): ?>
+                            <?php $i=0; ?>
                             <div class="col-md-2">
-                                <input name="<?= $subject['id'] ?>" type="checkbox"><?= $subject['name'] ?>
+                                <input name="<?= $subject['id'] ?>" type="checkbox" <?php if (in_array($subject['id'], $expertise)){ echo 'checked'; } ?> ><?= $subject['name'] ?>
                             </div>
+                            <?php $i++;?>
                         <?php endforeach; ?>
                     </div>
                 <?php endforeach; ?>
