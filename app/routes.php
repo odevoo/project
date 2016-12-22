@@ -19,7 +19,7 @@
 
         
 
-		/*  Connexion  */
+		/*  Administration  */
 		['GET', '/login', 'Admin#showLoginForm', 'admin_login'],
         ['POST', '/login', 'Admin#processLoginForm', 'admin_process_login'],
         ['GET', '/admin', 'Admin#showSubjectForm', 'admin_subject'],
@@ -34,6 +34,11 @@
 
         ['GET', '/settings', 'Admin#showSettingsPage', 'admin_settings'],
         ['POST', '/updatessettings', 'Admin#updateSettings', 'admin_update'],
+
+        ['POST', '/generatepdf', 'Admin#generatePdf', 'admin_pdf'],
+        ['POST', '/uploadrib', 'Admin#uploadRib', 'admin_rib'],
+        ['POST', '/deleterib', 'Admin#deleteRib', 'admin_delete_rib'],
+
 
 		/*  Déconnexion  */
 		['GET', '/logout', 'Admin#processlogOut', 'admin_logout'],
