@@ -20,7 +20,7 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-					<img src="../public/assets/img/teacher.jpg" class="img-responsive" alt="First slide">
+					<img src="<?= $this->assetUrl('img/teacher.jpg')?>" class="img-responsive" alt="First slide">
 						<div class="carousel-caption">		
 							<p class="description-carrousel">
 								Trouver des professeurs près de chez vous.
@@ -28,7 +28,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img src="../public/assets/img/matiere.png" class="img-responsive item-slider" alt="Second slide">
+						<img src="<?= $this->assetUrl('img/matiere.png')?>" class="img-responsive item-slider" alt="Second slide">
 						<div class="carousel-caption">											
 							<p class="description-carrousel">
 								Un large choix de matières.
@@ -36,7 +36,7 @@
 						</div>
 					</div>
 					<div class="item">
-						<img src="../public/assets/img/stripe.png" class="img-responsive item-slider" alt="Third slide">
+						<img src="<?= $this->assetUrl('img/stripe.png')?>" class="img-responsive item-slider" alt="Third slide">
 						<div class="carousel-caption">
 							<p class="description-carrousel">
 								Un paiement sécurisé.									
