@@ -131,4 +131,12 @@ class LessonsModel extends \W\Model\Model
         return $ratings;
 
     }
+
+    public function getLessonsByStatutTeacherInfo($id_teacher, $statut){
+        $sql = 'SELECT * FROM lessons AS l , users AS u, subjects AS s WHERE l.id_teacher = :id AND l.statut = :statut AND l.id_teacher = u.id AND l.id_subjects = s.id';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->execute(array(':id' => $id_teacher, ':statut' => $statut));
+        $lessons = $stmt->fetchAll();
+        return $lessons;
+    }
 }
