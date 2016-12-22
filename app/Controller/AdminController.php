@@ -428,7 +428,7 @@ form{
       
       <!--<div class="clientlogo"></div>-->
       <div class="info">
-        <h2>'.$array[1]["firstname"].' '.$array[1]["lastname"].'</h2>
+        <h2>'.$array[1]["firstname"].' '.$array[1]["lastname"].'1111</h2>
         <p>'.$array[1]["email"].'</br>
         </div>
 
@@ -512,13 +512,13 @@ form{
 </div>
      ';
 
-      if (!file_exists('C:\xampp\htdocs\project\docs\newfile.html')) { 
-        $handle = fopen('C:\xampp\htdocs\project\docs\newfile.html','w+'); 
+      if (!file_exists('C:\xampp\htdocs\project\docs\\'.$_SESSION['user']['lastname'].'.html')) { 
+        $handle = fopen('C:\xampp\htdocs\project\docs\\'.$_SESSION['user']['lastname'].'.html','w+'); 
         fwrite($handle,$newcontent); 
         fclose($handle); }
 
 
-        exec('C:\wkhtmltopdf\bin\wkhtmltopdf.exe C:\xampp\htdocs\project\docs\newfile.html form1.pdf');
+        exec('C:\wkhtmltopdf\bin\wkhtmltopdf.exe C:\xampp\htdocs\project\docs\\'.$_SESSION['user']['lastname'].'.html form1.pdf');
        
         header('Pragma: public');
         header('Expires: 0');

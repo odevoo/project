@@ -114,14 +114,61 @@
 </div>
 <div id="form-back" role="tabpanel" class="tab-pane">
 <div class="row">
-    <form action="<?= $this->url('admin_pdf') ?>" method="POST" >
-        <button type="submit" class="btn btn-primary">Telecharger le recapitulatif</button>
-    </form>
+    <div class="col-md-6">
+     <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Revenu depuis votre inscription</h3>
+            </div>
+            <div class="panel-body">
+                <h1>Total: </h1>
+            </div>
+        </div>
+
+     <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Rapport d'activité</h3>
+            </div>
+            <div class="panel-body">
+                <form action="<?= $this->url('admin_pdf') ?>" method="POST" >
+                     <button type="submit" class="btn btn-success">Telecharger le recapitulatif d'activité</button>
+                </form>
+            </div>
+        </div>
+        
+        <?php if ($_SESSION['user']['rib']): ?>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Virement</h3>
+            </div>
+            <div class="panel-body">
+                <form action="<?= $this->url('admin_pdf') ?>" method="POST" >
+                    <button type="submit" class="btn btn-success">Effectuer un virement</button>
+                </form>
+            </div>
+        </div>
+        
+    <?php else: ?>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Vous devez nous fournir un RIB avant de pourvoir effectuer un virement</h3>
+            </div>
+            <div class="panel-body">
+                <form action="<?= $this->url('admin_pdf') ?>" method="POST" >
+                    <button disabled type="submit" class="btn btn-danger">Effectuer un virement</button>
+                </form>
+            </div>
+        </div>
+
+        
+    <?php endif; ?>
+    </div>
     
-</div>
-<div class="row">
+    
+
+
     <?php if ($_SESSION['user']['rib']): ?>
-    <div class="col-md-offset-3 col-md-6">
+    <div class="col-md-5">
         
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -141,8 +188,9 @@
     </div>
     
     <?php else: ?>
-    <h1>Telecharger votre RIB</h1>
-    <div class="col-md-offset-3 col-md-6">
+        <div class="col-md-6">
+   
+    
         
         
         <form class="box" method="post" action="<?= $this->url('admin_rib') ?>" enctype="multipart/form-data">
@@ -156,7 +204,7 @@
             <div class="box__error">Error! <span></span>.</div>
         </form>
         </div>
-    </div>
+    
     </div>
     
     <?php endif; ?>
