@@ -575,3 +575,14 @@ li {
 }
 
 
+	/***************/
+	/* Search/Home */
+	/***************/
+
+
+.rotate
+{
+  -webkit-transform: rotate(360deg);
+  -webkit-transition: -webkit-transform 1.5s;
+}
+
