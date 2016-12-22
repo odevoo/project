@@ -14,7 +14,10 @@ $this->start('main_content'); ?>
 	<h2 class="title-search">Rechercher par matière<h2>
 		<div class="subject-search" >
 			<?php $i = 1 ; ?>
-			<?php foreach (array_chunk($subjects, 6 , true) as $subjects) : ?>
+			<?php 
+
+
+			foreach (array_chunk($subjects, 6 , true) as $subjects) : ?>
 				<div class="row">
 
 					<?php foreach($subjects as $subject) : ?>
